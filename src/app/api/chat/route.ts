@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Anthropic from '@anthropic-ai/sdk'
+import OpenAI from 'openai'
 
 export const runtime = 'edge'
 
@@ -76,15 +76,18 @@ WHAT YOU CANNOT DO:
 - Make guarantees beyond what is listed above
 `
 
-async function askClaude(question: string): Promise<{ answer: string; canAnswer: boolean }> {
-  const client = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
+async function askGPT(question: string): Promise<{ answer: string; canAnswer: boolean }> {
+  const client = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
   })
 
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
+  const response = await client.chat.completions.create({
+    model: 'gpt-4o-mini',
     max_tokens: 300,
-    system: `${KNOWLEDGE}
+    messages: [
+      {
+        role: 'system',
+        content: `${KNOWLEDGE}
 
 INSTRUCTIONS:
 - Answer ONLY based on the knowledge above about Avenue Locksmith.
@@ -93,10 +96,12 @@ INSTRUCTIONS:
 - Do not make up prices, services, or policies not listed above.
 - Be friendly, direct, and helpful.
 - Do not repeat the question back to the user.`,
-    messages: [{ role: 'user', content: question }],
+      },
+      { role: 'user', content: question },
+    ],
   })
 
-  const text = response.content[0].type === 'text' ? response.content[0].text.trim() : ''
+  const text = response.choices[0]?.message?.content?.trim() ?? ''
   const canAnswer = text !== 'CANNOT_ANSWER' && text.length > 0
 
   return {
@@ -141,7 +146,7 @@ export async function POST(request: NextRequest) {
       if (!question || typeof question !== 'string' || question.trim().length < 2) {
         return NextResponse.json({ error: 'Invalid question' }, { status: 400 })
       }
-      const result = await askClaude(question.trim())
+      const result = await askGPT(question.trim())
       return NextResponse.json(result)
     }
 
