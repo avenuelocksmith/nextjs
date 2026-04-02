@@ -5,10 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap",
-    "start": "next start",
-    "pages:build": "npx @cloudflare/next-on-pages@1",
-    "preview": "npm run pages:build && npx wrangler pages dev"
+    "postbuild": "next-sitemap && npx @cloudflare/next-on-pages@1",
+    "start": "next start"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.81.0",
@@ -26,7 +24,6 @@
     "react-hook-form": "^7.72.0",
     "shadcn": "^4.1.1",
     "sharp": "^0.34.5",
-    "@cloudflare/next-on-pages": "^1",
     "tailwind-merge": "^3.5.0",
     "tw-animate-css": "^1.4.0",
     "zod": "^4.3.6"
