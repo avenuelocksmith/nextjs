@@ -1,0 +1,9 @@
+/icp/
+MASTER-PLAN.md
+node_modules/
+.next/
+.env
+.env.local
+.env.production
+.env.development
+.vercel
