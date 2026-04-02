@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 
-export const runtime = 'nodejs'
+export const runtime = 'edge'
 
 const KNOWLEDGE = `
 You are the virtual assistant for Avenue Locksmith, a licensed locksmith company serving Brooklyn, NY and all NYC boroughs.
