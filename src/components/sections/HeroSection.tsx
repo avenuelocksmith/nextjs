@@ -1,8 +1,11 @@
+'use client'
+
 import { PhoneButton } from '@/components/ui/PhoneButton'
 import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import { useAvailability } from '@/hooks/useAvailability'
 
 interface HeroSectionProps {
   h1: string
@@ -25,6 +28,15 @@ export function HeroSection({
 }: HeroSectionProps) {
   const isEmergency = variant === 'emergency'
   const isHomepage = variant === 'homepage'
+  const afterHours = useAvailability()
+
+  const emergencyBadgeText = afterHours === false
+    ? 'Emergency Service — Available Now'
+    : 'Emergency Service — We Answer 24/7'
+
+  const defaultCtaLabel = isEmergency
+    ? (afterHours === false ? 'Call Now — We\'re Open' : 'Call Now — We Answer 24/7')
+    : 'Call (347) 386-7164'
 
   return (
     <section
@@ -41,7 +53,7 @@ export function HeroSection({
         {isEmergency && (
           <div className="inline-flex items-center gap-2 bg-red-600 text-white text-sm font-bold px-4 py-1.5 rounded-full mb-4">
             <span className="animate-pulse-slow w-2 h-2 bg-white rounded-full" aria-hidden="true" />
-            Emergency Service — We Answer 24/7
+            {emergencyBadgeText}
           </div>
         )}
 
@@ -73,7 +85,7 @@ export function HeroSection({
           <PhoneButton
             variant="primary"
             size={isHomepage ? 'xl' : 'lg'}
-            label={ctaLabel ?? (isEmergency ? 'Call Now — We Answer 24/7' : 'Call (347) 386-7164')}
+            label={ctaLabel ?? defaultCtaLabel}
           />
           {!isEmergency && (
             <Link
