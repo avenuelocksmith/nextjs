@@ -4,9 +4,11 @@ import { PhoneButton } from '@/components/ui/PhoneButton'
 import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
+import { HeroTrustLogos } from '@/components/ui/HeroTrustLogos'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useAvailability } from '@/hooks/useAvailability'
+import { useVisitorType } from '@/hooks/useVisitorType'
 
 interface HeroSectionProps {
   h1: string
@@ -30,6 +32,8 @@ export function HeroSection({
   const isEmergency = variant === 'emergency'
   const isHomepage = variant === 'homepage'
   const afterHours = useAvailability()
+  const { visitorType } = useVisitorType()
+  const visitorStripVisible = isHomepage && visitorType === 'returning'
 
   const emergencyBadgeText = afterHours === false
     ? 'Emergency Service — Available Now'
@@ -44,7 +48,9 @@ export function HeroSection({
       <section
         className={cn(
           'relative bg-brand-navy text-white',
-          isHomepage ? 'py-16 md:py-24' : 'py-12 md:py-16',
+          isHomepage
+            ? (visitorStripVisible ? 'py-12 md:py-[72px]' : 'py-16 md:py-24')
+            : 'py-12 md:py-16',
           className
         )}
       >
@@ -77,13 +83,15 @@ export function HeroSection({
           {subheadline && (
             <p
               className={cn(
-                'text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed',
-                isHomepage ? 'text-lg md:text-xl' : 'text-base md:text-lg'
+                'text-white/80 max-w-2xl mx-auto leading-relaxed',
+                isHomepage ? 'mb-4 text-lg md:text-xl' : 'mb-8 text-base md:text-lg'
               )}
             >
               {subheadline}
             </p>
           )}
+
+          {isHomepage && <HeroTrustLogos />}
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
             <PhoneButton
