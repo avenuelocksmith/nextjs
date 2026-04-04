@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Columbia Waterfront District — 30-Min | Avenue Locksmith',
@@ -24,7 +24,8 @@ const FAQS = [
 export default function EmergencyLocksmithColumbiaWaterfrontPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Columbia Waterfront District', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-columbia-waterfront-district/', serviceType: 'Emergency Lockout Service' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Columbia Waterfront District — 30-Min | Avenue Locksmith', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. Apartment & home lockouts, 24/7. 15–25 minute arrival. Call (347) 386-7164 now.', url: '/emergency-locksmith-columbia-waterfront-district/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Columbia Waterfront District', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-columbia-waterfront-district/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Columbia Waterfront District', url: '/emergency-locksmith-columbia-waterfront-district/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Columbia Waterfront' }]} />

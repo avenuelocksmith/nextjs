@@ -5,9 +5,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, AUTO_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Auto Lockout Service in Brooklyn, NY — Car Lockout Specialists | Avenue Locksmith',
@@ -94,6 +94,8 @@ export default function AutoLockoutPage() {
         { name: 'Lockout Service', url: '/services/lockout-service/' },
         { name: 'Auto Lockout', url: '/services/lockout-service/auto-lockout-service-avenue-locks/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Auto Lockout Service', description: 'Car lockout service in Brooklyn, NY. All makes and models. Non-destructive slim jim entry. Alternate-side parking emergencies. 15–25 minute response, available 24/7.', url: '/services/lockout-service/auto-lockout-service-avenue-locks/', serviceType: 'Auto Lockout Service', brands: AUTO_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Auto Lockout Service in Brooklyn, NY — Car Lockout Specialists | Avenue Locksmith', description: 'Locked out of your car in Brooklyn? 15–25 Min Response. All makes & models. Non-destructive slim jim entry. Alternate-side parking emergency? Call us first. (347) 386-7164.', url: '/services/lockout-service/auto-lockout-service-avenue-locks/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

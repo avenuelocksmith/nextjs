@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -25,6 +25,7 @@ export default function LockoutServiceBkPage() {
   return (
     <>
       <JsonLd data={getServiceSchema({ name: 'Lockout Service', description: 'Home, car, and business lockout service in Brooklyn, NY. 15–25 minute response, 24/7.', url: '/lockout-service-in-brooklyn-ny/', serviceType: 'Lockout Service' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Lockout Service in Brooklyn, NY — Home, Car & Business | Avenue Locksmith', description: 'Lockout service in Brooklyn, NY. Home lockouts, car lockouts, and business lockouts. 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164.', url: '/lockout-service-in-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Lockout Service Brooklyn', url: '/lockout-service-in-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Lockout Service Brooklyn' }]} />

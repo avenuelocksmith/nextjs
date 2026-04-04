@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Access Control Systems in Brooklyn, NY — Keycard, Fob & Cloud Entry | Avenue Locksmith',
@@ -84,6 +84,8 @@ export default function AccessControlPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Access Control Systems', description: 'Access control system installation in Brooklyn, NY. Keycard, fob, PIN, and cloud-managed entry for businesses and buildings. Audit trails, instant credential revocation, remote management.', url: '/services/security-solutions/access-control-systems/', serviceType: 'Access Control Systems', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Access Control Systems in Brooklyn, NY — Keycard, Fob & Cloud Entry | Avenue Locksmith', description: 'Access control system installation in Brooklyn, NY. Keycard, key fob, PIN, cloud-managed entry. Audit trails, instant revocation, remote management. Kisi, Brivo, Salto. Call (347) 386-7164.', url: '/services/security-solutions/access-control-systems/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

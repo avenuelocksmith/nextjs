@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Reinforced Door Frame Installation in Brooklyn, NY — Kick-In Prevention | Avenue Locksmith',
@@ -86,6 +86,8 @@ export default function ReinforcedDoorFramePage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Reinforced Door Frame Installation', description: 'Door frame reinforcement in Brooklyn, NY. Steel strike plates with 3-inch screws, door jamb armor, and full-frame steel systems. Stops kick-in attacks. Pre-war and modern buildings.', url: '/services/security-solutions/reinforced-door-frame-system/', serviceType: 'Door Frame Reinforcement', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Reinforced Door Frame Installation in Brooklyn, NY — Kick-In Prevention | Avenue Locksmith', description: 'Door frame reinforcement in Brooklyn, NY. Stop kick-in attacks — the most common break-in method. Steel strike plates, door jamb armor. Pre-war buildings especially vulnerable. Call (347) 386-7164.', url: '/services/security-solutions/reinforced-door-frame-system/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

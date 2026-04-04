@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Mailbox Lock Replacement',
@@ -84,6 +84,8 @@ export default function MailboxLockPage() {
         { name: 'Services', url: '/services/' },
         { name: 'Mailbox Lock', url: '/services/mailbox-lock/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Mailbox Lock Replacement', description: 'Mailbox lock replacement in Brooklyn, NY. Individual cam lock replacement for tenants and building-wide rekey for landlords. Protects against mail theft and identity theft. Same-day service.', url: '/services/mailbox-lock/', serviceType: 'Mailbox Lock', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Mailbox Lock Replacement in Brooklyn, NY — Lost Key & Building Mailboxes | Avenue Locksmith', description: 'Mailbox lock replacement in Brooklyn, NY. Lost mailbox key, broken cam lock, building-wide rekey. Identity theft risk from unsecured mailboxes — same-day service. Call (347) 386-7164.', url: '/services/mailbox-lock/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

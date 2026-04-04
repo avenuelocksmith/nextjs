@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Biometric Access Systems in Brooklyn, NY — Fingerprint & Facial Recognition | Avenue Locksmith',
@@ -88,6 +88,8 @@ export default function BiometricAccessPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Biometric Access Systems', description: 'Biometric access system installation in Brooklyn, NY. Fingerprint scanners and facial recognition for server rooms, medical facilities, and high-security areas. NYC Local Law 144 compliant.', url: '/services/security-solutions/biometric-access-system/', serviceType: 'Biometric Access Systems', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Biometric Access Systems in Brooklyn, NY — Fingerprint & Facial Recognition | Avenue Locksmith', description: 'Biometric access system installation in Brooklyn, NY. Fingerprint scanners and facial recognition for high-security areas. HIPAA-relevant applications. NYC commercial specialists. Call (347) 386-7164.', url: '/services/security-solutions/biometric-access-system/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

@@ -4,7 +4,7 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -25,6 +25,7 @@ export default function EmergencyLocksmithBkNYPage() {
   return (
     <>
       <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Broken Key & Burglary Repair', description: 'Emergency locksmith in Brooklyn, NY. Broken key extraction, burglary door repair, emergency lock change.', url: '/emergency-locksmith-brooklyn-ny/', serviceType: 'Emergency Locksmith' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Brooklyn NY — Broken Key & Burglary Repair | Avenue Locksmith', description: 'Emergency locksmith in Brooklyn, NY. Broken key extraction, burglary door repair, and emergency lock change. 15–25 minute response 24/7. Call (347) 386-7164.', url: '/emergency-locksmith-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Brooklyn NY', url: '/emergency-locksmith-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Brooklyn NY' }]} />

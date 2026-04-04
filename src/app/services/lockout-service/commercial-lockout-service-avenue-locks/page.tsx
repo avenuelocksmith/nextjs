@@ -5,9 +5,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Commercial Lockout Service in Brooklyn, NY — Business & Office Lockouts | Avenue Locksmith',
@@ -94,6 +94,8 @@ export default function CommercialLockoutPage() {
         { name: 'Lockout Service', url: '/services/lockout-service/' },
         { name: 'Commercial Lockout', url: '/services/lockout-service/commercial-lockout-service-avenue-locks/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Commercial Lockout Service', description: 'Business and office lockout service in Brooklyn, NY. 15–25 minute response, 24/7. Offices, retail, restaurants, warehouses. Minimal disruption. Invoices provided. Licensed & insured.', url: '/services/lockout-service/commercial-lockout-service-avenue-locks/', serviceType: 'Commercial Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Commercial Lockout Service in Brooklyn, NY — Business & Office Lockouts | Avenue Locksmith', description: 'Locked out of your office, store, or warehouse in Brooklyn? 15–25 Min Response, 24/7. Minimize downtime. Discreet service. Invoices provided. Call (347) 386-7164.', url: '/services/lockout-service/commercial-lockout-service-avenue-locks/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

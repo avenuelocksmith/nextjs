@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, AUTO_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Car Lockout Service in Brooklyn, NY — 15–25 Min Response | Avenue Locksmith',
@@ -24,9 +24,10 @@ const FAQS = [
 export default function CarLockoutPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Car Lockout Service', description: 'Car lockout service in Brooklyn, NY. 15–25 minute response, no-damage entry, all makes and models.', url: '/car-lockout-service-in-brooklyn-ny/', serviceType: 'Auto Lockout Service' })} />
+      <JsonLd data={getServiceSchema({ name: 'Car Lockout Service', description: 'Car lockout service in Brooklyn, NY. 15–25 minute response, no-damage entry, all makes and models.', url: '/car-lockout-service-in-brooklyn-ny/', serviceType: 'Auto Lockout Service', brands: AUTO_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Car Lockout Brooklyn', url: '/car-lockout-service-in-brooklyn-ny/' }])} />
+      <JsonLd data={getWebPageSchema({ title: 'Car Lockout Service in Brooklyn, NY — 15–25 Min Response | Avenue Locksmith', description: 'Locked out of your car in Brooklyn? 15–25 minute car lockout response. No damage entry. All makes & models. 24/7. Call (347) 386-7164.', url: '/car-lockout-service-in-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Car Lockout Service Brooklyn' }]} />
       <HeroSection h1="Car Lockout Service in Brooklyn, NY — Locked Out of Your Car?" subheadline="Keys locked in the car? Locked keys in trunk? We arrive in 15–25 minutes, open your car without damage, and get you back on the road. Available 24/7." variant="emergency" showTrustBar ctaLabel="Call Now — 15–25 Min Response" />
       <section className="py-12 bg-white">

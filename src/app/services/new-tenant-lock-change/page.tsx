@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'New Tenant Lock Change',
@@ -93,6 +93,8 @@ export default function NewTenantLockChangePage() {
         { name: 'Services', url: '/services/' },
         { name: 'New Tenant Lock Change', url: '/services/new-tenant-lock-change/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'New Tenant Lock Change', description: 'Move-in lock change service for new Brooklyn tenants. Rekeying and full lock replacement for apartments. NYC tenant rights under Admin Code §27-2043. Same-day service.', url: '/services/new-tenant-lock-change/', serviceType: 'Lock Change', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'New Tenant Lock Change in Brooklyn, NY — Move-In Lock Service | Avenue Locksmith', description: 'Moving into a Brooklyn apartment? Change your locks before you unpack. Same-day move-in lock service. Rekeying from $65. NYC tenant rights explained. Call (347) 386-7164.', url: '/services/new-tenant-lock-change/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

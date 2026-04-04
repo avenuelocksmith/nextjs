@@ -5,9 +5,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Residential Lockout Service in Brooklyn, NY — Apartments & Houses | Avenue Locksmith',
@@ -91,6 +91,8 @@ export default function ResidentialLockoutPage() {
         { name: 'Lockout Service', url: '/services/lockout-service/' },
         { name: 'Residential Lockout', url: '/services/lockout-service/residential-lockout-service-avenue-locks/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Residential Lockout Service', description: 'Home and apartment lockout service in Brooklyn, NY. Non-destructive entry, 15–25 minute response, upfront pricing. What to do while you wait. Licensed & insured.', url: '/services/lockout-service/residential-lockout-service-avenue-locks/', serviceType: 'Residential Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Residential Lockout Service in Brooklyn, NY — Apartments & Houses | Avenue Locksmith', description: 'Locked out of your Brooklyn apartment or house? 15–25 Min Response, non-destructive entry, no hidden fees. What to do right now while you wait. Call (347) 386-7164.', url: '/services/lockout-service/residential-lockout-service-avenue-locks/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

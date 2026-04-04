@@ -6,7 +6,7 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -93,6 +93,7 @@ export default function LockChangePage() {
         { name: 'Services', url: '/services/' },
         { name: 'Lock Change', url: '/services/lock-change/' },
       ])} />
+      <JsonLd data={getWebPageSchema({ title: 'Lock Change in Brooklyn, NY — Full Replacement Any Lock | Avenue Locksmith', description: 'Lock change service in Brooklyn, NY. Full lock replacement — any brand, any door. After break-in, worn locks, security upgrades. ANSI Grade 1 & 2 options. Call (347) 386-7164.', url: '/services/lock-change/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

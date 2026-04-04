@@ -8,7 +8,7 @@ import { RecentCallTicker } from '@/components/ui/RecentCallTicker'
 import { ExitIntentModal } from '@/components/ui/ExitIntentModal'
 import { LiveChat } from '@/components/ui/LiveChat'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getLocalBusinessSchema } from '@/lib/schema'
+import { getLocalBusinessSchema, getOrganizationSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
 
 const inter = Inter({
@@ -58,6 +58,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-brand-bg">
         <JsonLd data={getLocalBusinessSchema()} />
+        <JsonLd data={getOrganizationSchema()} />
         <Header />
         <main className="flex-1 pb-16 md:pb-0" id="main-content">
           {children}

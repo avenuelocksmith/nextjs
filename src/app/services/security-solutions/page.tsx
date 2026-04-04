@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Security Solutions',
@@ -47,34 +47,10 @@ const FAQS = [
 ]
 
 export default function SecuritySolutionsPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/security-solutions/`
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Security Solutions in Brooklyn, NY',
-    description: 'Complete security solutions in Brooklyn, NY — high-security locks, access control systems, CCTV, smart locks, biometric entry, and reinforced door frames. Licensed & insured.',
-    url: canonicalUrl,
-    serviceType: 'Security Solutions',
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$125–$5,000',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Security Solutions', description: 'Complete security solutions in Brooklyn, NY — high-security locks, access control systems, CCTV, smart locks, biometric entry, and reinforced door frames. Licensed & insured.', url: '/services/security-solutions/', serviceType: 'Security Solutions', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Security Solutions in Brooklyn, NY — Locks, Access Control & CCTV | Avenue Locksmith', description: 'Complete security solutions in Brooklyn, NY — high-security locks, access control systems, CCTV, smart locks, biometric entry, and reinforced doors. Call (347) 386-7164.', url: '/services/security-solutions/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Services', url: '/services/' }, { name: 'Security Solutions', url: '/services/security-solutions/' }])} />
 

@@ -9,7 +9,7 @@ import { MapEmbed } from '@/components/ui/MapEmbed'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { buildNeighborhoodMetadata } from '@/lib/seo'
-import { getBreadcrumbSchema, getFAQSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getFAQSchema, getWebPageSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
 import { NEIGHBORHOODS } from '@/lib/neighborhoods'
 
@@ -99,6 +99,11 @@ export default async function NeighborhoodPage({
 
   return (
     <>
+      <JsonLd data={getWebPageSchema({
+        title: `Locksmith Near Me in ${n.name}, Brooklyn — 15–25 Min Response | Avenue Locksmith`,
+        description: `Emergency locksmith near you in ${n.name}, Brooklyn. 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164.`,
+        url: `/locksmith-near-me/${n.slug}/`,
+      })} />
       <JsonLd data={serviceSchema} />
       <JsonLd data={breadcrumbSchema} />
       <JsonLd data={faqSchema} />

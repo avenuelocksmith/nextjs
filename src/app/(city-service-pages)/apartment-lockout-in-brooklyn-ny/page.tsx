@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Apartment Lockout in Brooklyn, NY — 15–25 Min Response | Avenue Locksmith',
@@ -24,9 +24,10 @@ const FAQS = [
 export default function ApartmentLockoutPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Apartment Lockout Service', description: 'Apartment lockout service in Brooklyn, NY. 15–25 minute response, non-destructive entry. Available 24/7.', url: '/apartment-lockout-in-brooklyn-ny/', serviceType: 'Residential Lockout Service' })} />
+      <JsonLd data={getServiceSchema({ name: 'Apartment Lockout Service', description: 'Apartment lockout service in Brooklyn, NY. 15–25 minute response, non-destructive entry. Available 24/7.', url: '/apartment-lockout-in-brooklyn-ny/', serviceType: 'Residential Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Apartment Lockout Brooklyn', url: '/apartment-lockout-in-brooklyn-ny/' }])} />
+      <JsonLd data={getWebPageSchema({ title: 'Apartment Lockout in Brooklyn, NY — 15–25 Min Response | Avenue Locksmith', description: 'Locked out of your apartment in Brooklyn? Fast 15–25 minute response. Non-destructive entry. Available 24/7. Licensed & insured. Call (347) 386-7164.', url: '/apartment-lockout-in-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Apartment Lockout Brooklyn' }]} />
       <HeroSection h1="Apartment Lockout Service in Brooklyn, NY — Fast 30-Min Entry" subheadline="Locked out of your Brooklyn apartment? We arrive in 15–25 minutes, use non-destructive entry, and quote the price before we start — available 24/7." variant="emergency" showTrustBar ctaLabel="Call Now — 15–25 Min Response" />
       <section className="py-12 bg-white">

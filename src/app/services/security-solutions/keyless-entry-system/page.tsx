@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Keyless Entry Systems in Brooklyn, NY — Keypad Locks & Code Entry | Avenue Locksmith',
@@ -77,6 +77,8 @@ export default function KeylessEntryPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Keyless Entry Systems', description: 'Keyless entry system installation in Brooklyn, NY. Keypad door locks and code-entry systems for homes, rentals, and businesses. Multiple user codes, automatic expiry, physical key backup.', url: '/services/security-solutions/keyless-entry-system/', serviceType: 'Keyless Entry Systems', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Keyless Entry Systems in Brooklyn, NY — Keypad Locks & Code Entry | Avenue Locksmith', description: 'Keyless entry system installation in Brooklyn, NY. Keypad door locks, multiple user codes, automatic code expiry. Perfect for rentals, Airbnb, and offices. Call (347) 386-7164.', url: '/services/security-solutions/keyless-entry-system/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

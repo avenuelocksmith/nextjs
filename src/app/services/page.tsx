@@ -7,7 +7,7 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getBreadcrumbSchema, getFAQSchema } from '@/lib/schema'
+import { getBreadcrumbSchema, getFAQSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -86,27 +86,16 @@ const FAQS = [
 ]
 
 export default function ServicesPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/`
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Services', url: '/services/' },
   ])
-  const webPageSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': `${canonicalUrl}#webpage`,
-    url: canonicalUrl,
-    name: 'Locksmith Services in Brooklyn, NY | Avenue Locksmith',
-    description: 'Complete locksmith services in Brooklyn, NY — residential, commercial, automotive, emergency, and security solutions. Licensed & insured. Call (347) 386-7164.',
-    isPartOf: { '@id': `${BUSINESS.url}/#website` },
-    breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
-  }
-
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <JsonLd data={webPageSchema} />
       <JsonLd data={getFAQSchema(FAQS)} />
+      <JsonLd data={getServiceSchema({ name: 'Locksmith Services', description: 'Complete locksmith services in Brooklyn, NY — residential, commercial, automotive, emergency, and security solutions. Licensed & insured.', url: '/services/', serviceType: 'Locksmith' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Locksmith Services in Brooklyn, NY | Avenue Locksmith', description: 'Complete locksmith services in Brooklyn, NY — residential, commercial, automotive, emergency, eviction, and security solutions. Licensed & insured. Call (347) 386-7164.', url: '/services/' })} />
 
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
 

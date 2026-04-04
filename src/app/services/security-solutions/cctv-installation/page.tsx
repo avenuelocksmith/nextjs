@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'CCTV Installation in Brooklyn, NY — Security Camera Systems | Avenue Locksmith',
@@ -86,6 +86,8 @@ export default function CCTVPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'CCTV Installation', description: 'Professional security camera installation for Brooklyn homes and businesses. HD & 4K, remote viewing, motion alerts, cloud storage. Hikvision & Dahua authorized installer.', url: '/services/security-solutions/cctv-installation/', serviceType: 'CCTV Installation', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'CCTV Installation in Brooklyn, NY — Security Camera Systems | Avenue Locksmith', description: 'Professional CCTV installation in Brooklyn, NY. HD & 4K, remote viewing, motion alerts. NYC recording laws explained. Hikvision & Dahua. Homes & businesses. Call (347) 386-7164.', url: '/services/security-solutions/cctv-installation/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

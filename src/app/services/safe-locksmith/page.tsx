@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Safe Locksmith',
@@ -97,6 +97,8 @@ export default function SafeLocksmithPage() {
         { name: 'Services', url: '/services/' },
         { name: 'Safe Locksmith', url: '/services/safe-locksmith/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Safe Locksmith Services', description: 'Safe locksmith services in Brooklyn, NY. Non-destructive safe opening, combination reset, installation, and relocation. SentrySafe, Fort Knox, AMSEC, Liberty Safe. Licensed & insured.', url: '/services/safe-locksmith/', serviceType: 'Safe Locksmith', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Safe Locksmith in Brooklyn, NY — Safe Opening, Combination Reset & Installation | Avenue Locksmith', description: 'Safe locksmith in Brooklyn, NY. Locked out of your safe? Non-destructive opening first, always. SentrySafe, Fort Knox, AMSEC. Combination reset & new installation. Call (347) 386-7164.', url: '/services/safe-locksmith/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

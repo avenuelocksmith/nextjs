@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Park Slope — 15–25 Min Response | Avenue Locksmith',
@@ -24,7 +24,8 @@ const FAQS = [
 export default function EmergencyLocksmithParkSlopePage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Park Slope', description: 'Emergency locksmith in Park Slope, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-park-slope/', serviceType: 'Emergency Lockout Service' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Park Slope — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Park Slope, Brooklyn. Locked out of your brownstone or apartment? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-park-slope/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Park Slope', description: 'Emergency locksmith in Park Slope, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-park-slope/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Park Slope', url: '/emergency-locksmith-park-slope/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Park Slope' }]} />

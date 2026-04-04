@@ -5,7 +5,7 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -28,6 +28,7 @@ export default function TwentyFourHourPage() {
       <JsonLd data={getServiceSchema({ name: '24-Hour Locksmith', description: '24-hour locksmith service in Brooklyn, NY. Available around the clock, 365 days a year.', url: '/24-hour-locksmith-in-brooklyn-ny/', serviceType: '24-Hour Locksmith' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: '24-Hour Locksmith Brooklyn', url: '/24-hour-locksmith-in-brooklyn-ny/' }])} />
+      <JsonLd data={getWebPageSchema({ title: '24-Hour Locksmith in Brooklyn, NY — Always Available | Avenue Locksmith', description: '24-hour locksmith in Brooklyn, NY. Available day and night, 365 days a year. Same pricing — no after-hours surcharges. Call (347) 386-7164 any time.', url: '/24-hour-locksmith-in-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: '24-Hour Locksmith Brooklyn' }]} />
       <HeroSection h1="24-Hour Locksmith in Brooklyn, NY — Always Available" subheadline="Locked out at midnight? 4am? Sunday morning? We answer every call, dispatch immediately, and arrive in 15–25 minutes — any time, any day." variant="emergency" showTrustBar ctaLabel="Call Now — We Answer 24/7" />
       <section className="py-12 bg-white">

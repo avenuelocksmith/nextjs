@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'High-Security Locks in Brooklyn, NY — Medeco, Mul-T-Lock, Abloy | Avenue Locksmith',
@@ -85,6 +85,8 @@ export default function HighSecurityLocksPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'High-Security Lock Installation', description: 'High-security lock installation in Brooklyn, NY. Medeco, Mul-T-Lock, Abloy Protec2, Schlage Primus. Pick-resistant, drill-resistant, bump-proof, with restricted key systems.', url: '/services/security-solutions/high-security-locks/', serviceType: 'High-Security Lock Installation', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'High-Security Locks in Brooklyn, NY — Medeco, Mul-T-Lock, Abloy | Avenue Locksmith', description: 'High-security lock installation in Brooklyn, NY. Medeco, Mul-T-Lock, Abloy Protec2, Schlage Primus. Pick-resistant, drill-resistant, bump-proof, restricted keys. Call (347) 386-7164.', url: '/services/security-solutions/high-security-locks/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

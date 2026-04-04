@@ -5,9 +5,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, AUTO_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Auto Locksmith Brooklyn NY — Key Programming & Transponder Keys | Avenue Locksmith',
@@ -25,9 +25,10 @@ const FAQS = [
 export default function AutomotiveLocksmithBkNYPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Auto Locksmith Key Programming', description: 'Auto locksmith in Brooklyn, NY. Key programming, transponder keys, smart keys. All makes & models. Up to 80% less than dealers.', url: '/automotive-locksmith-brooklyn-ny/', serviceType: 'Automotive Key Programming' })} />
+      <JsonLd data={getServiceSchema({ name: 'Auto Locksmith Key Programming', description: 'Auto locksmith in Brooklyn, NY. Key programming, transponder keys, smart keys. All makes & models. Up to 80% less than dealers.', url: '/automotive-locksmith-brooklyn-ny/', serviceType: 'Automotive Key Programming', brands: AUTO_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Auto Locksmith Brooklyn NY', url: '/automotive-locksmith-brooklyn-ny/' }])} />
+      <JsonLd data={getWebPageSchema({ title: 'Auto Locksmith Brooklyn NY — Key Programming & Transponder Keys | Avenue Locksmith', description: 'Auto locksmith in Brooklyn, NY specializing in key programming & transponder keys. Toyota, Honda, BMW, Ford & more. Up to 80% less than dealers. Call (347) 386-7164.', url: '/automotive-locksmith-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Auto Locksmith Brooklyn NY' }]} />
       <HeroSection h1="Auto Locksmith Brooklyn, NY — Key Programming & Transponder Keys" subheadline="Need a new car key programmed in Brooklyn? We program transponder keys, smart keys, and key fobs for most makes and models — at a fraction of dealership cost." variant="service" showTrustBar />
       <section className="py-12 bg-white">

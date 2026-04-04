@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Prospect Heights — 15–25 Min Response | Avenue Locksmith',
@@ -24,7 +24,8 @@ const FAQS = [
 export default function EmergencyLocksmithProspectHeightsPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Prospect Heights', description: 'Emergency locksmith in Prospect Heights, Brooklyn. 15–25 minute response for apartment and home lockouts.', url: '/emergency-locksmith-prospect-heights/', serviceType: 'Emergency Lockout Service' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Prospect Heights — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Prospect Heights, Brooklyn. Apartment & home lockouts. 15–25 minute arrival, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-prospect-heights/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Prospect Heights', description: 'Emergency locksmith in Prospect Heights, Brooklyn. 15–25 minute response for apartment and home lockouts.', url: '/emergency-locksmith-prospect-heights/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Prospect Heights', url: '/emergency-locksmith-prospect-heights/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Prospect Heights' }]} />
