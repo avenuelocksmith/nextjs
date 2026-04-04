@@ -16,34 +16,13 @@ interface Counts {
 // Counts only generated client-side to avoid SSR/hydration mismatch
 export function LiveActivityBar() {
   const [counts, setCounts] = useState<Counts | null>(null)
-  const [displayCounts, setDisplayCounts] = useState<Counts>({ techs: 0, inProgress: 0, dispatched: 0 })
 
   useEffect(() => {
-    const target: Counts = {
+    setCounts({
       techs: rand(2, 5),
       inProgress: rand(3, 7),
       dispatched: rand(1, 3),
-    }
-    setCounts(target)
-
-    // Count-up animation
-    let frame = 0
-    const totalFrames = 18
-    const interval = setInterval(() => {
-      frame++
-      const progress = frame / totalFrames
-      setDisplayCounts({
-        techs: Math.round(target.techs * progress),
-        inProgress: Math.round(target.inProgress * progress),
-        dispatched: Math.round(target.dispatched * progress),
-      })
-      if (frame >= totalFrames) {
-        clearInterval(interval)
-        setDisplayCounts(target)
-      }
-    }, 40)
-
-    return () => clearInterval(interval)
+    })
   }, [])
 
   if (!counts) return null
@@ -68,7 +47,7 @@ export function LiveActivityBar() {
         {/* Technicians available */}
         <span className="flex items-center gap-1.5 text-sm">
           <Users size={14} className={techsLow ? 'text-amber-400' : 'text-green-400'} aria-hidden="true" />
-          <span className="font-bold text-white tabular-nums">{displayCounts.techs}</span>
+          <span className="font-bold text-white tabular-nums">{counts.techs}</span>
           <span className="text-white/70">techs available</span>
         </span>
 
@@ -77,7 +56,7 @@ export function LiveActivityBar() {
         {/* Jobs in progress */}
         <span className="flex items-center gap-1.5 text-sm">
           <Wrench size={14} className="text-blue-400" aria-hidden="true" />
-          <span className="font-bold text-white tabular-nums">{displayCounts.inProgress}</span>
+          <span className="font-bold text-white tabular-nums">{counts.inProgress}</span>
           <span className="text-white/70">jobs active</span>
         </span>
 
@@ -86,7 +65,7 @@ export function LiveActivityBar() {
         {/* Dispatched */}
         <span className="flex items-center gap-1.5 text-sm">
           <Zap size={14} className="text-brand-amber" aria-hidden="true" />
-          <span className="font-bold text-white tabular-nums">{displayCounts.dispatched}</span>
+          <span className="font-bold text-white tabular-nums">{counts.dispatched}</span>
           <span className="text-white/70">dispatched now</span>
         </span>
       </div>

@@ -1,7 +1,6 @@
 'use client'
 
 import { Phone, Shield, Clock, Star, Zap } from 'lucide-react'
-import { motion } from 'framer-motion'
 import { BUSINESS } from '@/lib/constants'
 import { useVisitorType } from '@/hooks/useVisitorType'
 
@@ -12,12 +11,7 @@ export function HeroVisitorStrip() {
 
   if (visitorType === 'returning') {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 mb-6 flex-wrap justify-center"
-      >
+      <div className="inline-flex items-center gap-3 bg-white/10 border border-white/20 rounded-xl px-5 py-3 mb-6 flex-wrap justify-center">
         <div className="flex items-center gap-2">
           <Zap size={16} className="text-brand-amber shrink-0" aria-hidden="true" />
           <span className="text-white/90 text-sm font-medium">
@@ -31,7 +25,7 @@ export function HeroVisitorStrip() {
           <Phone size={13} aria-hidden="true" />
           Call Now
         </a>
-      </motion.div>
+      </div>
     )
   }
 
@@ -44,12 +38,7 @@ export function HeroVisitorStrip() {
   ]
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: -8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-      className="flex flex-wrap items-center justify-center gap-3 mb-6"
-    >
+    <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
       {badges.map(({ icon: Icon, label }) => (
         <div
           key={label}
@@ -59,6 +48,6 @@ export function HeroVisitorStrip() {
           {label}
         </div>
       ))}
-    </motion.div>
+    </div>
   )
 }
