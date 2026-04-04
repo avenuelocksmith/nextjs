@@ -4,9 +4,11 @@ import { PhoneButton } from '@/components/ui/PhoneButton'
 import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
+import { HeroTrustLogos } from '@/components/ui/HeroTrustLogos'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useAvailability } from '@/hooks/useAvailability'
+import { useVisitorType } from '@/hooks/useVisitorType'
 
 interface HeroSectionProps {
   h1: string
@@ -30,6 +32,8 @@ export function HeroSection({
   const isEmergency = variant === 'emergency'
   const isHomepage = variant === 'homepage'
   const afterHours = useAvailability()
+  const { visitorType } = useVisitorType()
+  const visitorStripVisible = isHomepage && visitorType === 'returning'
 
   const emergencyBadgeText = afterHours === false
     ? 'Emergency Service — Available Now'
@@ -40,74 +44,82 @@ export function HeroSection({
     : 'Call (347) 386-7164'
 
   return (
-    <section
-      className={cn(
-        'relative bg-brand-navy text-white',
-        isHomepage ? 'py-16 md:py-24' : 'py-12 md:py-16',
-        className
-      )}
-    >
-      {/* Background texture overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-navy to-[#0d1a2e] opacity-90" aria-hidden="true" />
-
-      <div className="relative container mx-auto px-4 text-center">
-        {isHomepage && <HeroVisitorStrip />}
-
-        {isEmergency && (
-          <div className="inline-flex items-center gap-2 bg-red-600 text-white text-sm font-bold px-4 py-1.5 rounded-full mb-4">
-            <span className="animate-pulse-slow w-2 h-2 bg-white rounded-full" aria-hidden="true" />
-            {emergencyBadgeText}
-          </div>
+    <>
+      <section
+        className={cn(
+          'relative bg-brand-navy text-white',
+          isHomepage
+            ? (visitorStripVisible ? 'py-4 md:py-[26px]' : 'py-6 md:py-10')
+            : 'py-5 md:py-10',
+          className
         )}
+      >
+        {/* Background texture overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-navy to-[#0d1a2e] opacity-90" aria-hidden="true" />
 
-        <h1
-          className={cn(
-            'font-bold leading-tight mb-4 text-white',
-            isHomepage
-              ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl'
-              : isEmergency
-              ? 'text-2xl sm:text-3xl md:text-4xl'
-              : 'text-2xl sm:text-3xl md:text-4xl'
+        <div className="relative container mx-auto px-4 text-center">
+          {isHomepage && <HeroVisitorStrip />}
+
+          {isEmergency && (
+            <div className="inline-flex items-center gap-2 bg-red-600 text-white text-sm font-bold px-4 py-1.5 rounded-full mb-4">
+              <span className="animate-pulse-slow w-2 h-2 bg-white rounded-full" aria-hidden="true" />
+              {emergencyBadgeText}
+            </div>
           )}
-        >
-          {h1}
-        </h1>
 
-        {subheadline && (
-          <p
+          <h1
             className={cn(
-              'text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed',
-              isHomepage ? 'text-lg md:text-xl' : 'text-base md:text-lg'
+              'font-bold leading-tight mb-4 text-white',
+              isHomepage
+                ? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl'
+                : isEmergency
+                ? 'text-2xl sm:text-3xl md:text-4xl'
+                : 'text-2xl sm:text-3xl md:text-4xl'
             )}
           >
-            {subheadline}
-          </p>
-        )}
+            {h1}
+          </h1>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-          <PhoneButton
-            variant="primary"
-            size={isHomepage ? 'xl' : 'lg'}
-            label={ctaLabel ?? defaultCtaLabel}
-          />
-          {!isEmergency && (
-            <Link
-              href="/free-quote/"
-              className="inline-flex items-center justify-center px-7 py-3.5 border-2 border-white/40 text-white hover:border-white hover:bg-white/10 rounded-lg font-semibold text-base transition-all duration-200"
+          {subheadline && (
+            <p
+              className={cn(
+                'text-white/80 max-w-2xl mx-auto leading-relaxed',
+                isHomepage ? 'mb-4 text-lg md:text-xl' : 'mb-8 text-base md:text-lg'
+              )}
             >
-              Get a Free Quote
-            </Link>
+              {subheadline}
+            </p>
           )}
-        </div>
 
-        {showLiveActivity && <LiveActivityBar />}
+          {isHomepage && <HeroTrustLogos />}
 
-        {showTrustBar && (
-          <div className="border-t border-white/10 pt-6 mt-6">
-            <TrustBar variant="dark" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+            <PhoneButton
+              variant="primary"
+              size={isHomepage ? 'xl' : 'lg'}
+              label={ctaLabel ?? defaultCtaLabel}
+            />
+            {!isEmergency && (
+              <Link
+                href="/free-quote/"
+                className="inline-flex items-center justify-center px-7 py-3.5 border-2 border-white/40 text-white hover:border-white hover:bg-white/10 rounded-lg font-semibold text-base transition-all duration-200"
+              >
+                Get a Free Quote
+              </Link>
+            )}
           </div>
-        )}
-      </div>
-    </section>
+
+          {showLiveActivity && <LiveActivityBar />}
+        </div>
+      </section>
+
+      {showTrustBar && (
+        <div className="bg-brand-amber py-4">
+          <div className="container mx-auto px-4">
+            <TrustBar variant="light" />
+          </div>
+        </div>
+      )}
+    </>
   )
 }

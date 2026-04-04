@@ -6,6 +6,7 @@ import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Loc
 import { cn } from '@/lib/utils'
 import { BUSINESS, NAV_LINKS } from '@/lib/constants'
 import { useAvailability } from '@/hooks/useAvailability'
+import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 
 const MEGA_MENU = [
   {
@@ -68,21 +69,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-brand-navy shadow-lg">
-      {/* Top bar */}
-      <div className="bg-brand-navy border-b border-white/10">
-        <div className="container mx-auto px-4 py-1.5 flex items-center justify-between text-sm">
-          <p className="text-white/70 text-xs hidden sm:block">
-            Licensed, Bonded &amp; Insured — Brooklyn&apos;s Trusted Locksmith
-          </p>
-          <a
-            href={BUSINESS.phoneHref}
-            className="flex items-center gap-1.5 text-brand-amber font-bold hover:text-white transition-colors ml-auto"
-            aria-label={`Call us at ${BUSINESS.phone}`}
-          >
-            <Phone size={14} aria-hidden="true" />
-            <span>{BUSINESS.phone}</span>
-          </a>
-        </div>
+      {/* Top bar — live dispatch activity */}
+      <div className="bg-brand-navy border-b border-white/10 min-h-[28px]">
+        <LiveActivityBar variant="header" />
       </div>
 
       {/* Main nav */}

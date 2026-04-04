@@ -50,7 +50,7 @@ export function TrustBar({ className, variant = 'light' }: TrustBarProps) {
           <div key={item.label} className="flex items-center gap-2">
             <Icon
               size={18}
-              className={isDark ? 'text-brand-amber' : 'text-brand-amber'}
+              className={isDark ? 'text-brand-amber' : 'text-brand-navy'}
               aria-hidden="true"
             />
             <div>
