@@ -2,16 +2,18 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
-import { ServicesGrid } from '@/components/sections/ServicesGrid'
-import { WhyChooseUs } from '@/components/sections/WhyChooseUs'
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
-import { FAQSection } from '@/components/sections/FAQSection'
-import { ContactFormSection } from '@/components/sections/ContactFormSection'
-import { GallerySection } from '@/components/sections/GallerySection'
-import { MapEmbed } from '@/components/ui/MapEmbed'
+import dynamic from 'next/dynamic'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
+
+const ServicesGrid        = dynamic(() => import('@/components/sections/ServicesGrid').then(m => ({ default: m.ServicesGrid })))
+const WhyChooseUs         = dynamic(() => import('@/components/sections/WhyChooseUs').then(m => ({ default: m.WhyChooseUs })))
+const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })))
+const FAQSection          = dynamic(() => import('@/components/sections/FAQSection').then(m => ({ default: m.FAQSection })))
+const ContactFormSection  = dynamic(() => import('@/components/sections/ContactFormSection').then(m => ({ default: m.ContactFormSection })))
+const GallerySection      = dynamic(() => import('@/components/sections/GallerySection').then(m => ({ default: m.GallerySection })))
+const MapEmbed            = dynamic(() => import('@/components/ui/MapEmbed').then(m => ({ default: m.MapEmbed })))
 
 export const metadata: Metadata = {
   title: `24/7 Locksmith in Brooklyn, NY — ${BUSINESS.name} | ${BUSINESS.phone}`,

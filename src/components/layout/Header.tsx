@@ -70,7 +70,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-brand-navy shadow-lg">
       {/* Top bar — live dispatch activity */}
-      <div className="bg-brand-navy border-b border-white/10">
+      <div className="bg-brand-navy border-b border-white/10 min-h-[28px]">
         <LiveActivityBar variant="header" />
       </div>
 

@@ -1,5 +1,3 @@
-'use client'
-
 export function HeroTrustLogos() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-6">

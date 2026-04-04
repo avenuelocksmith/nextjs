@@ -28,7 +28,7 @@ export function WelcomeBackBar() {
   return (
     <div
       className={`overflow-hidden transition-all duration-300 ease-out ${
-        visible ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+        visible ? 'max-h-20 opacity-100' : 'hidden'
       }`}
     >
       <div className="bg-brand-amber text-brand-navy text-sm font-medium px-4 py-0.5 flex items-center justify-center gap-3 flex-wrap">

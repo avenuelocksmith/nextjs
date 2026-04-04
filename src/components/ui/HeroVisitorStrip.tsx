@@ -7,7 +7,7 @@ import { useVisitorType } from '@/hooks/useVisitorType'
 export function HeroVisitorStrip() {
   const { visitorType } = useVisitorType()
 
-  if (visitorType === 'unknown') return null
+  if (visitorType === 'unknown') return <div aria-hidden="true" />
 
   if (visitorType === 'returning') {
     return (
