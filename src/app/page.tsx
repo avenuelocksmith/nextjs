@@ -85,15 +85,26 @@ export default function HomePage() {
         showLiveActivity
       />
 
-      {/* Promo Banner */}
-      <div className="bg-brand-amber text-brand-navy py-3">
-        <div className="container mx-auto px-4 text-center">
-          <p className="font-bold text-sm md:text-base">
-            🔑 New customers save 10% — mention this offer when you call{' '}
-            <a href={BUSINESS.phoneHref} className="underline hover:no-underline">
-              {BUSINESS.phone}
-            </a>
-          </p>
+      {/* Trust Badge Strip */}
+      <div className="bg-brand-amber text-brand-navy py-2 overflow-x-auto">
+        <div className="container mx-auto px-4">
+          <ul className="flex items-center justify-center gap-3 md:gap-5 text-xs font-semibold whitespace-nowrap flex-wrap md:flex-nowrap">
+            {[
+              '4.9/5 Stars',
+              '150+ Reviews',
+              'Licensed & Insured',
+              'Bonded in NY',
+              '15–25 Min Response',
+              'Emergency Guarantee',
+              '24/7 Available',
+              '365 Days a Year',
+            ].map((item, i, arr) => (
+              <li key={item} className="flex items-center gap-3 md:gap-5">
+                <span>{item}</span>
+                {i < arr.length - 1 && <span className="text-brand-navy/40" aria-hidden="true">·</span>}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
