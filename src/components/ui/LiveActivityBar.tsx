@@ -35,9 +35,9 @@ export function LiveActivityBar({ variant = 'hero' }: LiveActivityBarProps) {
 
   if (variant === 'header') {
     return (
-      <div className="container mx-auto px-4 py-1.5 flex items-center justify-center gap-4 md:gap-8 text-xs overflow-x-auto">
+      <div className="container mx-auto px-4 py-1.5 flex items-center justify-center gap-1.5 sm:gap-3 md:gap-6 text-[10px] sm:text-xs">
         {/* Live indicator */}
-        <span className="flex items-center gap-1.5 text-green-400 font-bold uppercase tracking-wider shrink-0">
+        <span className="flex items-center gap-1 sm:gap-1.5 text-green-400 font-bold uppercase tracking-wider">
           <span className="relative flex h-2 w-2" aria-hidden="true">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
@@ -45,19 +45,19 @@ export function LiveActivityBar({ variant = 'hero' }: LiveActivityBarProps) {
           Live
         </span>
         <span className="w-px h-3 bg-white/20 hidden sm:block" aria-hidden="true" />
-        <span className="flex items-center gap-1.5 shrink-0">
+        <span className="flex items-center gap-1 sm:gap-1.5">
           <Users size={12} className={techsLow ? 'text-amber-400' : 'text-green-400'} aria-hidden="true" />
           <span className="font-bold text-white tabular-nums">{counts.techs}</span>
           <span className="text-white/70">techs available</span>
         </span>
         <span className="text-white/30" aria-hidden="true">·</span>
-        <span className="flex items-center gap-1.5 shrink-0">
+        <span className="flex items-center gap-1 sm:gap-1.5">
           <Wrench size={12} className="text-blue-400" aria-hidden="true" />
           <span className="font-bold text-white tabular-nums">{counts.inProgress}</span>
           <span className="text-white/70">jobs active</span>
         </span>
         <span className="text-white/30" aria-hidden="true">·</span>
-        <span className="flex items-center gap-1.5 shrink-0">
+        <span className="flex items-center gap-1 sm:gap-1.5">
           <Zap size={12} className="text-brand-amber" aria-hidden="true" />
           <span className="font-bold text-white tabular-nums">{counts.dispatched}</span>
           <span className="text-white/70">dispatched now</span>

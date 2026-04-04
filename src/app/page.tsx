@@ -9,7 +9,6 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { GallerySection } from '@/components/sections/GallerySection'
 import { MapEmbed } from '@/components/ui/MapEmbed'
-import { TrustBar } from '@/components/ui/TrustBar'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
@@ -83,13 +82,6 @@ export default function HomePage() {
         subheadline="Licensed & insured locksmiths serving all NYC boroughs. Call now — we arrive in 15–25 minutes, any time of day or night."
         variant="homepage"
       />
-
-      {/* Trust Bar */}
-      <div className="bg-brand-amber py-4">
-        <div className="container mx-auto px-4">
-          <TrustBar variant="light" />
-        </div>
-      </div>
 
       {/* Services Grid */}
       <ServicesGrid
