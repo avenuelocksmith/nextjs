@@ -1,9 +1,13 @@
+'use client'
+
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, Star } from 'lucide-react'
 import { BUSINESS, FOOTER_SERVICE_LINKS, FOOTER_LOCATION_LINKS } from '@/lib/constants'
+import { useAvailability } from '@/hooks/useAvailability'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const afterHours = useAvailability()
 
   return (
     <footer className="bg-brand-navy text-white">
@@ -50,7 +54,7 @@ export function Footer() {
               </address>
               <div className="flex items-center gap-2 text-white/70">
                 <Clock size={15} aria-hidden="true" />
-                <span>Open 24/7 — 365 days a year</span>
+                <span>{afterHours === false ? 'Open Now — 365 Days a Year' : 'Open 24/7 — 365 days a year'}</span>
               </div>
             </div>
           </div>
@@ -91,7 +95,9 @@ export function Footer() {
 
           {/* Column 4: Emergency CTA */}
           <div>
-            <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wide">24/7 Emergency</h3>
+            <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wide">
+              {afterHours === false ? 'Emergency Service' : '24/7 Emergency'}
+            </h3>
             <div className="bg-white/10 rounded-xl p-5">
               <p className="text-white/90 text-sm mb-4 leading-relaxed">
                 Locked out? Car key lost? Security breach? We respond in 15–25 minutes — any time, any day.

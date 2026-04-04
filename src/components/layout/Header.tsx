@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Lock, Cpu, Eye, Fingerprint, DoorOpen, RefreshCw, ArrowLeftRight, ShieldCheck, Copy, Archive, Mail, UserCheck } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BUSINESS, NAV_LINKS } from '@/lib/constants'
+import { useAvailability } from '@/hooks/useAvailability'
 
 const MEGA_MENU = [
   {
@@ -49,6 +50,7 @@ export function Header() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [megaOpen, setMegaOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const afterHours = useAvailability()
 
   function openMega() {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -199,7 +201,7 @@ export function Header() {
             aria-label={`Call now at ${BUSINESS.phone}`}
           >
             <Phone size={16} aria-hidden="true" />
-            <span>Call Now — 24/7</span>
+            <span>{afterHours === false ? 'Call Now — Open Now' : 'Call Now — 24/7'}</span>
           </a>
 
           {/* Mobile toggle */}

@@ -1,37 +1,41 @@
+'use client'
+
 import { Star, Shield, Clock, Phone } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BUSINESS } from '@/lib/constants'
+import { useAvailability } from '@/hooks/useAvailability'
 
 interface TrustBarProps {
   className?: string
   variant?: 'light' | 'dark'
 }
 
-const trustItems = [
-  {
-    icon: Star,
-    label: `${BUSINESS.rating}/5 Stars`,
-    sublabel: `${BUSINESS.reviewCount}+ Reviews`,
-  },
-  {
-    icon: Shield,
-    label: 'Licensed & Insured',
-    sublabel: 'Bonded in NY',
-  },
-  {
-    icon: Clock,
-    label: '15–25 Min Response',
-    sublabel: 'Emergency Guarantee',
-  },
-  {
-    icon: Phone,
-    label: '24/7 Available',
-    sublabel: '365 Days a Year',
-  },
-]
-
 export function TrustBar({ className, variant = 'light' }: TrustBarProps) {
   const isDark = variant === 'dark'
+  const afterHours = useAvailability()
+
+  const trustItems = [
+    {
+      icon: Star,
+      label: `${BUSINESS.rating}/5 Stars`,
+      sublabel: `${BUSINESS.reviewCount}+ Reviews`,
+    },
+    {
+      icon: Shield,
+      label: 'Licensed & Insured',
+      sublabel: 'Bonded in NY',
+    },
+    {
+      icon: Clock,
+      label: '15–25 Min Response',
+      sublabel: 'Emergency Guarantee',
+    },
+    {
+      icon: Phone,
+      label: afterHours === false ? 'Open Now' : '24/7 Available',
+      sublabel: '365 Days a Year',
+    },
+  ]
 
   return (
     <div
