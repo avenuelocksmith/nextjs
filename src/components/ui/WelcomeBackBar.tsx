@@ -31,7 +31,7 @@ export function WelcomeBackBar() {
         visible ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
       }`}
     >
-      <div className="bg-brand-amber text-brand-navy text-sm font-medium px-4 py-2.5 flex items-center justify-center gap-3 flex-wrap">
+      <div className="bg-brand-amber text-brand-navy text-sm font-medium px-4 py-0.5 flex items-center justify-center gap-3 flex-wrap">
         <span>
           Welcome back! 24/7 emergency service available right now.
         </span>
