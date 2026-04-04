@@ -6,6 +6,7 @@ import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Loc
 import { cn } from '@/lib/utils'
 import { BUSINESS, NAV_LINKS } from '@/lib/constants'
 import { useAvailability } from '@/hooks/useAvailability'
+import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 
 const MEGA_MENU = [
   {
@@ -70,21 +71,7 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-brand-navy shadow-lg">
       {/* Top bar — live dispatch activity */}
       <div className="bg-brand-navy border-b border-white/10">
-        <div className="container mx-auto px-4 py-1.5 flex items-center justify-center gap-4 md:gap-8 text-xs overflow-x-auto">
-          <span className="flex items-center gap-1.5 shrink-0">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-            </span>
-            <span className="text-white font-semibold">Live</span>
-          </span>
-          <span className="text-white/30 hidden sm:block">|</span>
-          <span className="shrink-0"><span className="text-brand-amber font-bold">5</span> <span className="text-white/70">techs available</span></span>
-          <span className="text-white/30">·</span>
-          <span className="shrink-0"><span className="text-brand-amber font-bold">3</span> <span className="text-white/70">jobs active</span></span>
-          <span className="text-white/30">·</span>
-          <span className="shrink-0"><span className="text-brand-amber font-bold">3</span> <span className="text-white/70">dispatched now</span></span>
-        </div>
+        <LiveActivityBar variant="header" />
       </div>
 
       {/* Main nav */}
