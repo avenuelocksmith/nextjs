@@ -5,9 +5,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Commercial Locksmith Brooklyn NY — Business Security Services | Avenue Locksmith',
@@ -25,9 +25,10 @@ const FAQS = [
 export default function CommercialLocksmithBkPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Commercial Locksmith', description: 'Commercial locksmith services in Brooklyn, NY. Business lockouts, master key systems, access control.', url: '/commercial-locksmith-brooklyn-ny/', serviceType: 'Commercial Locksmith' })} />
+      <JsonLd data={getServiceSchema({ name: 'Commercial Locksmith', description: 'Commercial locksmith services in Brooklyn, NY. Business lockouts, master key systems, access control.', url: '/commercial-locksmith-brooklyn-ny/', serviceType: 'Commercial Locksmith', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Commercial Locksmith Brooklyn NY', url: '/commercial-locksmith-brooklyn-ny/' }])} />
+      <JsonLd data={getWebPageSchema({ title: 'Commercial Locksmith Brooklyn NY — Business Security Services | Avenue Locksmith', description: 'Commercial locksmith in Brooklyn, NY. Business lockouts, master key systems, access control. Minimal disruption. Licensed & insured. Call (347) 386-7164.', url: '/commercial-locksmith-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Commercial Locksmith Brooklyn NY' }]} />
       <HeroSection h1="Commercial Locksmith Brooklyn, NY — Business Security Services" subheadline="From business lockouts to master key systems and access control — we serve Brooklyn businesses with professional, licensed commercial locksmith services. Minimal disruption guaranteed." variant="service" showTrustBar />
       <section className="py-12 bg-white">

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getArticleSchema, getBreadcrumbSchema, getHowToSchema } from '@/lib/schema'
+import { getArticleSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 import { Phone, CheckCircle, AlertTriangle } from 'lucide-react'
@@ -16,6 +16,11 @@ export const metadata: Metadata = buildMetadata({
 export default function ReliableLocksmithNYCArticlePage() {
   return (
     <>
+      <JsonLd data={getWebPageSchema({
+        title: 'What to Look for in a Reliable Locksmith in NYC | Avenue Locksmith',
+        description: 'How to choose a trustworthy locksmith in NYC. What to check: licensing, pricing transparency, response time, reviews. Avoid scams. Tips from Avenue Locksmith Brooklyn.',
+        url: '/general-locksmith-services/what-to-look-for-in-a-reliable-locksmith-in-nyc/',
+      })} />
       <JsonLd data={getArticleSchema({
         title: 'What to Look for in a Reliable Locksmith in NYC',
         description: 'How to find a trustworthy locksmith in New York City — licensing requirements, scam warning signs, and how to verify credentials.',

@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Lock Rekeying',
@@ -93,6 +93,8 @@ export default function LockRekeyPage() {
         { name: 'Services', url: '/services/' },
         { name: 'Lock Rekeying', url: '/services/lock-rekey/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Lock Rekeying', description: 'Professional lock rekeying in Brooklyn, NY. Change internal pin configuration so old keys stop working. Move-in, lost keys, tenant changeover. From $65 per lock. Same-day service.', url: '/services/lock-rekey/', serviceType: 'Lock Rekeying', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Lock Rekeying in Brooklyn, NY — From $65 | Avenue Locksmith', description: 'Lock rekeying in Brooklyn, NY. Change your locks without replacing them — from $65. Move-in, lost keys, roommate change. Same-day service. Call (347) 386-7164.', url: '/services/lock-rekey/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

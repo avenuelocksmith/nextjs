@@ -33,7 +33,35 @@ export const BUSINESS = {
   responseTime: '15-25 minutes',
   founded: '2010',
   entityId: 'https://www.avenuelocks.com/#business',
+  description: 'Avenue Locksmith is a licensed and insured locksmith company founded in 2010, serving Brooklyn, Queens, Manhattan, and Staten Island. We provide 24/7 residential, commercial, automotive, and emergency locksmith services including lockouts, lock repairs, replacements, and new lock installations with transparent upfront pricing.',
+  mapUrl: 'https://maps.google.com/?q=Avenue+Locksmith+973+E+55th+St+Brooklyn+NY+11234',
+  sameAs: [
+    'https://www.tiktok.com/@avenue_locksmith_nyc',
+    'https://x.com/Avenue_Locks',
+    'https://www.pinterest.com/avenuelocksmith/',
+    'https://www.linkedin.com/company/avenue-locksmith',
+    'https://share.google/lOGOEkHsc8g7bG1BL',
+  ],
+  credentials: [
+    'NYC DCWP Licensed Locksmith',
+    'Bonded and Insured in New York State',
+  ],
 } as const
+
+export const LOCK_BRANDS = [
+  'Medeco', 'Mul-T-Lock', 'Schlage', 'Kwikset', 'Yale',
+  'August', 'Alarm Lock', 'Master Lock', 'Abloy', 'Kaba',
+] as const
+
+export const AUTO_BRANDS = [
+  'Toyota', 'Ford', 'Honda', 'Chevrolet', 'BMW',
+  'Mercedes-Benz', 'Nissan', 'Hyundai', 'Kia', 'Volkswagen', 'Jeep', 'Dodge',
+] as const
+
+export const SECURITY_BRANDS = [
+  'Medeco', 'Mul-T-Lock', 'HID Global', 'Honeywell',
+  'Bosch', 'Hikvision', 'Schlage', 'Allegion', 'Sielox',
+] as const
 
 export const TRUST_SIGNALS = [
   { label: '4.9/5 Stars', sublabel: '150+ Reviews', icon: 'star' },

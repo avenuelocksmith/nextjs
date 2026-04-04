@@ -5,7 +5,7 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -33,6 +33,7 @@ export default function LocksmithServicesBkPage() {
   return (
     <>
       <JsonLd data={getServiceSchema({ name: 'Locksmith Services', description: 'Full-service locksmith in Brooklyn, NY. Residential, commercial, and automotive locksmith services.', url: '/locksmith-services-in-brooklyn-ny/', serviceType: 'Locksmith' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Locksmith Services in Brooklyn, NY — Full-Service | Avenue Locksmith', description: 'Full-service locksmith in Brooklyn, NY. Residential, commercial, and auto locksmith services. Licensed & insured. 24/7 emergency response. Call (347) 386-7164.', url: '/locksmith-services-in-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Locksmith Services Brooklyn', url: '/locksmith-services-in-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Locksmith Services Brooklyn' }]} />

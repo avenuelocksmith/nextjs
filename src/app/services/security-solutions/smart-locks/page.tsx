@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Smart Lock Installation in Brooklyn, NY — August, Schlage, Yale & More | Avenue Locksmith',
@@ -85,6 +85,8 @@ export default function SmartLocksPage() {
   return (
     <>
       <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Smart Lock Installation', description: 'Smart lock installation in Brooklyn, NY. August, Schlage Encode, Yale Assure, Kwikset Halo. App control, keypad codes, guest access, auto-lock. Renter-friendly no-drill options.', url: '/services/security-solutions/smart-locks/', serviceType: 'Smart Lock Installation', brands: SECURITY_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Smart Lock Installation in Brooklyn, NY — August, Schlage, Yale & More | Avenue Locksmith', description: 'Smart lock installation in Brooklyn, NY. August, Schlage Encode, Yale Assure. App control, guest codes, auto-lock. Renter-friendly options with no drilling. Call (347) 386-7164.', url: '/services/security-solutions/smart-locks/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

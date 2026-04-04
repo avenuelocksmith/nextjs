@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Commercial Locksmith',
@@ -52,43 +52,10 @@ const COMMERCIAL_SERVICES = [
 ]
 
 export default function CommercialLocksmithPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/commercial-locksmith/`
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Commercial Locksmith in Brooklyn, NY',
-    description: 'Commercial locksmith services in Brooklyn, NY. Master key systems, access control, business lockouts, storefront security, and post-break-in emergency repair. Licensed & insured.',
-    url: canonicalUrl,
-    serviceType: 'Commercial Locksmith',
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
-        addressLocality: BUSINESS.address.city,
-        addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
-        addressCountry: 'US',
-      },
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$95–$2,000',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Commercial Locksmith Services', description: 'Commercial locksmith services in Brooklyn, NY. Master key systems, access control, business lockouts, storefront security, and post-break-in emergency repair. Licensed & insured.', url: '/services/commercial-locksmith/', serviceType: 'Commercial Locksmith', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Commercial Locksmith in Brooklyn, NY — Business & Office Security | Avenue Locksmith', description: 'Commercial locksmith services in Brooklyn, NY. Master key systems, access control, business lockouts, storefront locks. Minimize downtime. Licensed & insured. Call (347) 386-7164.', url: '/services/commercial-locksmith/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, AUTO_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Auto Locksmith',
@@ -52,43 +52,10 @@ const AUTO_SERVICES = [
 ]
 
 export default function AutoLocksmithPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/auto-locksmith/`
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Auto Locksmith in Brooklyn, NY',
-    description: 'Automotive locksmith services in Brooklyn, NY. Car lockouts, transponder key programming, key fob replacement, broken key extraction for all makes and models. 24/7 response.',
-    url: canonicalUrl,
-    serviceType: 'Automotive Locksmith',
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
-        addressLocality: BUSINESS.address.city,
-        addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
-        addressCountry: 'US',
-      },
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$75–$350',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Auto Locksmith Services', description: 'Automotive locksmith services in Brooklyn, NY. Car lockouts, transponder key programming, key fob replacement, broken key extraction for all makes and models. 24/7 response.', url: '/services/auto-locksmith/', serviceType: 'Automotive Locksmith', brands: AUTO_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Auto Locksmith in Brooklyn, NY — Car Lockout & Key Services | Avenue Locksmith', description: 'Auto locksmith in Brooklyn, NY. Car lockouts, transponder key programming, key fob replacement, broken key extraction. All makes & models. Call (347) 386-7164.', url: '/services/auto-locksmith/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

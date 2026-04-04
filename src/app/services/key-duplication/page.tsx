@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Key Duplication',
@@ -93,6 +93,8 @@ export default function KeyDuplicationPage() {
         { name: 'Services', url: '/services/' },
         { name: 'Key Duplication', url: '/services/key-duplication/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Key Duplication', description: 'Professional key duplication in Brooklyn, NY. Standard house keys, restricted high-security key duplication, and car key cutting. Calibrated machines, not worn hardware store copies.', url: '/services/key-duplication/', serviceType: 'Key Duplication', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Key Duplication in Brooklyn, NY — Standard, High-Security & Restricted Keys | Avenue Locksmith', description: 'Key duplication in Brooklyn, NY. Standard house keys, restricted high-security keys, and car key cutting. Why hardware store copies fail — and how we do it right. Call (347) 386-7164.', url: '/services/key-duplication/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

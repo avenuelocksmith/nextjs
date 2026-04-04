@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Eviction Locksmith',
@@ -49,43 +49,10 @@ const STEPS = [
 ]
 
 export default function EvictionLocksmithPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/eviction-locksmith/`
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Eviction Locksmith in Brooklyn, NY',
-    description: 'Post-eviction lock change for NYC landlords in Brooklyn. Legal evictions only — NY City Marshal paperwork required before work begins. Same-day service. Licensed & insured.',
-    url: canonicalUrl,
-    serviceType: 'Eviction Locksmith',
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
-        addressLocality: BUSINESS.address.city,
-        addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
-        addressCountry: 'US',
-      },
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$65–$250',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Eviction Locksmith Services', description: 'Post-eviction lock change for NYC landlords in Brooklyn. Legal evictions only — NY City Marshal paperwork required before work begins. Same-day service. Licensed & insured.', url: '/services/eviction-locksmith/', serviceType: 'Eviction Locksmith', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Eviction Locksmith in Brooklyn, NY — Post-Eviction Lock Change | Avenue Locksmith', description: 'Post-eviction lock change for NYC landlords in Brooklyn. Legal evictions only — NY City Marshal paperwork required. Same-day service. Licensed & insured. Call (347) 386-7164.', url: '/services/eviction-locksmith/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

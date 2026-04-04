@@ -6,7 +6,7 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -58,34 +58,10 @@ const FAQS = [
 ]
 
 export default function LockoutServicePage() {
-  const canonicalUrl = `${BUSINESS.url}/services/lockout-service/`
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Lockout Service in Brooklyn, NY',
-    description: '24/7 lockout service in Brooklyn, NY. Home, apartment, car, and business lockouts. 15–25 minute response. Licensed & insured.',
-    url: canonicalUrl,
-    serviceType: 'Lockout Service',
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$75–$250',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Lockout Service', description: '24/7 lockout service in Brooklyn, NY. Home, apartment, car, and business lockouts. 15–25 minute response. Licensed & insured.', url: '/services/lockout-service/', serviceType: 'Lockout Service' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Lockout Service in Brooklyn, NY — Home, Car & Business | Avenue Locksmith', description: '24/7 lockout service in Brooklyn, NY. Home, apartment, car & office lockouts. 15–25 minute response. Licensed & insured. No damage entry. Call (347) 386-7164.', url: '/services/lockout-service/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

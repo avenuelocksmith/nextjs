@@ -5,9 +5,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Eviction Locksmith Brooklyn NY — Legal Lock Changes for Landlords | Avenue Locksmith',
@@ -25,7 +25,8 @@ const FAQS = [
 export default function EvictionLocksmithBkPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Eviction Locksmith', description: 'Legal post-eviction lock changes for Brooklyn landlords. NY Marshal paperwork required.', url: '/eviction-locksmith-brooklyn-ny/', serviceType: 'Eviction Locksmith' })} />
+      <JsonLd data={getServiceSchema({ name: 'Eviction Locksmith', description: 'Legal post-eviction lock changes for Brooklyn landlords. NY Marshal paperwork required.', url: '/eviction-locksmith-brooklyn-ny/', serviceType: 'Eviction Locksmith', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Eviction Locksmith Brooklyn NY — Legal Lock Changes for Landlords | Avenue Locksmith', description: 'Eviction locksmith in Brooklyn, NY. Legal post-eviction lock changes for landlords. NY Marshal paperwork required. Same-day service. Call (347) 386-7164.', url: '/eviction-locksmith-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Eviction Locksmith Brooklyn NY', url: '/eviction-locksmith-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Eviction Locksmith Brooklyn NY' }]} />

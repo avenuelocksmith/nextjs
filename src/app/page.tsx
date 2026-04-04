@@ -10,7 +10,7 @@ import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { GallerySection } from '@/components/sections/GallerySection'
 import { MapEmbed } from '@/components/ui/MapEmbed'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
 
 export const metadata: Metadata = {
@@ -74,6 +74,7 @@ export default function HomePage() {
     <>
       <JsonLd data={faqSchema} />
       <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={getWebPageSchema({ title: '24/7 Locksmith in Brooklyn, NY — Avenue Locksmith | (347) 386-7164', description: 'Licensed & insured locksmith in Brooklyn, NY. Emergency response in 15–25 minutes. Residential, commercial & auto locksmith services. Call (347) 386-7164 now.', url: '/' })} />
 
       {/* Hero */}
       <HeroSection

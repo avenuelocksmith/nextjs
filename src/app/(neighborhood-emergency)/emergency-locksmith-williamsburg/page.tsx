@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Williamsburg — 15–25 Min Response | Avenue Locksmith',
@@ -24,7 +24,8 @@ const FAQS = [
 export default function EmergencyLocksmithWilliamsburgPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Williamsburg', description: 'Emergency locksmith in Williamsburg, Brooklyn. 15–25 minute response for apartment lockouts, 24/7.', url: '/emergency-locksmith-williamsburg/', serviceType: 'Emergency Lockout Service' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Williamsburg — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Williamsburg, Brooklyn. Apartment lockouts, 24/7 response, 15–25 minute arrival. No after-hours fees. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-williamsburg/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Williamsburg', description: 'Emergency locksmith in Williamsburg, Brooklyn. 15–25 minute response for apartment lockouts, 24/7.', url: '/emergency-locksmith-williamsburg/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Williamsburg', url: '/emergency-locksmith-williamsburg/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Williamsburg' }]} />

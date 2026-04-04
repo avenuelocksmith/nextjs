@@ -5,7 +5,7 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -26,6 +26,7 @@ export default function MobileLocksmithBkPage() {
   return (
     <>
       <JsonLd data={getServiceSchema({ name: 'Mobile Locksmith', description: 'Mobile locksmith service in Brooklyn, NY. We come to your location — home, car, or business.', url: '/mobile-locksmith-in-brooklyn-ny/', serviceType: 'Mobile Locksmith' })} />
+      <JsonLd data={getWebPageSchema({ title: 'Mobile Locksmith in Brooklyn, NY — We Come to You | Avenue Locksmith', description: 'Mobile locksmith in Brooklyn, NY. We come to your home, car, or business. Fully equipped service van. 15–25 minute response, 24/7. Call (347) 386-7164.', url: '/mobile-locksmith-in-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Mobile Locksmith Brooklyn', url: '/mobile-locksmith-in-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Mobile Locksmith Brooklyn' }]} />

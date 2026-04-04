@@ -6,9 +6,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Deadbolt Installation',
@@ -93,6 +93,8 @@ export default function DeadboltInstallationPage() {
         { name: 'Services', url: '/services/' },
         { name: 'Deadbolt Installation', url: '/services/deadbolt-installation/' },
       ])} />
+      <JsonLd data={getServiceSchema({ name: 'Deadbolt Installation', description: 'Professional deadbolt installation in Brooklyn, NY. ANSI Grade 1 deadbolts with door frame reinforcement. Schlage, Kwikset, Medeco. Same-day service. Licensed & insured.', url: '/services/deadbolt-installation/', serviceType: 'Deadbolt Installation', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Deadbolt Installation in Brooklyn, NY — Grade 1 Deadbolts & Frame Reinforcement | Avenue Locksmith', description: 'Deadbolt installation in Brooklyn, NY. ANSI Grade 1 deadbolts — Schlage, Kwikset, Medeco. Door frame reinforcement included. Most break-ins are frame failures, not lock failures. Call (347) 386-7164.', url: '/services/deadbolt-installation/' })} />
 
       <BreadcrumbNav items={[
         { label: 'Home', href: '/' },

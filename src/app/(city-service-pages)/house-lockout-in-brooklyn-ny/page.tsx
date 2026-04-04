@@ -4,9 +4,9 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'House Lockout in Brooklyn, NY — Fast Non-Destructive Entry | Avenue Locksmith',
@@ -24,7 +24,8 @@ const FAQS = [
 export default function HouseLockoutPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'House Lockout Service', description: 'House lockout service in Brooklyn, NY. Non-destructive entry. 15–25 minute response.', url: '/house-lockout-in-brooklyn-ny/', serviceType: 'Residential Lockout Service' })} />
+      <JsonLd data={getServiceSchema({ name: 'House Lockout Service', description: 'House lockout service in Brooklyn, NY. Non-destructive entry. 15–25 minute response.', url: '/house-lockout-in-brooklyn-ny/', serviceType: 'Residential Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'House Lockout in Brooklyn, NY — Fast Non-Destructive Entry | Avenue Locksmith', description: 'Locked out of your house or apartment in Brooklyn? Fast non-destructive entry. 15–25 Min Response. Licensed & insured. Available 24/7. Call (347) 386-7164.', url: '/house-lockout-in-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'House Lockout Brooklyn', url: '/house-lockout-in-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'House Lockout Brooklyn' }]} />

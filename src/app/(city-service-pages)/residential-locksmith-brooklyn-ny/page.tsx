@@ -5,9 +5,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Residential Locksmith Brooklyn, NY — Apartments & Homes | Avenue Locksmith',
@@ -25,7 +25,8 @@ const FAQS = [
 export default function ResidentialLocksmithBkPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Residential Locksmith', description: 'Residential locksmith in Brooklyn, NY. Apartment lockouts, rekeying, deadbolt installation, new tenant lock changes.', url: '/residential-locksmith-brooklyn-ny/', serviceType: 'Residential Locksmith' })} />
+      <JsonLd data={getServiceSchema({ name: 'Residential Locksmith', description: 'Residential locksmith in Brooklyn, NY. Apartment lockouts, rekeying, deadbolt installation, new tenant lock changes.', url: '/residential-locksmith-brooklyn-ny/', serviceType: 'Residential Locksmith', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Residential Locksmith Brooklyn, NY — Apartments & Homes | Avenue Locksmith', description: 'Residential locksmith in Brooklyn, NY. Apartment lockouts, lock rekeying, deadbolt installation, and new tenant lock changes. Licensed & insured. Call (347) 386-7164.', url: '/residential-locksmith-brooklyn-ny/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Residential Locksmith Brooklyn', url: '/residential-locksmith-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Residential Locksmith Brooklyn' }]} />

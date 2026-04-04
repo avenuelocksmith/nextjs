@@ -7,9 +7,9 @@ import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Residential Locksmith',
@@ -53,43 +53,10 @@ const SERVICES = [
 ]
 
 export default function ResidentialLocksmithPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/residential-locksmith/`
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: 'Residential Locksmith in Brooklyn, NY',
-    description: 'Full residential locksmith services in Brooklyn, NY. Apartment lockouts, move-in rekeying, deadbolt installation, smart locks, and key duplication. Licensed & insured. NYC tenant rights respected.',
-    url: canonicalUrl,
-    serviceType: 'Residential Locksmith',
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
-        addressLocality: BUSINESS.address.city,
-        addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
-        addressCountry: 'US',
-      },
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$65–$300',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: 'Residential Locksmith Services', description: 'Full residential locksmith services in Brooklyn, NY. Apartment lockouts, move-in rekeying, deadbolt installation, smart locks, and key duplication. Licensed & insured. NYC tenant rights respected.', url: '/services/residential-locksmith/', serviceType: 'Residential Locksmith', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Residential Locksmith in Brooklyn, NY — Apartments & Homes | Avenue Locksmith', description: 'Residential locksmith services in Brooklyn, NY. Move-in rekeying, deadbolt installation, smart locks, apartment lockouts. NYC tenant rights respected. Call (347) 386-7164.', url: '/services/residential-locksmith/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

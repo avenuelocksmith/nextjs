@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getArticleSchema, getBreadcrumbSchema, getHowToSchema } from '@/lib/schema'
+import { getArticleSchema, getBreadcrumbSchema, getHowToSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 import { Phone } from 'lucide-react'
@@ -16,6 +16,11 @@ export const metadata: Metadata = buildMetadata({
 export default function ResidentialLocksmithArticlePage() {
   return (
     <>
+      <JsonLd data={getWebPageSchema({
+        title: 'Avenue Locks Residential Locksmith Service in New York City | Avenue Locksmith',
+        description: 'Residential locksmith services in New York City from Avenue Locksmith. Apartment lockouts, rekeying, lock replacement, smart locks, and deadbolt installation. Licensed & insured.',
+        url: '/residential-locksmith-services/avenue-locks-residential-locksmith-service-in-new-york-city/',
+      })} />
       <JsonLd data={getArticleSchema({
         title: 'Avenue Locks Residential Locksmith Service in New York City',
         description: 'Complete guide to residential locksmith services in NYC from Avenue Locksmith.',

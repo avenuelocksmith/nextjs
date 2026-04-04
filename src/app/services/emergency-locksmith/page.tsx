@@ -5,7 +5,7 @@ import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
 
@@ -48,54 +48,10 @@ const WHAT_TO_DO_STEPS = [
 ]
 
 export default function EmergencyLocksmithPage() {
-  const canonicalUrl = `${BUSINESS.url}/services/emergency-locksmith/`
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${canonicalUrl}#service`,
-    name: '24/7 Emergency Locksmith in Brooklyn',
-    description: '24/7 emergency locksmith in Brooklyn, NY. Home, car, and business lockouts with 15–25 minute response. Non-destructive entry. Licensed & insured. Upfront pricing.',
-    url: canonicalUrl,
-    serviceType: 'Emergency Lockout Service',
-    availableChannel: {
-      '@type': 'ServiceChannel',
-      servicePhone: BUSINESS.phone,
-      availableLanguage: 'English',
-    },
-    hoursAvailable: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-      opens: '00:00',
-      closes: '23:59',
-    },
-    provider: {
-      '@type': 'Locksmith',
-      '@id': BUSINESS.entityId,
-      name: BUSINESS.name,
-      telephone: BUSINESS.phone,
-      url: BUSINESS.url,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
-        addressLocality: BUSINESS.address.city,
-        addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
-        addressCountry: 'US',
-      },
-    },
-    areaServed: { '@type': 'City', name: 'Brooklyn', sameAs: 'https://en.wikipedia.org/wiki/Brooklyn' },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'USD',
-      priceRange: '$75–$125',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd data={serviceSchema} />
+      <JsonLd data={getServiceSchema({ name: '24/7 Emergency Locksmith', description: '24/7 emergency locksmith in Brooklyn, NY. Home, car, and business lockouts with 15–25 minute response. Non-destructive entry. Licensed & insured. Upfront pricing.', url: '/services/emergency-locksmith/', serviceType: 'Emergency Locksmith' })} />
+      <JsonLd data={getWebPageSchema({ title: '24/7 Emergency Locksmith in Brooklyn, NY — 15–30 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Brooklyn, NY. Real person answers 24/7. 15–25 minute response. Home, car & business lockouts. Upfront price before we start. Call (347) 386-7164.', url: '/services/emergency-locksmith/' })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([
         { name: 'Home', url: '/' },

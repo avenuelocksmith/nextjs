@@ -5,9 +5,9 @@ import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
-import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
+import { getServiceSchema, getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
-import { BUSINESS } from '@/lib/constants'
+import { BUSINESS, AUTO_BRANDS } from '@/lib/constants'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Automotive Locksmith in Brooklyn, NY — Car Keys & Lockouts | Avenue Locksmith',
@@ -25,9 +25,10 @@ const FAQS = [
 export default function AutomotiveLocksmithBrooklynPage() {
   return (
     <>
-      <JsonLd data={getServiceSchema({ name: 'Automotive Locksmith', description: 'Automotive locksmith in Brooklyn, NY. Car lockouts, key fob programming, transponder keys. All makes & models.', url: '/automotive-locksmith-in-brooklyn-ny/', serviceType: 'Automotive Locksmith' })} />
+      <JsonLd data={getServiceSchema({ name: 'Automotive Locksmith', description: 'Automotive locksmith in Brooklyn, NY. Car lockouts, key fob programming, transponder keys. All makes & models.', url: '/automotive-locksmith-in-brooklyn-ny/', serviceType: 'Automotive Locksmith', brands: AUTO_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Automotive Locksmith Brooklyn', url: '/automotive-locksmith-in-brooklyn-ny/' }])} />
+      <JsonLd data={getWebPageSchema({ title: 'Automotive Locksmith in Brooklyn, NY — Car Keys & Lockouts | Avenue Locksmith', description: 'Automotive locksmith in Brooklyn, NY. Car lockouts, key fob programming, transponder keys. All makes & models. 15–25 Min Response. Call (347) 386-7164.', url: '/automotive-locksmith-in-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Automotive Locksmith Brooklyn' }]} />
       <HeroSection h1="Automotive Locksmith in Brooklyn, NY — Car Keys & Lockouts" subheadline="Locked out of your car or need a new key? We serve all Brooklyn neighborhoods with 15–25 minute response for car lockouts and key programming at a fraction of dealership prices." variant="service" showTrustBar />
       <section className="py-12 bg-white">
