@@ -3,6 +3,7 @@
 import { PhoneButton } from '@/components/ui/PhoneButton'
 import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
+import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useAvailability } from '@/hooks/useAvailability'
@@ -50,6 +51,8 @@ export function HeroSection({
       <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-navy to-[#0d1a2e] opacity-90" aria-hidden="true" />
 
       <div className="relative container mx-auto px-4 text-center">
+        {isHomepage && <HeroVisitorStrip />}
+
         {isEmergency && (
           <div className="inline-flex items-center gap-2 bg-red-600 text-white text-sm font-bold px-4 py-1.5 rounded-full mb-4">
             <span className="animate-pulse-slow w-2 h-2 bg-white rounded-full" aria-hidden="true" />

@@ -23,6 +23,16 @@ export const FLOW: Record<string, FlowNode> = {
     ],
   },
 
+  welcome_back: {
+    bot: "Welcome back! 👋 Ready to get started? Tell us what you need.",
+    options: [
+      { label: '🔑 I\'m locked out right now', value: 'Locked out', next: 'lockout_type' },
+      { label: '💰 Get a price quote', value: 'Price quote', next: 'quote_service' },
+      { label: '🔒 Services & pricing info', value: 'Services info', next: 'service_list' },
+      { label: '❓ Ask a question', value: 'Ask a question', next: 'ask_input' },
+    ],
+  },
+
   // --- Lockout path ---
   lockout_type: {
     bot: 'What are you locked out of?',

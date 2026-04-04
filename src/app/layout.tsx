@@ -7,6 +7,8 @@ import { MobileStickyCTA } from '@/components/ui/MobileStickyCTA'
 import { RecentCallTicker } from '@/components/ui/RecentCallTicker'
 import { ExitIntentModal } from '@/components/ui/ExitIntentModal'
 import { LiveChat } from '@/components/ui/LiveChat'
+import { WelcomeBackBar } from '@/components/ui/WelcomeBackBar'
+import { ScrollDepthCTA } from '@/components/ui/ScrollDepthCTA'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getLocalBusinessSchema, getOrganizationSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
@@ -60,6 +62,7 @@ export default function RootLayout({
         <JsonLd data={getLocalBusinessSchema()} />
         <JsonLd data={getOrganizationSchema()} />
         <Header />
+        <WelcomeBackBar />
         <main className="flex-1 pb-16 md:pb-0" id="main-content">
           {children}
         </main>
@@ -68,6 +71,7 @@ export default function RootLayout({
         <RecentCallTicker />
         <ExitIntentModal />
         <LiveChat />
+        <ScrollDepthCTA />
       </body>
     </html>
   )
