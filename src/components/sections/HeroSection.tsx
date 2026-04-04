@@ -49,7 +49,7 @@ export function HeroSection({
         className={cn(
           'relative bg-brand-navy text-white',
           isHomepage
-            ? (visitorStripVisible ? 'py-12 md:py-[72px]' : 'py-16 md:py-24')
+            ? (visitorStripVisible ? 'py-[43px] md:py-[65px]' : 'py-16 md:py-24')
             : 'py-12 md:py-16',
           className
         )}

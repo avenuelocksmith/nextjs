@@ -41,6 +41,21 @@ export function HeroTrustLogos() {
         </svg>
         <span className="text-white/70 text-xs leading-tight">Accepted</span>
       </div>
+
+      {/* Apple Pay */}
+      <div className="inline-flex items-center gap-1.5 bg-white/10 border border-white/15 rounded-lg px-3 py-1.5">
+        <svg viewBox="0 0 814 1000" width="11" height="14" aria-hidden="true" fill="white">
+          <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-150.3-81.2c-72.5-71.2-130.5-180.2-130.5-283.7 0-172 111.5-262.6 221.2-262.6 56.5 0 103.5 37.3 138.8 37.3 33.6 0 86.5-39.5 151.1-39.5 24.3 0 108.2 2.6 168.6 79.2zm-119.6-250.4c28.3-36.3 48.5-87.2 48.5-138.1 0-7.1-.6-14.3-1.9-20.1-45.5 1.7-99.8 30.4-132.5 72.4-25.4 31.4-49.2 81.6-49.2 133.3 0 7.8 1.3 15.6 1.9 18.1 3.2.6 8.4 1.3 13.6 1.3 40.8 0 89.1-27.1 119.6-66.9z"/>
+        </svg>
+        <span className="text-white text-xs font-semibold">Apple Pay</span>
+      </div>
+
+      {/* Zelle */}
+      <div className="inline-flex items-center bg-white/10 border border-white/15 rounded-lg px-3 py-1.5">
+        <svg viewBox="0 0 54 18" width="46" height="16" aria-hidden="true">
+          <text x="0" y="14" fontFamily="Arial" fontWeight="bold" fontSize="16" fill="#6D1ED4">Zelle</text>
+        </svg>
+      </div>
     </div>
   )
 }
