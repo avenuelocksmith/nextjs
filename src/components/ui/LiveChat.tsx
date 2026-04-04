@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { MessageCircle, X, Phone, Send, Loader2 } from 'lucide-react'
 import { BUSINESS } from '@/lib/constants'
 import { FLOW, type FlowNode } from '@/lib/chatFlow'
+import { useVisitorType } from '@/hooks/useVisitorType'
 
 interface Message {
   from: 'bot' | 'user'
@@ -13,6 +14,7 @@ interface Message {
 type Phase = 'flow' | 'ai_loading' | 'ai_done' | 'submitting' | 'done'
 
 export function LiveChat() {
+  const { isReturning } = useVisitorType()
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [node, setNode] = useState<FlowNode>(FLOW.welcome)
@@ -33,11 +35,12 @@ export function LiveChat() {
   // Seed welcome message on first open
   useEffect(() => {
     if (open && messages.length === 0) {
-      setMessages([{ from: 'bot', text: FLOW.welcome.bot }])
-      setNode(FLOW.welcome)
+      const startNode = isReturning ? FLOW.welcome_back : FLOW.welcome
+      setMessages([{ from: 'bot', text: startNode.bot }])
+      setNode(startNode)
     }
     if (open) setUnread(false)
-  }, [open, messages.length])
+  }, [open, messages.length, isReturning])
 
   // Scroll to bottom on new messages
   useEffect(() => {
