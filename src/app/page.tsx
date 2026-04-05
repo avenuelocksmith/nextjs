@@ -102,7 +102,7 @@ export default function HomePage() {
       <div className="text-center pb-10 -mt-4 bg-brand-bg">
         <Link
           href="/testimonials/"
-          className="inline-flex items-center gap-1.5 text-brand-navy font-semibold hover:text-brand-amber transition-colors text-sm"
+          className="inline-flex items-center gap-1.5 text-brand-charcoal font-semibold hover:text-brand-amber transition-colors text-sm"
         >
           See all {BUSINESS.reviewCount}+ reviews <ArrowRight size={14} />
         </Link>
@@ -121,7 +121,7 @@ export default function HomePage() {
       <section className="py-14 md:py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal mb-3">
               Serving Brooklyn and All NYC Boroughs
             </h2>
             <p className="text-brand-muted max-w-2xl mx-auto">
@@ -135,7 +135,7 @@ export default function HomePage() {
               title="Avenue Locksmith Service Area — Brooklyn, NY"
             />
             <div>
-              <h3 className="font-bold text-brand-navy text-lg mb-4 flex items-center gap-2">
+              <h3 className="font-bold text-brand-charcoal text-lg mb-4 flex items-center gap-2">
                 <MapPin size={18} className="text-brand-amber" aria-hidden="true" />
                 Brooklyn Neighborhoods We Serve
               </h3>
@@ -152,7 +152,7 @@ export default function HomePage() {
               </div>
               <Link
                 href="/locksmith-near-me/"
-                className="inline-flex items-center gap-1.5 text-brand-navy border border-brand-navy rounded-lg px-4 py-2.5 text-sm font-semibold hover:bg-brand-navy hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-brand-charcoal border border-brand-charcoal rounded-lg px-4 py-2.5 text-sm font-semibold hover:bg-brand-charcoal hover:text-white transition-colors"
               >
                 See All Service Areas <ArrowRight size={14} />
               </Link>
@@ -168,22 +168,29 @@ export default function HomePage() {
       />
 
       {/* Bottom CTA */}
-      <section className="py-14 md:py-20 bg-brand-navy text-white">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
+      <section
+        className="py-16 md:py-24 text-white relative overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #0d1520 0%, #111827 50%, #1a2535 100%)' }}
+      >
+        {/* Radial amber glow behind button */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+          <div className="w-96 h-96 bg-brand-amber/5 rounded-full blur-3xl" />
+        </div>
+        <div className="relative container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
             Need a Locksmith in Brooklyn Right Now?
           </h2>
-          <p className="text-white/80 mb-8 text-lg">
+          <p className="text-white/75 mb-8 text-lg">
             We&apos;re available 24 hours a day, 7 days a week. One call and we&apos;ll be there in 15–25 minutes or less.
           </p>
           <a
             href={BUSINESS.phoneHref}
-            className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl mb-4"
+            className="inline-flex items-center gap-3 animate-shimmer text-brand-charcoal font-bold px-10 py-5 rounded-xl text-xl mb-4 shadow-[0_4px_32px_rgba(245,158,11,0.4)]"
           >
             <Phone size={26} aria-hidden="true" />
             <span>{BUSINESS.phone}</span>
           </a>
-          <p className="text-white/60 text-sm">
+          <p className="text-white/50 text-sm">
             Available 24/7 — 365 days a year · Licensed &amp; Insured · 15–25 Min Response Guarantee
           </p>
         </div>

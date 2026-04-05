@@ -12,13 +12,6 @@ interface PhoneButtonProps {
   showIcon?: boolean
 }
 
-const variants = {
-  primary: 'bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold shadow-lg hover:shadow-xl',
-  secondary: 'bg-brand-navy hover:bg-brand-navy/90 text-white font-bold shadow-lg hover:shadow-xl',
-  outline: 'border-2 border-brand-amber text-brand-amber hover:bg-brand-amber hover:text-brand-navy font-bold',
-  ghost: 'text-brand-amber hover:text-brand-orange font-bold underline',
-}
-
 const sizes = {
   sm: 'px-4 py-2 text-sm gap-1.5',
   md: 'px-5 py-2.5 text-base gap-2',
@@ -40,12 +33,26 @@ export function PhoneButton({
   label,
   showIcon = true,
 }: PhoneButtonProps) {
+  const isPrimary = variant === 'primary'
+  const isXL = size === 'xl'
+
+  const variantClass = isPrimary
+    ? cn(
+        'text-brand-charcoal font-bold rounded-xl',
+        isXL ? 'animate-shimmer' : 'btn-gradient-amber'
+      )
+    : variant === 'secondary'
+    ? 'bg-brand-charcoal border-2 border-brand-amber/40 hover:border-brand-amber text-white font-bold rounded-xl shadow-lg hover:shadow-xl'
+    : variant === 'outline'
+    ? 'border-2 border-brand-amber text-brand-amber hover:bg-brand-amber hover:text-brand-charcoal font-bold rounded-xl'
+    : 'text-brand-amber hover:text-brand-orange font-bold underline'
+
   return (
     <a
       href={BUSINESS.phoneHref}
       className={cn(
-        'inline-flex items-center justify-center rounded-lg transition-all duration-200 tap-target',
-        variants[variant],
+        'inline-flex items-center justify-center transition-all duration-200 tap-target',
+        variantClass,
         sizes[size],
         className
       )}

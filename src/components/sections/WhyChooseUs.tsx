@@ -44,11 +44,14 @@ export function WhyChooseUs({
   title = 'Why Brooklyn Residents Choose Avenue Locksmith',
 }: WhyChooseUsProps) {
   return (
-    <section className={cn('py-14 md:py-20 bg-white', className)}>
+    <section
+      className={cn('py-14 md:py-20 text-white', className)}
+      style={{ background: 'linear-gradient(135deg, #111827 0%, #1a2535 100%)' }}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-3">{title}</h2>
-          <p className="text-brand-muted max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">{title}</h2>
+          <p className="text-white/60 max-w-2xl mx-auto">
             Not all locksmiths are the same. Here&apos;s why thousands of Brooklyn residents call Avenue Locksmith first.
           </p>
         </div>
@@ -59,14 +62,14 @@ export function WhyChooseUs({
             return (
               <div
                 key={reason.title}
-                className="flex gap-4 p-6 rounded-xl bg-brand-bg border border-brand-border hover:border-brand-amber/50 transition-colors"
+                className="group flex gap-4 p-6 rounded-xl bg-brand-slate border border-white/10 hover:border-brand-amber/40 hover:bg-[#263347] transition-all duration-200"
               >
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-amber/10 flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-amber/15 group-hover:bg-brand-amber/25 transition-colors flex items-center justify-center">
                   <Icon size={20} className="text-brand-amber" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-brand-navy mb-1">{reason.title}</h3>
-                  <p className="text-brand-muted text-sm leading-relaxed">{reason.description}</p>
+                  <h3 className="font-bold text-white mb-1">{reason.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{reason.description}</p>
                 </div>
               </div>
             )

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Lock, Cpu, Eye, Fingerprint, DoorOpen, RefreshCw, ArrowLeftRight, ShieldCheck, Copy, Archive, Mail, UserCheck } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -50,8 +50,15 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [megaOpen, setMegaOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const afterHours = useAvailability()
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   function openMega() {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -68,9 +75,19 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 bg-brand-navy shadow-lg">
+    <header
+      className={cn(
+        'sticky top-0 z-40 transition-all duration-200',
+        scrolled
+          ? 'bg-brand-charcoal/95 backdrop-blur-md shadow-lg shadow-black/20'
+          : 'bg-brand-charcoal shadow-lg'
+      )}
+    >
+      {/* Amber top accent line */}
+      <div className="h-0.5 bg-gradient-to-r from-brand-amber/0 via-brand-amber to-brand-amber/0" aria-hidden="true" />
+
       {/* Top bar — live dispatch activity */}
-      <div className="bg-brand-navy border-b border-white/10 min-h-[28px]">
+      <div className="bg-brand-charcoal border-b border-white/10 min-h-[28px]">
         <LiveActivityBar variant="header" />
       </div>
 
@@ -134,7 +151,7 @@ export function Header() {
                                     href={item.href}
                                     role="menuitem"
                                     onClick={() => setMegaOpen(false)}
-                                    className="flex items-start gap-2.5 px-2 py-2 rounded-lg hover:bg-brand-bg group transition-colors"
+                                    className="flex items-start gap-2.5 px-2 py-2 rounded-lg hover:bg-gray-50 group transition-colors"
                                   >
                                     <item.icon
                                       size={15}
@@ -142,7 +159,7 @@ export function Header() {
                                       aria-hidden="true"
                                     />
                                     <div>
-                                      <p className="text-sm font-semibold text-brand-navy leading-tight group-hover:text-brand-amber transition-colors">
+                                      <p className="text-sm font-semibold text-brand-charcoal leading-tight group-hover:text-brand-amber transition-colors">
                                         {item.label}
                                       </p>
                                       <p className="text-xs text-brand-muted leading-snug mt-0.5">
@@ -186,7 +203,7 @@ export function Header() {
           {/* Desktop CTA */}
           <a
             href={BUSINESS.phoneHref}
-            className="hidden md:flex items-center gap-2 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-5 py-2.5 rounded-lg transition-colors text-sm"
+            className="hidden md:flex items-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-2.5 rounded-xl transition-all text-sm"
             aria-label={`Call now at ${BUSINESS.phone}`}
           >
             <Phone size={16} aria-hidden="true" />
@@ -288,7 +305,7 @@ export function Header() {
             <li className="pt-2">
               <a
                 href={BUSINESS.phoneHref}
-                className="flex items-center justify-center gap-2 bg-brand-amber text-brand-navy font-bold px-5 py-3 rounded-lg transition-colors"
+                className="flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-3 rounded-xl transition-all"
               >
                 <Phone size={18} aria-hidden="true" />
                 <span>Call {BUSINESS.phone}</span>

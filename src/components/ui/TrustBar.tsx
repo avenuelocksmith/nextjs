@@ -7,11 +7,9 @@ import { useAvailability } from '@/hooks/useAvailability'
 
 interface TrustBarProps {
   className?: string
-  variant?: 'light' | 'dark'
 }
 
-export function TrustBar({ className, variant = 'light' }: TrustBarProps) {
-  const isDark = variant === 'dark'
+export function TrustBar({ className }: TrustBarProps) {
   const afterHours = useAvailability()
 
   const trustItems = [
@@ -47,17 +45,15 @@ export function TrustBar({ className, variant = 'light' }: TrustBarProps) {
       {trustItems.map((item) => {
         const Icon = item.icon
         return (
-          <div key={item.label} className="flex items-center gap-2">
-            <Icon
-              size={18}
-              className={isDark ? 'text-brand-amber' : 'text-brand-navy'}
-              aria-hidden="true"
-            />
+          <div key={item.label} className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-brand-amber/20 flex items-center justify-center flex-shrink-0">
+              <Icon size={16} className="text-brand-amber" aria-hidden="true" />
+            </div>
             <div>
-              <p className={cn('text-sm font-semibold leading-tight', isDark ? 'text-white' : 'text-brand-text')}>
+              <p className="text-sm font-semibold leading-tight text-white">
                 {item.label}
               </p>
-              <p className={cn('text-xs leading-tight', isDark ? 'text-white/70' : 'text-brand-muted')}>
+              <p className="text-xs leading-tight text-white/60">
                 {item.sublabel}
               </p>
             </div>
