@@ -76,7 +76,7 @@ export function RecentCallTicker() {
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
         </span>
         <div className="min-w-0">
-          <p className="text-xs font-semibold text-brand-navy leading-snug truncate">
+          <p className="text-xs font-semibold text-brand-charcoal leading-snug truncate">
             Someone in {entry.neighborhood}
           </p>
           <p className="text-xs text-brand-muted leading-snug">

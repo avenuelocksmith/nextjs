@@ -71,7 +71,7 @@ export function TestimonialsSection({
   const displayedReviews = reviews.slice(0, maxItems)
 
   return (
-    <section className={cn('py-14 md:py-20 bg-brand-bg', className)}>
+    <section className={cn('py-14 md:py-20 bg-brand-bg-alt', className)}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-4">
           <div className="flex items-center justify-center gap-1 mb-3">
@@ -79,7 +79,7 @@ export function TestimonialsSection({
               <Star key={i} size={22} className="text-brand-amber fill-brand-amber" aria-hidden="true" />
             ))}
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-2">{title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal mb-2">{title}</h2>
           <p className="text-brand-muted">
             {BUSINESS.rating}/5 stars from {BUSINESS.reviewCount}+ verified reviews
           </p>
@@ -89,7 +89,7 @@ export function TestimonialsSection({
           {displayedReviews.map((review) => (
             <blockquote
               key={review.name}
-              className="bg-white rounded-xl p-6 border border-brand-border shadow-sm"
+              className="bg-white rounded-xl p-6 border border-brand-border shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               <div className="flex items-center gap-0.5 mb-3">
                 {[...Array(review.rating)].map((_, i) => (
@@ -101,8 +101,12 @@ export function TestimonialsSection({
               </p>
               <footer className="flex items-center justify-between">
                 <div>
-                  <cite className="font-semibold text-brand-navy not-italic text-sm">{review.name}</cite>
-                  <p className="text-brand-muted text-xs">{review.service}</p>
+                  <cite className="font-semibold text-brand-charcoal not-italic text-sm">{review.name}</cite>
+                  <div className="mt-1">
+                    <span className="inline-block bg-brand-amber/10 text-brand-orange text-xs px-2 py-0.5 rounded-full font-medium">
+                      {review.service}
+                    </span>
+                  </div>
                 </div>
                 {review.date && (
                   <span className="text-brand-muted text-xs">{review.date}</span>

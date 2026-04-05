@@ -70,13 +70,13 @@ function GalleryCard({
       )}
 
       {/* Hover overlay */}
-      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-brand-navy/90 via-brand-navy/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-4">
+      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-brand-charcoal/90 via-brand-charcoal/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-4">
         <p className="text-white font-bold text-sm leading-snug mb-2">{item.title}</p>
         <div className="flex flex-wrap gap-1">
           {item.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-semibold uppercase tracking-wide bg-brand-amber/90 text-brand-navy px-2 py-0.5 rounded-full"
+              className="text-[10px] font-semibold uppercase tracking-wide bg-brand-amber/90 text-brand-charcoal px-2 py-0.5 rounded-full"
             >
               {tag}
             </span>
@@ -127,7 +127,7 @@ function Lightbox({
     >
       {/* Panel */}
       <div
-        className="relative w-full max-w-3xl bg-brand-navy rounded-2xl overflow-hidden shadow-2xl"
+        className="relative w-full max-w-3xl bg-brand-charcoal rounded-2xl overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close */}
@@ -257,7 +257,7 @@ export function GallerySection({
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-3">{title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal mb-3">{title}</h2>
           <p className="text-brand-muted max-w-2xl mx-auto">{subtitle}</p>
         </div>
 
@@ -270,8 +270,8 @@ export function GallerySection({
                 onClick={() => setActiveTag(cat.value)}
                 className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors border ${
                   activeTag === cat.value
-                    ? 'bg-brand-navy text-white border-brand-navy'
-                    : 'bg-white text-brand-navy border-brand-border hover:border-brand-navy hover:bg-brand-navy/5'
+                    ? 'bg-brand-charcoal text-white border-brand-charcoal'
+                    : 'bg-white text-brand-charcoal border-brand-border hover:border-brand-charcoal hover:bg-brand-charcoal/5'
                 }`}
               >
                 {cat.label}
@@ -306,7 +306,7 @@ export function GallerySection({
           <div className="text-center mt-10">
             <Link
               href="/gallery/"
-              className="inline-flex items-center gap-2 bg-brand-navy text-white font-bold px-8 py-3.5 rounded-xl hover:bg-brand-amber hover:text-brand-navy transition-colors"
+              className="inline-flex items-center gap-2 bg-brand-charcoal text-white font-bold px-8 py-3.5 rounded-xl hover:bg-brand-amber hover:text-brand-charcoal transition-colors"
             >
               View All Projects <ArrowRight size={16} aria-hidden="true" />
             </Link>

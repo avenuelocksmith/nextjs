@@ -32,7 +32,7 @@ export function BreadcrumbNav({ items, className }: BreadcrumbNavProps) {
             {item.href && !isLast ? (
               <Link
                 href={item.href}
-                className="hover:text-brand-navy transition-colors"
+                className="hover:text-brand-amber transition-colors"
               >
                 {index === 0 ? (
                   <span className="flex items-center gap-1">

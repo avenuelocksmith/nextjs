@@ -10,7 +10,7 @@ export function Footer() {
   const afterHours = useAvailability()
 
   return (
-    <footer className="bg-brand-navy text-white">
+    <footer className="bg-brand-charcoal text-white">
       {/* Main footer */}
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -104,7 +104,7 @@ export function Footer() {
               </p>
               <a
                 href={BUSINESS.phoneHref}
-                className="flex items-center justify-center gap-2 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-5 py-3 rounded-lg transition-colors text-sm w-full"
+                className="flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-3 rounded-xl transition-all text-sm w-full"
               >
                 <Phone size={16} aria-hidden="true" />
                 <span>Call {BUSINESS.phone}</span>

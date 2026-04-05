@@ -5,16 +5,24 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Brand Colors — Avenue Locksmith */
-  --color-brand-navy:   #1A2B4A;
-  --color-brand-amber:  #F5A623;
-  --color-brand-orange: #E8640C;
-  --color-brand-bg:     #F8F7F4;
-  --color-brand-text:   #1C1C1E;
-  --color-brand-muted:  #6B7280;
-  --color-brand-border: #E5E7EB;
-  --color-brand-success:#16A34A;
-  --color-brand-trust:  #2563EB;
+  /* Brand Colors — Avenue Locksmith (Bold Contrast Redesign) */
+  --color-brand-charcoal:     #111827;
+  --color-brand-slate:        #1F2937;
+  --color-brand-slate-light:  #374151;
+  --color-brand-amber:        #F59E0B;
+  --color-brand-amber-light:  #FBBF24;
+  --color-brand-orange:       #D97706;
+  --color-brand-bg:           #F9FAFB;
+  --color-brand-bg-alt:       #F1F5F9;
+  --color-brand-text:         #111827;
+  --color-brand-muted:        #6B7280;
+  --color-brand-border:       #E5E7EB;
+  --color-brand-success:      #16A34A;
+  --color-brand-trust:        #2563EB;
+  --color-brand-emergency:    #EF4444;
+
+  /* Backward compat alias — navy now maps to charcoal */
+  --color-brand-navy:         #111827;
 
   /* Map shadcn tokens to brand */
   --color-background: var(--background);
@@ -61,43 +69,49 @@
 }
 
 :root {
-  /* Mapped to Avenue Locksmith brand */
-  --background: #F8F7F4;
-  --foreground: #1C1C1E;
+  /* Mapped to Avenue Locksmith brand — Bold Contrast */
+  --background: #F9FAFB;
+  --foreground: #111827;
   --card: #FFFFFF;
-  --card-foreground: #1C1C1E;
+  --card-foreground: #111827;
   --popover: #FFFFFF;
-  --popover-foreground: #1C1C1E;
-  --primary: #1A2B4A;
+  --popover-foreground: #111827;
+  --primary: #111827;
   --primary-foreground: #FFFFFF;
   --secondary: #F3F4F6;
-  --secondary-foreground: #1A2B4A;
+  --secondary-foreground: #111827;
   --muted: #F3F4F6;
   --muted-foreground: #6B7280;
-  --accent: #F5A623;
-  --accent-foreground: #1A2B4A;
+  --accent: #F59E0B;
+  --accent-foreground: #111827;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #E5E7EB;
   --input: #E5E7EB;
-  --ring: #1A2B4A;
-  --chart-1: #1A2B4A;
-  --chart-2: #F5A623;
-  --chart-3: #E8640C;
+  --ring: #111827;
+  --chart-1: #111827;
+  --chart-2: #F59E0B;
+  --chart-3: #D97706;
   --chart-4: #16A34A;
   --chart-5: #2563EB;
   --radius: 0.5rem;
-  --sidebar: #1A2B4A;
+  --sidebar: #111827;
   --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #F5A623;
-  --sidebar-primary-foreground: #1A2B4A;
-  --sidebar-accent: #243552;
+  --sidebar-primary: #F59E0B;
+  --sidebar-primary-foreground: #111827;
+  --sidebar-accent: #1F2937;
   --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #243552;
-  --sidebar-ring: #F5A623;
+  --sidebar-border: #1F2937;
+  --sidebar-ring: #F59E0B;
+
+  /* Gradients */
+  --gradient-cta: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+  --gradient-cta-hover: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+  --gradient-dark: linear-gradient(135deg, #111827 0%, #1a2535 100%);
+  --shadow-amber-glow: 0 4px 24px rgba(245, 158, 11, 0.35);
 
   /* Font variables — set in layout via next/font */
   --font-sans: 'Inter', system-ui, sans-serif;
-  --font-heading: 'Montserrat', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 @layer base {
@@ -111,6 +125,12 @@
     font-family: var(--font-heading);
     font-weight: 700;
   }
+  h1 {
+    letter-spacing: -0.03em;
+  }
+  h2 {
+    letter-spacing: -0.02em;
+  }
   /* Smooth scrolling for anchor links */
   html {
     scroll-behavior: smooth;
@@ -118,10 +138,33 @@
 }
 
 @layer utilities {
+  /* Gradient amber CTA button */
+  .btn-gradient-amber {
+    background: var(--gradient-cta);
+    box-shadow: var(--shadow-amber-glow);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-gradient-amber:hover {
+    background: var(--gradient-cta-hover);
+    box-shadow: 0 6px 32px rgba(245, 158, 11, 0.5);
+  }
+
+  /* Shimmer sweep animation for primary CTAs */
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+  .animate-shimmer {
+    background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 35%, #ffe066 50%, #FBBF24 65%, #F59E0B 100%);
+    background-size: 200% auto;
+    animation: shimmer 2.8s linear infinite;
+  }
+
   /* Emergency pulse animation for CTA buttons */
   .animate-pulse-slow {
     animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
+
   /* Phone tap target minimum */
   .tap-target {
     min-height: 48px;
