@@ -112,13 +112,13 @@ export function QuoteForm() {
       <div className="py-16 px-4 flex items-center justify-center">
         <div className="bg-white rounded-2xl border border-brand-border p-10 max-w-md w-full text-center shadow-sm">
           <CheckCircle size={56} className="text-green-500 mx-auto mb-5" />
-          <h2 className="text-2xl font-bold text-brand-navy mb-2">Quote Request Sent!</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Quote Request Sent!</h2>
           <p className="text-brand-muted mb-8">
             We received your request and will get back to you within the hour. For urgent needs, call us directly.
           </p>
           <a
             href={BUSINESS.phoneHref}
-            className="inline-flex items-center gap-2 bg-brand-amber text-brand-navy font-bold px-7 py-3.5 rounded-xl text-base transition-colors hover:bg-brand-orange"
+            className="inline-flex items-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-7 py-3.5 rounded-xl text-base"
           >
             <Phone size={18} />
             {BUSINESS.phone}
@@ -164,12 +164,12 @@ export function QuoteForm() {
                 className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-xl p-6 cursor-pointer transition-colors ${
                   dragOver
                     ? 'border-brand-amber bg-amber-50'
-                    : 'border-brand-border bg-brand-bg hover:border-brand-navy/30'
+                    : 'border-brand-border bg-brand-bg hover:border-brand-charcoal/30'
                 }`}
               >
                 <Upload size={24} className="text-brand-muted" aria-hidden="true" />
                 <p className="text-sm text-brand-muted text-center">
-                  <span className="font-semibold text-brand-navy">Click to upload</span> or drag and drop
+                  <span className="font-semibold text-brand-charcoal">Click to upload</span> or drag and drop
                 </p>
                 <p className="text-xs text-brand-muted">JPEG, PNG, WebP — max {MAX_SIZE_MB} MB each</p>
                 <p className="text-xs text-brand-muted">
@@ -228,8 +228,8 @@ export function QuoteForm() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="(347) 000-0000"
-                className={`w-full px-4 py-3 border rounded-xl text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/20 ${
-                  errors.phone ? 'border-red-400' : 'border-brand-border hover:border-brand-navy/30'
+                className={`w-full px-4 py-3 border rounded-xl text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/20 ${
+                  errors.phone ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/30'
                 }`}
                 aria-invalid={!!errors.phone}
                 aria-describedby={errors.phone ? 'phone-error' : undefined}
@@ -253,8 +253,8 @@ export function QuoteForm() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="123 Main St, Brooklyn, NY"
-                className={`w-full px-4 py-3 border rounded-xl text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/20 ${
-                  errors.address ? 'border-red-400' : 'border-brand-border hover:border-brand-navy/30'
+                className={`w-full px-4 py-3 border rounded-xl text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/20 ${
+                  errors.address ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/30'
                 }`}
                 aria-invalid={!!errors.address}
                 aria-describedby={errors.address ? 'address-error' : undefined}
@@ -280,7 +280,7 @@ export function QuoteForm() {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               placeholder="E.g. Lock is jammed, key broke inside, need a new deadbolt installed..."
-              className="w-full px-4 py-3 border border-brand-border rounded-xl text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/20 resize-none hover:border-brand-navy/30"
+              className="w-full px-4 py-3 border border-brand-border rounded-xl text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/20 resize-none hover:border-brand-charcoal/30"
             />
           </div>
 
@@ -294,7 +294,7 @@ export function QuoteForm() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full flex items-center justify-center gap-2 bg-brand-navy hover:bg-brand-navy/90 disabled:opacity-60 text-white font-bold px-6 py-4 rounded-xl text-base transition-colors"
+            className="w-full flex items-center justify-center gap-2 btn-gradient-amber disabled:opacity-60 text-brand-charcoal font-bold px-6 py-4 rounded-xl text-base"
           >
             {submitting ? (
               <>

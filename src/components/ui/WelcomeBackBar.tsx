@@ -31,21 +31,21 @@ export function WelcomeBackBar() {
         visible ? 'max-h-20 opacity-100' : 'hidden'
       }`}
     >
-      <div className="bg-brand-amber text-brand-navy text-sm font-medium px-4 py-0.5 flex items-center justify-center gap-3 flex-wrap">
+      <div className="bg-brand-amber text-brand-charcoal text-sm font-medium px-4 py-0.5 flex items-center justify-center gap-3 flex-wrap">
         <span>
           Welcome back! 24/7 emergency service available right now.
         </span>
         <div className="flex items-center gap-2 shrink-0">
           <a
             href={BUSINESS.phoneHref}
-            className="inline-flex items-center gap-1.5 bg-brand-navy text-white text-xs font-bold px-3 py-1 rounded-full hover:bg-brand-navy/80 transition-colors"
+            className="inline-flex items-center gap-1.5 btn-gradient-amber text-brand-charcoal text-xs font-bold px-3 py-1 rounded-full"
           >
             <Phone size={12} aria-hidden="true" />
             Call Now
           </a>
           <Link
             href="/free-quote/"
-            className="inline-flex items-center gap-1.5 border border-brand-navy text-brand-navy text-xs font-bold px-3 py-1 rounded-full hover:bg-brand-navy/10 transition-colors"
+            className="inline-flex items-center gap-1.5 border border-brand-charcoal text-brand-charcoal text-xs font-bold px-3 py-1 rounded-full hover:bg-brand-charcoal/10 transition-colors"
           >
             Free Quote
           </Link>
@@ -53,7 +53,7 @@ export function WelcomeBackBar() {
         <button
           onClick={dismiss}
           aria-label="Dismiss welcome bar"
-          className="absolute right-3 text-brand-navy/60 hover:text-brand-navy transition-colors"
+          className="absolute right-3 text-brand-charcoal/60 hover:text-brand-charcoal transition-colors"
         >
           <X size={16} />
         </button>

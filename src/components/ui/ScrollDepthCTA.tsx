@@ -45,7 +45,7 @@ export function ScrollDepthCTA() {
         visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       }`}
     >
-      <div className="bg-brand-navy text-white rounded-2xl shadow-2xl px-5 py-4 flex items-center gap-4 max-w-lg w-full pointer-events-auto border border-white/10">
+      <div className="bg-brand-charcoal text-white rounded-2xl shadow-2xl px-5 py-4 flex items-center gap-4 max-w-lg w-full pointer-events-auto border border-white/10">
         <div className="flex-1 min-w-0">
           <p className="font-bold text-sm leading-snug">
             {isReturning
@@ -61,7 +61,7 @@ export function ScrollDepthCTA() {
         {isReturning ? (
           <a
             href={BUSINESS.phoneHref}
-            className="inline-flex items-center gap-2 bg-brand-amber text-brand-navy font-bold text-sm px-4 py-2.5 rounded-xl hover:bg-brand-orange transition-colors shrink-0"
+            className="inline-flex items-center gap-2 btn-gradient-amber text-brand-charcoal font-bold text-sm px-4 py-2.5 rounded-xl shrink-0"
           >
             <Phone size={15} aria-hidden="true" />
             Call Now
@@ -69,7 +69,7 @@ export function ScrollDepthCTA() {
         ) : (
           <Link
             href="/free-quote/"
-            className="inline-flex items-center gap-2 bg-brand-amber text-brand-navy font-bold text-sm px-4 py-2.5 rounded-xl hover:bg-brand-orange transition-colors shrink-0"
+            className="inline-flex items-center gap-2 btn-gradient-amber text-brand-charcoal font-bold text-sm px-4 py-2.5 rounded-xl shrink-0"
           >
             <FileText size={15} aria-hidden="true" />
             Free Quote

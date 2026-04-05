@@ -76,7 +76,7 @@ export function ExitIntentModal() {
           <button
             onClick={dismiss}
             aria-label="Close"
-            className="absolute top-4 right-4 text-brand-muted hover:text-brand-navy transition-colors"
+            className="absolute top-4 right-4 text-brand-muted hover:text-brand-amber transition-colors"
           >
             <X size={20} />
           </button>
@@ -87,7 +87,7 @@ export function ExitIntentModal() {
               <p className="text-xs font-bold text-brand-amber uppercase tracking-widest mb-2">
                 Welcome back
               </p>
-              <h2 id="exit-modal-title" className="text-2xl font-bold text-brand-navy mb-2 leading-tight">
+              <h2 id="exit-modal-title" className="text-2xl font-bold text-brand-charcoal mb-2 leading-tight">
                 Still need a locksmith?
               </h2>
               <p className="text-brand-muted text-sm mb-6">
@@ -108,7 +108,7 @@ export function ExitIntentModal() {
               <a
                 href={BUSINESS.phoneHref}
                 onClick={dismiss}
-                className="flex items-center justify-center gap-3 w-full bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold py-4 rounded-xl text-lg transition-colors shadow-md"
+                className="flex items-center justify-center gap-3 w-full bg-brand-amber hover:bg-brand-orange text-brand-charcoal font-bold py-4 rounded-xl text-lg transition-colors shadow-md"
               >
                 <Phone size={20} aria-hidden="true" />
                 Call Now — We&apos;re Available
@@ -116,13 +116,13 @@ export function ExitIntentModal() {
               <Link
                 href="/free-quote/"
                 onClick={dismiss}
-                className="block w-full text-center text-sm text-brand-navy font-medium mt-3 hover:text-brand-amber transition-colors"
+                className="block w-full text-center text-sm text-brand-charcoal font-medium mt-3 hover:text-brand-amber transition-colors"
               >
                 Get a free quote instead →
               </Link>
               <button
                 onClick={dismiss}
-                className="w-full text-center text-xs text-brand-muted mt-3 hover:text-brand-navy transition-colors"
+                className="w-full text-center text-xs text-brand-muted mt-3 hover:text-brand-amber transition-colors"
               >
                 No thanks, I&apos;ll keep looking
               </button>
@@ -133,7 +133,7 @@ export function ExitIntentModal() {
               <p className="text-xs font-bold text-brand-amber uppercase tracking-widest mb-2">
                 Before you go
               </p>
-              <h2 id="exit-modal-title" className="text-2xl font-bold text-brand-navy mb-2 leading-tight">
+              <h2 id="exit-modal-title" className="text-2xl font-bold text-brand-charcoal mb-2 leading-tight">
                 Not sure about us?
               </h2>
               <p className="text-brand-muted text-sm mb-6">
@@ -154,14 +154,14 @@ export function ExitIntentModal() {
               <a
                 href={BUSINESS.phoneHref}
                 onClick={dismiss}
-                className="flex items-center justify-center gap-3 w-full bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold py-4 rounded-xl text-lg transition-colors shadow-md"
+                className="flex items-center justify-center gap-3 w-full bg-brand-amber hover:bg-brand-orange text-brand-charcoal font-bold py-4 rounded-xl text-lg transition-colors shadow-md"
               >
                 <Phone size={20} aria-hidden="true" />
                 {BUSINESS.phone}
               </a>
               <button
                 onClick={dismiss}
-                className="w-full text-center text-xs text-brand-muted mt-4 hover:text-brand-navy transition-colors"
+                className="w-full text-center text-xs text-brand-muted mt-4 hover:text-brand-amber transition-colors"
               >
                 No thanks, I&apos;ll keep looking
               </button>

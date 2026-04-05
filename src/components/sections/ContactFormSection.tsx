@@ -85,13 +85,13 @@ export function ContactFormSection({
       <div className={cn('py-12 md:py-16 bg-white', className)}>
         <div className="container mx-auto px-4 max-w-xl text-center">
           <CheckCircle size={56} className="text-brand-success mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-brand-navy mb-2">Message Received!</h2>
+          <h2 className="text-2xl font-bold text-brand-charcoal mb-2">Message Received!</h2>
           <p className="text-brand-muted mb-6">
             We&apos;ll get back to you within the hour. For immediate service, call us directly.
           </p>
           <a
             href={BUSINESS.phoneHref}
-            className="inline-flex items-center gap-2 bg-brand-amber text-brand-navy font-bold px-6 py-3 rounded-lg"
+            className="inline-flex items-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-6 py-3 rounded-xl"
           >
             <Phone size={18} />
             Call {BUSINESS.phone}
@@ -105,7 +105,7 @@ export function ContactFormSection({
     <section className={cn('py-12 md:py-16 bg-white', className)}>
       <div className={cn('container mx-auto px-4', compact ? 'max-w-xl' : 'max-w-3xl')}>
         <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-2">{title}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-2">{title}</h2>
           <p className="text-brand-muted">{subtitle}</p>
           <p className="text-sm text-brand-muted mt-2">
             For emergencies:{' '}
@@ -128,8 +128,8 @@ export function ContactFormSection({
                 {...register('name')}
                 placeholder="Your full name"
                 className={cn(
-                  'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/30',
-                  errors.name ? 'border-red-400' : 'border-brand-border hover:border-brand-navy/40'
+                  'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30',
+                  errors.name ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/40'
                 )}
                 aria-invalid={errors.name ? 'true' : 'false'}
                 aria-describedby={errors.name ? 'name-error' : undefined}
@@ -150,8 +150,8 @@ export function ContactFormSection({
                 {...register('phone')}
                 placeholder="(347) 000-0000"
                 className={cn(
-                  'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/30',
-                  errors.phone ? 'border-red-400' : 'border-brand-border hover:border-brand-navy/40'
+                  'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30',
+                  errors.phone ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/40'
                 )}
                 aria-invalid={errors.phone ? 'true' : 'false'}
                 aria-describedby={errors.phone ? 'phone-error' : undefined}
@@ -170,8 +170,8 @@ export function ContactFormSection({
               id="service"
               {...register('service')}
               className={cn(
-                'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/30',
-                errors.service ? 'border-red-400' : 'border-brand-border hover:border-brand-navy/40'
+                'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30',
+                errors.service ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/40'
               )}
               aria-invalid={errors.service ? 'true' : 'false'}
             >
@@ -196,7 +196,7 @@ export function ContactFormSection({
                 autoComplete="email"
                 {...register('email')}
                 placeholder="you@example.com"
-                className="w-full px-4 py-2.5 border border-brand-border rounded-lg text-sm bg-white hover:border-brand-navy/40 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                className="w-full px-4 py-2.5 border border-brand-border rounded-lg text-sm bg-white hover:border-brand-charcoal/40 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30"
               />
             </div>
           )}
@@ -210,7 +210,7 @@ export function ContactFormSection({
               rows={3}
               {...register('message')}
               placeholder="Describe your situation or any details that would help us..."
-              className="w-full px-4 py-2.5 border border-brand-border rounded-lg text-sm bg-white hover:border-brand-navy/40 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-navy/30 resize-none"
+              className="w-full px-4 py-2.5 border border-brand-border rounded-lg text-sm bg-white hover:border-brand-charcoal/40 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30 resize-none"
             />
           </div>
 
@@ -229,7 +229,7 @@ export function ContactFormSection({
           <button
             type="submit"
             disabled={submitting}
-            className="w-full flex items-center justify-center gap-2 bg-brand-navy hover:bg-brand-navy/90 disabled:opacity-60 text-white font-bold px-6 py-3.5 rounded-lg transition-colors tap-target"
+            className="w-full flex items-center justify-center gap-2 btn-gradient-amber disabled:opacity-60 text-brand-charcoal font-bold px-6 py-3.5 rounded-xl tap-target"
           >
             <Send size={18} aria-hidden="true" />
             <span>{submitting ? 'Sending...' : 'Send Message'}</span>

@@ -19,11 +19,11 @@ export function MobileStickyCTA() {
   }, [])
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-brand-navy border-t border-brand-navy/20 shadow-2xl">
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-brand-charcoal border-t border-white/10 shadow-2xl">
       <div className="flex divide-x divide-white/20">
         <a
           href={BUSINESS.phoneHref}
-          className="relative flex-1 flex items-center justify-center gap-2 py-4 text-white font-bold text-base active:bg-brand-navy/80 transition-colors overflow-hidden"
+          className="relative flex-1 flex items-center justify-center gap-2 py-4 text-white font-bold text-base active:bg-brand-charcoal/80 transition-colors overflow-hidden"
           aria-label={`Call Avenue Locksmith at ${BUSINESS.phone}`}
         >
           {/* Pulse ring */}
@@ -42,7 +42,7 @@ export function MobileStickyCTA() {
         </a>
         <Link
           href="/free-quote/"
-          className="flex-1 flex items-center justify-center gap-2 py-4 bg-brand-amber text-brand-navy font-bold text-base active:bg-brand-orange transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 py-4 btn-gradient-amber text-brand-charcoal font-bold text-base active:opacity-90 transition-colors"
           aria-label="Get a free quote"
         >
           <MessageSquare size={20} aria-hidden="true" />
