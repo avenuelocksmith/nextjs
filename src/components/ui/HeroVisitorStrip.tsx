@@ -1,6 +1,6 @@
 'use client'
 
-import { Phone, Shield, Clock, Star, Zap } from 'lucide-react'
+import { Phone, Zap } from 'lucide-react'
 import { BUSINESS } from '@/lib/constants'
 import { useVisitorType } from '@/hooks/useVisitorType'
 
@@ -29,25 +29,5 @@ export function HeroVisitorStrip() {
     )
   }
 
-  // New visitor: trust badge row
-  const badges = [
-    { icon: Star, label: `${BUSINESS.rating}★ Rating` },
-    { icon: Shield, label: 'Licensed & Insured' },
-    { icon: Clock, label: `${BUSINESS.responseTime} Response` },
-    { icon: Phone, label: '24/7 Service' },
-  ]
-
-  return (
-    <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-      {badges.map(({ icon: Icon, label }) => (
-        <div
-          key={label}
-          className="inline-flex items-center gap-1.5 bg-white/10 border border-white/15 text-white/85 text-xs font-medium px-3 py-1.5 rounded-full"
-        >
-          <Icon size={12} className="text-brand-amber shrink-0" aria-hidden="true" />
-          {label}
-        </div>
-      ))}
-    </div>
-  )
+  return null
 }

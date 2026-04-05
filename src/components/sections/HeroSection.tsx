@@ -6,10 +6,11 @@ import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { Star, Shield, Clock, Phone, Award } from 'lucide-react'
+import { Phone, CheckCircle, Loader2 } from 'lucide-react'
 import { useAvailability } from '@/hooks/useAvailability'
 import { useVisitorType } from '@/hooks/useVisitorType'
 import { BUSINESS } from '@/lib/constants'
+import { useState } from 'react'
 
 interface HeroSectionProps {
   h1: string
@@ -21,60 +22,100 @@ interface HeroSectionProps {
   ctaLabel?: string
 }
 
-function TrustClusterCard({ afterHours }: { afterHours: boolean | null }) {
-  const items = [
-    {
-      icon: Star,
-      label: `${BUSINESS.rating} / 5 Stars`,
-      sub: `${BUSINESS.reviewCount}+ verified reviews`,
-      fill: true,
-    },
-    {
-      icon: Clock,
-      label: '15–25 Min Response',
-      sub: 'Emergency guarantee',
-      fill: false,
-    },
-    {
-      icon: Shield,
-      label: 'Licensed & Insured',
-      sub: 'NYC DCWP certified',
-      fill: false,
-    },
-    {
-      icon: Award,
-      label: `${new Date().getFullYear() - 2010}+ Years Serving Brooklyn`,
-      sub: 'Trusted since 2010',
-      fill: false,
-    },
-    {
-      icon: Phone,
-      label: afterHours === false ? 'Open Right Now' : 'Available 24/7',
-      sub: '365 days a year',
-      fill: false,
-    },
-  ]
+function CallbackRequestCard() {
+  const [phone, setPhone] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!phone.trim()) return
+    setStatus('loading')
+    setErrorMsg('')
+    try {
+      const res = await fetch('/api/callback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phone.trim() }),
+      })
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data.error || 'Request failed')
+      }
+      setStatus('success')
+    } catch (err) {
+      setStatus('error')
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong')
+    }
+  }
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-6 space-y-3.5">
-      {items.map((item) => {
-        const Icon = item.icon
-        return (
-          <div key={item.label} className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-brand-amber/20 flex items-center justify-center flex-shrink-0">
-              <Icon
-                size={17}
-                className={cn('text-brand-amber', item.fill && 'fill-brand-amber')}
-                aria-hidden="true"
-              />
-            </div>
-            <div>
-              <p className="text-white font-semibold text-sm leading-tight">{item.label}</p>
-              <p className="text-white/55 text-xs leading-tight mt-0.5">{item.sub}</p>
-            </div>
-          </div>
-        )
-      })}
+    <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-6">
+      {status === 'success' ? (
+        <div className="flex flex-col items-center text-center gap-3 py-4">
+          <CheckCircle size={40} className="text-brand-amber" aria-hidden="true" />
+          <p className="text-white font-bold text-lg leading-tight">We&apos;ll call you back!</p>
+          <p className="text-white/65 text-sm">
+            Our team will reach out to you shortly. For urgent issues, call us now.
+          </p>
+          <a
+            href={BUSINESS.phoneHref}
+            className="inline-flex items-center gap-2 btn-gradient-amber text-brand-charcoal font-bold text-sm px-5 py-2.5 rounded-xl mt-1"
+          >
+            <Phone size={14} aria-hidden="true" />
+            Call Now
+          </a>
+        </div>
+      ) : (
+        <>
+          <p className="text-white font-bold text-base leading-tight mb-1">
+            Request a Callback
+          </p>
+          <p className="text-white/60 text-xs mb-4">
+            Leave your number — we&apos;ll call you within 5 minutes.
+          </p>
+          <form onSubmit={handleSubmit} noValidate>
+            <label htmlFor="callback-phone" className="sr-only">
+              Your phone number
+            </label>
+            <input
+              id="callback-phone"
+              type="tel"
+              inputMode="tel"
+              autoComplete="tel"
+              placeholder="(347) 000-0000"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+              disabled={status === 'loading'}
+              className="w-full bg-white/15 border border-white/20 text-white placeholder:text-white/40 rounded-xl px-4 py-3 text-sm mb-3 outline-none focus:border-brand-amber/60 focus:bg-white/20 transition-colors disabled:opacity-60"
+            />
+            {status === 'error' && (
+              <p className="text-red-400 text-xs mb-2">{errorMsg}</p>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading' || !phone.trim()}
+              className="w-full btn-gradient-amber text-brand-charcoal font-bold text-sm py-3 rounded-xl flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed transition-opacity"
+            >
+              {status === 'loading' ? (
+                <>
+                  <Loader2 size={15} className="animate-spin" aria-hidden="true" />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  <Phone size={14} aria-hidden="true" />
+                  Call Me Back
+                </>
+              )}
+            </button>
+          </form>
+          <p className="text-white/35 text-xs text-center mt-3">
+            Or call directly: <a href={BUSINESS.phoneHref} className="text-white/60 hover:text-brand-amber transition-colors">{BUSINESS.phone}</a>
+          </p>
+        </>
+      )}
     </div>
   )
 }
@@ -166,9 +207,9 @@ export function HeroSection({
                 </div>
               </div>
 
-              {/* Right: trust cluster card */}
+              {/* Right: callback request form */}
               <div className="lg:w-72 xl:w-80 mt-8 lg:mt-0 flex-shrink-0">
-                <TrustClusterCard afterHours={afterHours} />
+                <CallbackRequestCard />
               </div>
             </div>
           ) : (
