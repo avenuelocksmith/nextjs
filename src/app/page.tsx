@@ -70,6 +70,7 @@ const TOP_NEIGHBORHOODS = [
 ]
 
 export const revalidate = 3600
+export const runtime = 'edge'
 
 export default async function HomePage() {
   const reviews = await getGoogleReviews()

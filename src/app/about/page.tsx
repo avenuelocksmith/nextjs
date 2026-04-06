@@ -64,6 +64,7 @@ const DIFFERENTIATORS = [
 ]
 
 export const revalidate = 3600
+export const runtime = 'edge'
 
 export default async function AboutPage() {
   const reviews = await getGoogleReviews()

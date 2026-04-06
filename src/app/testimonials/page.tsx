@@ -9,6 +9,7 @@ import { getGoogleReviews } from '@/lib/reviews'
 import type { GoogleReview } from '@/lib/reviews'
 
 export const revalidate = 3600 // ISR: freshen reviews every hour
+export const runtime = 'edge'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Customer Reviews & Testimonials — Avenue Locksmith Brooklyn | 4.9★',

@@ -87,6 +87,7 @@ const FAQS = [
 ]
 
 export const revalidate = 3600
+export const runtime = 'edge'
 
 export default async function ServicesPage() {
   const reviews = await getGoogleReviews()

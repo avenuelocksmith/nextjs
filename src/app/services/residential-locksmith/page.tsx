@@ -54,6 +54,7 @@ const SERVICES = [
 ]
 
 export const revalidate = 3600
+export const runtime = 'edge'
 
 export default async function ResidentialLocksmithPage() {
   const reviews = await getGoogleReviews()
