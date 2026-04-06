@@ -4,6 +4,7 @@ import { PhoneButton } from '@/components/ui/PhoneButton'
 import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
+import { HeroTrustLogos } from '@/components/ui/HeroTrustLogos'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { Phone, CheckCircle, Loader2 } from 'lucide-react'
@@ -191,6 +192,10 @@ export function HeroSection({
                     {subheadline}
                   </p>
                 )}
+
+                <div className="[&>div]:justify-center [&>div]:lg:justify-start">
+                  <HeroTrustLogos />
+                </div>
 
                 <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-8 lg:mb-0">
                   <PhoneButton
