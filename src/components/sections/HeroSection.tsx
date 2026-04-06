@@ -51,12 +51,12 @@ function CallbackRequestCard() {
   }
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-6">
+    <div className="bg-white rounded-2xl p-6 shadow-md">
       {status === 'success' ? (
         <div className="flex flex-col items-center text-center gap-3 py-4">
           <CheckCircle size={40} className="text-brand-amber" aria-hidden="true" />
-          <p className="text-white font-bold text-lg leading-tight">We&apos;ll call you back!</p>
-          <p className="text-white/65 text-sm">
+          <p className="text-brand-charcoal font-bold text-lg leading-tight">We&apos;ll call you back!</p>
+          <p className="text-brand-muted text-sm">
             Our team will reach out to you shortly. For urgent issues, call us now.
           </p>
           <a
@@ -69,10 +69,10 @@ function CallbackRequestCard() {
         </div>
       ) : (
         <>
-          <p className="text-white font-bold text-base leading-tight mb-1">
+          <p className="text-brand-charcoal font-bold text-base leading-tight mb-1">
             Request a Callback
           </p>
-          <p className="text-white/60 text-xs mb-4">
+          <p className="text-brand-muted text-xs mb-4">
             Leave your number — we&apos;ll call you within 5 minutes.
           </p>
           <form onSubmit={handleSubmit} noValidate>
@@ -89,10 +89,10 @@ function CallbackRequestCard() {
               onChange={(e) => setPhone(e.target.value)}
               required
               disabled={status === 'loading'}
-              className="w-full bg-white/15 border border-white/20 text-white placeholder:text-white/40 rounded-xl px-4 py-3 text-sm mb-3 outline-none focus:border-brand-amber/60 focus:bg-white/20 transition-colors disabled:opacity-60"
+              className="w-full bg-brand-bg border border-brand-border text-brand-charcoal placeholder:text-brand-muted rounded-xl px-4 py-3 text-sm mb-3 outline-none focus:border-brand-amber focus:bg-white transition-colors disabled:opacity-60"
             />
             {status === 'error' && (
-              <p className="text-red-400 text-xs mb-2">{errorMsg}</p>
+              <p className="text-red-500 text-xs mb-2">{errorMsg}</p>
             )}
             <button
               type="submit"
@@ -112,8 +112,8 @@ function CallbackRequestCard() {
               )}
             </button>
           </form>
-          <p className="text-white/35 text-xs text-center mt-3">
-            Or call directly: <a href={BUSINESS.phoneHref} className="text-white/60 hover:text-brand-amber transition-colors">{BUSINESS.phone}</a>
+          <p className="text-brand-muted text-xs text-center mt-3">
+            Or call directly: <a href={BUSINESS.phoneHref} className="text-brand-charcoal/60 hover:text-brand-amber transition-colors">{BUSINESS.phone}</a>
           </p>
         </>
       )}
@@ -150,22 +150,12 @@ export function HeroSection({
         className={cn(
           'relative text-white overflow-hidden',
           isHomepage
-            ? (visitorStripVisible ? 'py-4 md:py-10' : 'py-8 md:py-16')
-            : 'py-5 md:py-10',
+            ? (visitorStripVisible ? 'py-6 md:py-12' : 'py-12 md:py-24')
+            : 'py-6 md:py-12',
           className
         )}
-        style={{ background: 'linear-gradient(135deg, #111827 0%, #1a2535 60%, #1f2d40 100%)' }}
+        style={{ background: 'linear-gradient(180deg, #111827 0%, #141d2b 100%)' }}
       >
-        {/* Subtle dot pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }}
-          aria-hidden="true"
-        />
-
         <div className="relative container mx-auto px-4">
           {isHomepage && <HeroVisitorStrip />}
 
@@ -183,12 +173,12 @@ export function HeroSection({
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
               {/* Left: text + CTAs */}
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="font-bold leading-tight mb-4 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
+                <h1 className="font-bold leading-[1.08] mb-6 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
                   {h1}
                 </h1>
 
                 {subheadline && (
-                  <p className="text-white/80 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-6 text-lg md:text-xl">
+                  <p className="text-white/65 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8 text-lg md:text-xl">
                     {subheadline}
                   </p>
                 )}
@@ -197,7 +187,7 @@ export function HeroSection({
                   <HeroTrustLogos />
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-8 lg:mb-0">
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3">
                   <PhoneButton
                     variant="primary"
                     size="xl"
@@ -205,7 +195,7 @@ export function HeroSection({
                   />
                   <Link
                     href="/free-quote/"
-                    className="inline-flex items-center justify-center px-7 py-3.5 border-2 border-white/30 text-white hover:border-white/70 hover:bg-white/10 rounded-xl font-semibold text-base transition-all duration-200"
+                    className="inline-flex items-center justify-center px-7 py-3.5 border border-white/25 text-white/80 hover:border-white/55 hover:text-white rounded-xl font-semibold text-base transition-all duration-200"
                   >
                     Get a Free Quote
                   </Link>
@@ -213,7 +203,7 @@ export function HeroSection({
               </div>
 
               {/* Right: callback request form */}
-              <div className="lg:w-72 xl:w-80 mt-8 lg:mt-0 flex-shrink-0">
+              <div className="lg:w-72 xl:w-80 mt-10 lg:mt-0 flex-shrink-0">
                 <CallbackRequestCard />
               </div>
             </div>
@@ -246,7 +236,7 @@ export function HeroSection({
                 {!isEmergency && (
                   <Link
                     href="/free-quote/"
-                    className="inline-flex items-center justify-center px-7 py-3.5 border-2 border-white/30 text-white hover:border-white/70 hover:bg-white/10 rounded-xl font-semibold text-base transition-all duration-200"
+                    className="inline-flex items-center justify-center px-7 py-3.5 border border-white/25 text-white/80 hover:border-white/55 hover:text-white rounded-xl font-semibold text-base transition-all duration-200"
                   >
                     Get a Free Quote
                   </Link>

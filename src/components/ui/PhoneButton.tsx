@@ -38,8 +38,7 @@ export function PhoneButton({
 
   const variantClass = isPrimary
     ? cn(
-        'text-brand-charcoal font-bold rounded-xl',
-        isXL ? 'animate-shimmer' : 'btn-gradient-amber'
+        'btn-gradient-amber text-brand-charcoal font-bold rounded-xl',
       )
     : variant === 'secondary'
     ? 'bg-brand-charcoal border-2 border-brand-amber/40 hover:border-brand-amber text-white font-bold rounded-xl shadow-lg hover:shadow-xl'
