@@ -450,6 +450,45 @@ export function getArticleSchema({
   }
 }
 
+/**
+ * Generates a LocalBusiness schema with embedded Review array.
+ * Inject this as JSON-LD on the testimonials page to enable
+ * Google Rich Results star snippets in search results.
+ *
+ * Capped at 10 reviews to keep the payload manageable.
+ */
+export function getReviewsSchema(
+  reviews: { authorName: string; text: string; time: number }[]
+) {
+  const capped = reviews.filter((r) => r.text?.trim()).slice(0, 10)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': BUSINESS.entityId,
+    name: BUSINESS.name,
+    review: capped.map((r) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: r.authorName,
+      },
+      reviewBody: r.text.trim(),
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: 5,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      datePublished: new Date(r.time * 1000).toISOString().split('T')[0],
+      itemReviewed: {
+        '@type': 'LocalBusiness',
+        '@id': BUSINESS.entityId,
+        name: BUSINESS.name,
+      },
+    })),
+  }
+}
+
 export function getHowToSchema({
   name,
   description,

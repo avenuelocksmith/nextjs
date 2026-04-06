@@ -10,6 +10,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getBreadcrumbSchema, getFAQSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { getGoogleReviews } from '@/lib/reviews'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Locksmith Services in Brooklyn, NY | Avenue Locksmith',
@@ -85,7 +86,10 @@ const FAQS = [
   },
 ]
 
-export default function ServicesPage() {
+export const revalidate = 3600
+
+export default async function ServicesPage() {
+  const reviews = await getGoogleReviews()
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: 'Services', url: '/services/' },
@@ -165,7 +169,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <TestimonialsSection title="What Our Customers Say" maxItems={3} />
+      <TestimonialsSection title="What Our Customers Say" reviews={reviews} maxItems={3} />
 
       <FAQSection faqs={FAQS} title="Frequently Asked Questions About Our Services" />
 

@@ -10,6 +10,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
+import { getGoogleReviews } from '@/lib/reviews'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Residential Locksmith',
@@ -52,7 +53,10 @@ const SERVICES = [
   { label: 'Master key systems', detail: 'For landlords managing multi-unit buildings' },
 ]
 
-export default function ResidentialLocksmithPage() {
+export const revalidate = 3600
+
+export default async function ResidentialLocksmithPage() {
+  const reviews = await getGoogleReviews()
   return (
     <>
       <JsonLd data={getServiceSchema({ name: 'Residential Locksmith Services', description: 'Full residential locksmith services in Brooklyn, NY. Apartment lockouts, move-in rekeying, deadbolt installation, smart locks, and key duplication. Licensed & insured. NYC tenant rights respected.', url: '/services/residential-locksmith/', serviceType: 'Residential Locksmith', brands: LOCK_BRANDS })} />
@@ -161,7 +165,7 @@ export default function ResidentialLocksmithPage() {
 
       <FAQSection faqs={FAQS} title="Residential Locksmith FAQ — NYC Tenant & Homeowner Questions" />
 
-      <TestimonialsSection title="What Brooklyn Residents Say" maxItems={3} />
+      <TestimonialsSection title="What Brooklyn Residents Say" reviews={reviews} maxItems={3} />
 
       {/* Internal links */}
       <section className="py-10 bg-brand-bg">
