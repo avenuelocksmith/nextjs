@@ -9,6 +9,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Lockout Service',
@@ -34,7 +35,7 @@ const LOCKOUT_TYPES = [
     icon: Car,
     label: 'Auto Lockout',
     href: '/services/lockout-service/auto-lockout-service-avenue-locks/',
-    desc: 'Keys locked in the car? We open all makes and models without damage. Available 24/7 across Brooklyn.',
+    desc: 'Keys locked in the car? We open all makes and models without damage, any time, across Brooklyn.',
   },
 ]
 
@@ -152,7 +153,7 @@ export default function LockoutServicePage() {
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-3">Locked Out in Brooklyn? Call Now.</h2>
-          <p className="text-white/80 mb-8 text-lg">15–25 minute response. Available 24/7, 365 days a year.</p>
+          <p className="text-white/80 mb-8 text-lg">15–25 minute response. Available <Term247 />, 365 days a year.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}
           </a>

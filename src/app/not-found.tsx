@@ -1,6 +1,7 @@
 import { Phone, Home, Search } from 'lucide-react'
 import Link from 'next/link'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export default function NotFound() {
   return (
@@ -9,7 +10,7 @@ export default function NotFound() {
         <p className="text-brand-amber text-6xl font-bold mb-4">404</p>
         <h1 className="text-3xl font-bold text-brand-navy mb-4">Page Not Found</h1>
         <p className="text-brand-muted text-lg mb-8">
-          The page you are looking for does not exist or has been moved. If you need immediate locksmith service, call us directly — we&apos;re available 24/7.
+          The page you are looking for does not exist or has been moved. If you need immediate locksmith service, call us directly — we&apos;re available <Term247 />.
         </p>
 
         <a

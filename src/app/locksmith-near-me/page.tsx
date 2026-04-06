@@ -9,6 +9,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getBreadcrumbSchema, getFAQSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 import { NEIGHBORHOODS } from '@/lib/neighborhoods'
 
 export const metadata: Metadata = buildMetadata({
@@ -282,7 +283,7 @@ export default function LocksmithNearMePage() {
             Need a Locksmith in Brooklyn Right Now?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            15–25 minute response guaranteed. Available 24/7, 365 days a year. We quote the full price before we start.
+            15–25 minute response guaranteed. Available <Term247 />, 365 days a year. We quote the full price before we start.
           </p>
           <a
             href={BUSINESS.phoneHref}

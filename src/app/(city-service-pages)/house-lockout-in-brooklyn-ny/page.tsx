@@ -7,6 +7,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildMetadata({
   title: 'House Lockout in Brooklyn, NY — Fast Non-Destructive Entry | Avenue Locksmith',
@@ -33,9 +34,10 @@ export default function HouseLockoutPage() {
         <div className="container mx-auto px-4 max-w-3xl">
           <p className="text-brand-text text-lg leading-relaxed mb-6">Home lockouts are our most common call. From apartments in Williamsburg to brownstones in Park Slope to single-family homes in Bay Ridge — we have opened every type of Brooklyn door, with every type of lock configuration. Our technicians carry tools for standard pin tumbler deadbolts, mortise locks, and electronic keypad locks.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {['Apartment lockouts', 'Single-family home lockouts', 'Brownstone lockouts', 'Condo & co-op lockouts', 'Deadbolt & knob lock entry', 'Mortise lock entry', 'Non-destructive in almost all cases', 'Available 24/7 — no extra night charge'].map((item) => (
+            {['Apartment lockouts', 'Single-family home lockouts', 'Brownstone lockouts', 'Condo & co-op lockouts', 'Deadbolt & knob lock entry', 'Mortise lock entry', 'Non-destructive in almost all cases'].map((item) => (
               <div key={item} className="flex items-center gap-2.5"><CheckCircle size={16} className="text-brand-amber shrink-0" aria-hidden="true" /><span className="text-brand-text text-sm">{item}</span></div>
             ))}
+            <div className="flex items-center gap-2.5"><CheckCircle size={16} className="text-brand-amber shrink-0" aria-hidden="true" /><span className="text-brand-text text-sm">Available <Term247 /> — no extra night charge</span></div>
           </div>
         </div>
       </section>

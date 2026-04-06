@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildMetadata({
   title: 'About Avenue Locksmith — Brooklyn\'s Licensed & Trusted Locksmith',
@@ -273,7 +274,7 @@ export default function AboutPage() {
             </a>
           </div>
           <p className="text-white/50 text-sm mt-6">
-            Available 24/7 &mdash; 365 days a year &middot; {BUSINESS.address.display}
+            Available <Term247 /> &mdash; 365 days a year &middot; {BUSINESS.address.display}
           </p>
         </div>
       </section>

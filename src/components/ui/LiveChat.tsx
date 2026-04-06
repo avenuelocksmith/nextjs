@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from 'react'
 import { MessageCircle, X, Phone, Send, Loader2 } from 'lucide-react'
 import { BUSINESS } from '@/lib/constants'
 import { FLOW, type FlowNode } from '@/lib/chatFlow'
+import { useAvailability } from '@/hooks/useAvailability'
+import { replace247 } from '@/lib/availability'
 
 interface Message {
   from: 'bot' | 'user'
@@ -132,7 +134,7 @@ export function LiveChat() {
         setMessages((prev) => {
           const copy = [...prev]
           let idx = -1; for (let j = copy.length - 1; j >= 0; j--) { if (copy[j].from === 'bot' && copy[j].text === '...') { idx = j; break } }
-          if (idx !== -1) copy[idx] = { from: 'bot', text: "I'm having trouble right now. Please call us directly at (347) 386-7164 — we're available 24/7." }
+          if (idx !== -1) copy[idx] = { from: 'bot', text: replace247("I'm having trouble right now. Please call us directly at (347) 386-7164 — we're available 24/7.", afterHours) }
           return copy
         })
         setNode(FLOW.fallback)
@@ -147,6 +149,7 @@ export function LiveChat() {
     if (node.nextAfterInput) goToNode(node.nextAfterInput)
   }
 
+  const afterHours = useAvailability()
   const isLoading = phase === 'ai_loading' || phase === 'submitting'
 
   return (
@@ -199,7 +202,7 @@ export function LiveChat() {
                       <span className="w-1.5 h-1.5 bg-brand-muted rounded-full animate-bounce [animation-delay:150ms]" />
                       <span className="w-1.5 h-1.5 bg-brand-muted rounded-full animate-bounce [animation-delay:300ms]" />
                     </span>
-                  ) : m.text}
+                  ) : m.from === 'bot' ? replace247(m.text, afterHours) : m.text}
                 </div>
               </div>
             ))}

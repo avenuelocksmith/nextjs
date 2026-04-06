@@ -12,6 +12,7 @@ import { MapEmbed } from '@/components/ui/MapEmbed'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = {
   title: `24/7 Locksmith in Brooklyn, NY — ${BUSINESS.name} | ${BUSINESS.phone}`,
@@ -195,7 +196,7 @@ export default function HomePage() {
             <span>{BUSINESS.phone}</span>
           </a>
           <p className="text-white/60 text-sm">
-            Available 24/7 — 365 days a year · Licensed &amp; Insured · 15–25 Min Response Guarantee
+            Available <Term247 /> — 365 days a year · Licensed &amp; Insured · 15–25 Min Response Guarantee
           </p>
         </div>
       </section>

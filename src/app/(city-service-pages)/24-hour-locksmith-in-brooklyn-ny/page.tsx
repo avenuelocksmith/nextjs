@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getServiceSchema, getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildMetadata({
   title: '24-Hour Locksmith in Brooklyn, NY — Always Available | Avenue Locksmith',
@@ -35,9 +36,10 @@ export default function TwentyFourHourPage() {
           <h2 className="text-2xl font-bold text-brand-navy mb-5">24-Hour Service — What That Actually Means</h2>
           <p className="text-brand-text leading-relaxed mb-5">Many services claim to be available 24 hours but route after-hours calls to a voicemail or an answering service that schedules you for the next morning. At Avenue Locksmith, 24/7 means a live Avenue Locksmith person answers, dispatches a technician, and has someone at your door within 15–25 minutes — at 2pm or 2am.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-            {['Live person answers every call — no voicemail', '15–25 minute arrival guarantee around the clock', 'Same pricing day or night — no surcharges', 'All emergency services available 24/7', 'Holidays and weekends treated as regular days', 'Serving all Brooklyn neighborhoods 24 hours'].map((item) => (
+            {['Live person answers every call — no voicemail', '15–25 minute arrival guarantee around the clock', 'Same pricing day or night — no surcharges', 'Holidays and weekends treated as regular days', 'Serving all Brooklyn neighborhoods 24 hours'].map((item) => (
               <div key={item} className="flex items-center gap-2.5"><CheckCircle size={16} className="text-brand-amber shrink-0" aria-hidden="true" /><span className="text-brand-text text-sm">{item}</span></div>
             ))}
+            <div className="flex items-center gap-2.5"><CheckCircle size={16} className="text-brand-amber shrink-0" aria-hidden="true" /><span className="text-brand-text text-sm">All emergency services available <Term247 /></span></div>
           </div>
           <div className="bg-brand-bg rounded-xl border border-brand-border p-5">
             <div className="flex items-center gap-2 mb-2"><Clock size={18} className="text-brand-amber" aria-hidden="true" /><h3 className="font-bold text-brand-navy">Our Hours</h3></div>

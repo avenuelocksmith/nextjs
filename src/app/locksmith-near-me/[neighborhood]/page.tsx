@@ -12,6 +12,7 @@ import { buildNeighborhoodMetadata } from '@/lib/seo'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
 import { NEIGHBORHOODS } from '@/lib/neighborhoods'
+import { Term247 } from '@/components/ui/Term247'
 
 export async function generateStaticParams() {
   return NEIGHBORHOODS.map((n) => ({ neighborhood: n.slug }))
@@ -275,7 +276,7 @@ export default async function NeighborhoodPage({
             Locked Out in {n.name}? Call Now.
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            We will be at your door in 15–25 minutes. Available 24/7, 365 days a year. Upfront pricing — no surprises.
+            We will be at your door in 15–25 minutes. Available <Term247 />, 365 days a year. Upfront pricing — no surprises.
           </p>
           <a
             href={BUSINESS.phoneHref}
@@ -285,7 +286,7 @@ export default async function NeighborhoodPage({
             {BUSINESS.phone}
           </a>
           <p className="text-white/50 text-sm mt-5">
-            Available 24/7 · Licensed &amp; Insured · No Hidden Fees
+            Available <Term247 /> · Licensed &amp; Insured · No Hidden Fees
           </p>
         </div>
       </section>

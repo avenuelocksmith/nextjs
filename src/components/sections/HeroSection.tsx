@@ -6,6 +6,7 @@ import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { useAvailability } from '@/hooks/useAvailability'
+import { replace247 } from '@/lib/availability'
 
 interface HeroSectionProps {
   h1: string
@@ -77,7 +78,7 @@ export function HeroSection({
               isHomepage ? 'text-lg md:text-xl' : 'text-base md:text-lg'
             )}
           >
-            {subheadline}
+            {replace247(subheadline, afterHours)}
           </p>
         )}
 

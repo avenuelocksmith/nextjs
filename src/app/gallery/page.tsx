@@ -5,6 +5,7 @@ import { getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { GallerySection } from '@/components/sections/GallerySection'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Our Work — Locksmith Projects Gallery | Avenue Locksmith Brooklyn',
@@ -55,7 +56,7 @@ export default function GalleryPage() {
         <div className="container mx-auto px-4 max-w-2xl">
           <h2 className="text-2xl font-bold mb-3">Ready to Get Started?</h2>
           <p className="text-white/80 mb-6">
-            Licensed & insured. Upfront pricing before any work begins. Available 24/7.
+            Licensed &amp; insured. Upfront pricing before any work begins. Available <Term247 />.
           </p>
           <a
             href={BUSINESS.phoneHref}

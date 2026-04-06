@@ -8,6 +8,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Residential Lockout Service in Brooklyn, NY — Apartments & Houses | Avenue Locksmith',
@@ -175,7 +176,7 @@ export default function ResidentialLockoutPage() {
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-3">Locked Out of Your Home in Brooklyn?</h2>
-          <p className="text-white/80 mb-8">Call now — we will be there in 15–25 minutes. Available 24/7, 365 days.</p>
+          <p className="text-white/80 mb-8">Call now — we will be there in 15–25 minutes. Available <Term247 />, 365 days.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}
           </a>

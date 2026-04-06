@@ -9,6 +9,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema } from '@/lib/schema'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildServiceMetadata({
   serviceName: 'Auto Locksmith',
@@ -218,7 +219,7 @@ export default function AutoLocksmithPage() {
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-3">Locked Out of Your Car in Brooklyn?</h2>
           <p className="text-white/80 mb-8">
-            15–25 minute response. Available 24/7. We come to you — street, garage, or parking lot.
+            15–25 minute response. Available <Term247 />. We come to you — street, garage, or parking lot.
           </p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />

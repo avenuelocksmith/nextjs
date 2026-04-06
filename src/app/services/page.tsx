@@ -10,6 +10,7 @@ import { JsonLd } from '@/components/schema/JsonLd'
 import { getBreadcrumbSchema, getFAQSchema } from '@/lib/schema'
 import { buildMetadata } from '@/lib/seo'
 import { BUSINESS } from '@/lib/constants'
+import { Term247 } from '@/components/ui/Term247'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Locksmith Services in Brooklyn, NY | Avenue Locksmith',
@@ -186,7 +187,7 @@ export default function ServicesPage() {
             Need a Locksmith in Brooklyn?
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Call now for immediate service or a free quote. Available 24/7, 365 days a year.
+            Call now for immediate service or a free quote. Available <Term247 />, 365 days a year.
           </p>
           <a
             href={BUSINESS.phoneHref}
