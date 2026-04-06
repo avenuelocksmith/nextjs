@@ -34,22 +34,48 @@ function getSupabase() {
 }
 
 // ─── Place ID resolution ─────────────────────────────────────────────────────
+//
+// Avenue Locksmith is a Service Area Business (SAB) — the physical address is
+// hidden on Google Maps/Places API. Address-based text search therefore fails.
+// Strategy:
+//  1. Env var  — zero API cost, most reliable
+//  2. Phone    — `inputtype=phonenumber` works for SABs (no address needed)
+//  3. Name+city — last resort; risk of wrong match but kept as safety net
 
 async function resolvePlaceId(apiKey: string): Promise<string | null> {
-  // Prefer explicit env var (fastest, no extra API call)
+  // 1. Prefer explicit env var (fastest, no extra API call)
   if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
 
-  // Fall back: auto-discover via text search (costs 1 Find Place call)
+  const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+
+  // 2. Phone number lookup — reliable for SABs (address is hidden)
   try {
-    const input = encodeURIComponent('Avenue Locksmith 973 E 55th St Brooklyn NY')
-    const url = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`
-    const res = await fetch(url, { cache: 'no-store' })
-    if (!res.ok) return null
-    const data = await res.json() as { candidates?: { place_id: string }[] }
-    return data.candidates?.[0]?.place_id ?? null
-  } catch {
-    return null
-  }
+    const phone = encodeURIComponent('+13473867164')
+    const res = await fetch(
+      `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
+      { cache: 'no-store' },
+    )
+    if (res.ok) {
+      const data = await res.json() as { candidates?: { place_id: string }[] }
+      const id = data.candidates?.[0]?.place_id
+      if (id) return id
+    }
+  } catch { /* fall through */ }
+
+  // 3. Name + city fallback (no address — address is hidden for SABs)
+  try {
+    const input = encodeURIComponent('Avenue Locksmith Brooklyn NY')
+    const res = await fetch(
+      `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
+      { cache: 'no-store' },
+    )
+    if (res.ok) {
+      const data = await res.json() as { candidates?: { place_id: string }[] }
+      return data.candidates?.[0]?.place_id ?? null
+    }
+  } catch { /* fall through */ }
+
+  return null
 }
 
 // ─── Google Places API fetch ─────────────────────────────────────────────────
