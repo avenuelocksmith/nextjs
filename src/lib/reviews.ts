@@ -27,7 +27,9 @@ export interface GoogleReview {
 // ─── Supabase client ────────────────────────────────────────────────────────
 
 function getSupabase() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  // SUPABASE_URL is a server-only runtime var (works in Cloudflare edge).
+  // NEXT_PUBLIC_SUPABASE_URL is build-time only and not available in edge functions at runtime.
+  const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY
   if (!url || !key) throw new Error('Supabase env vars not configured')
   return createClient(url, key)

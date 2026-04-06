@@ -43,7 +43,7 @@ export async function GET() {
     env: {
       GOOGLE_PLACES_API_KEY: !!process.env.GOOGLE_PLACES_API_KEY,
       GOOGLE_PLACE_ID: !!process.env.GOOGLE_PLACE_ID,
-      NEXT_PUBLIC_SUPABASE_URL: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+      NEXT_PUBLIC_SUPABASE_URL: !!(process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL),
       SUPABASE_SERVICE_ROLE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
     },
     placeId: { source: null, value: null, error: null },
@@ -157,7 +157,7 @@ export async function GET() {
 
   // ── Step 3: Check Supabase table ────────────────────────────────────────────
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
   if (supabaseUrl && supabaseKey) {
     try {
