@@ -211,7 +211,7 @@ export default async function TestimonialsPage() {
                   Showing {reviews.length} 5-star Google reviews
                 </p>
                 <a
-                  href="https://www.google.com/maps/?cid=17316828625487224031"
+                  href={BUSINESS.reviewsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-brand-navy hover:underline font-medium"
@@ -235,7 +235,7 @@ export default async function TestimonialsPage() {
                 Our reviews are loading. In the meantime, visit us on Google Maps.
               </p>
               <a
-                href="https://www.google.com/maps/?cid=17316828625487224031"
+                href={BUSINESS.reviewsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white border border-brand-border text-brand-navy font-semibold px-6 py-3 rounded-xl hover:shadow-md transition-shadow text-sm"
