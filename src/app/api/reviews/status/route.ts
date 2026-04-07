@@ -66,7 +66,6 @@ export async function GET() {
         const phone = encodeURIComponent('+13473867164')
         const res = await fetch(
           `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
-          { cache: 'no-store' },
         )
         const data = await res.json() as {
           status?: string
@@ -89,7 +88,6 @@ export async function GET() {
           const input = encodeURIComponent('Avenue Locksmith Brooklyn NY')
           const res = await fetch(
             `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
-            { cache: 'no-store' },
           )
           const data = await res.json() as {
             status?: string
@@ -122,7 +120,7 @@ export async function GET() {
           `&fields=reviews` +
           `&reviews_sort=newest` +
           `&key=${apiKey}`
-        const res = await fetch(url, { cache: 'no-store' })
+        const res = await fetch(url)
         const data = await res.json() as {
           status?: string
           result?: { reviews?: { rating: number }[] }

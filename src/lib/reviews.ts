@@ -55,7 +55,6 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
     const phone = encodeURIComponent('+13473867164')
     const res = await fetch(
       `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
-      { cache: 'no-store' },
     )
     if (res.ok) {
       const data = await res.json() as { candidates?: { place_id: string }[] }
@@ -69,7 +68,6 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
     const input = encodeURIComponent('Avenue Locksmith Brooklyn NY')
     const res = await fetch(
       `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
-      { cache: 'no-store' },
     )
     if (res.ok) {
       const data = await res.json() as { candidates?: { place_id: string }[] }
@@ -99,7 +97,7 @@ async function fetchFromGoogle(placeId: string, apiKey: string): Promise<PlacesR
     `&reviews_sort=newest` +
     `&key=${apiKey}`
 
-  const res = await fetch(url, { cache: 'no-store' })
+  const res = await fetch(url)
   if (!res.ok) return []
 
   const data = await res.json() as { result?: { reviews?: PlacesReview[] } }
