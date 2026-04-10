@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
 import { BUSINESS } from '@/lib/constants'
+import { getGoogleReviews } from '@/lib/reviews'
 
 const ServicesGrid        = dynamic(() => import('@/components/sections/ServicesGrid').then(m => ({ default: m.ServicesGrid })))
 const WhyChooseUs         = dynamic(() => import('@/components/sections/WhyChooseUs').then(m => ({ default: m.WhyChooseUs })))
@@ -68,7 +69,11 @@ const TOP_NEIGHBORHOODS = [
   { name: 'Carroll Gardens', href: '/locksmith-near-me/carroll-gardens/' },
 ]
 
-export default function HomePage() {
+export const revalidate = 3600
+export const runtime = 'edge'
+
+export default async function HomePage() {
+  const reviews = await getGoogleReviews()
   const faqSchema = getFAQSchema(HOME_FAQS)
   const breadcrumbSchema = getBreadcrumbSchema([{ name: 'Home', url: '/' }])
 
@@ -97,6 +102,7 @@ export default function HomePage() {
       {/* Testimonials */}
       <TestimonialsSection
         title="What Our Customers Say"
+        reviews={reviews}
         maxItems={3}
       />
       <div className="text-center pb-10 -mt-4 bg-brand-bg">

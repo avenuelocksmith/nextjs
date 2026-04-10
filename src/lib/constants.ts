@@ -35,6 +35,7 @@ export const BUSINESS = {
   entityId: 'https://www.avenuelocks.com/#business',
   description: 'Avenue Locksmith is a licensed and insured locksmith company founded in 2010, serving Brooklyn, Queens, Manhattan, and Staten Island. We provide 24/7 residential, commercial, automotive, and emergency locksmith services including lockouts, lock repairs, replacements, and new lock installations with transparent upfront pricing.',
   mapUrl: 'https://maps.google.com/?q=Avenue+Locksmith+973+E+55th+St+Brooklyn+NY+11234',
+  reviewsUrl: 'https://www.google.com/search?q=Avenue+Locks+locksmith+Brooklyn&kgmid=/g/11l6zmv325',
   sameAs: [
     'https://www.tiktok.com/@avenue_locksmith_nyc',
     'https://x.com/Avenue_Locks',
