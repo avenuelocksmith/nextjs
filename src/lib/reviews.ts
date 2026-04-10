@@ -49,12 +49,14 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
   if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
 
   const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+  // Coordinates from the verified Google Maps URL for Avenue Locks
+  const locationBias = 'circle:500@40.60841,-74.0460655'
 
-  // 2. Phone number lookup — reliable for SABs (address is hidden)
+  // 2. Phone number lookup with location bias
   try {
     const phone = encodeURIComponent('+13473867164')
     const res = await fetch(
-      `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
+      `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
     )
     if (res.ok) {
       const data = await res.json() as { candidates?: { place_id: string }[] }
@@ -63,11 +65,11 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
     }
   } catch { /* fall through */ }
 
-  // 3. Name + city fallback (no address — address is hidden for SABs)
+  // 3. Name + location bias (exact coordinates eliminate wrong-business matches)
   try {
-    const input = encodeURIComponent('Avenue Locks Brooklyn NY')
+    const input = encodeURIComponent('Avenue Locks')
     const res = await fetch(
-      `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
+      `${base}?input=${input}&inputtype=textquery&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
     )
     if (res.ok) {
       const data = await res.json() as { candidates?: { place_id: string }[] }

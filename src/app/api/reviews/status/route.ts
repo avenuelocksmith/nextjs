@@ -60,12 +60,13 @@ export async function GET() {
       report.placeId = { source: 'env', value: process.env.GOOGLE_PLACE_ID, error: null }
     } else {
       const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+      const locationBias = 'circle:500@40.60841,-74.0460655'
 
-      // Phone number lookup — reliable for Service Area Businesses (address hidden)
+      // Phone number lookup with location bias
       try {
         const phone = encodeURIComponent('+13473867164')
         const res = await fetch(
-          `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
+          `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
         )
         const data = await res.json() as {
           status?: string
@@ -82,12 +83,12 @@ export async function GET() {
         report.placeId.error = `Phone lookup threw: ${String(e)}`
       }
 
-      // Name + city fallback
+      // Name + location bias fallback
       if (!report.placeId.value) {
         try {
-          const input = encodeURIComponent('Avenue Locks Brooklyn NY')
+          const input = encodeURIComponent('Avenue Locks')
           const res = await fetch(
-            `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
+            `${base}?input=${input}&inputtype=textquery&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
           )
           const data = await res.json() as {
             status?: string
