@@ -65,7 +65,7 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
 
   // 3. Name + city fallback (no address — address is hidden for SABs)
   try {
-    const input = encodeURIComponent('Avenue Locksmith Brooklyn NY')
+    const input = encodeURIComponent('Avenue Locks Brooklyn NY')
     const res = await fetch(
       `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
     )

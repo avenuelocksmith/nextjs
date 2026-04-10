@@ -85,7 +85,7 @@ export async function GET() {
       // Name + city fallback
       if (!report.placeId.value) {
         try {
-          const input = encodeURIComponent('Avenue Locksmith Brooklyn NY')
+          const input = encodeURIComponent('Avenue Locks Brooklyn NY')
           const res = await fetch(
             `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
           )
