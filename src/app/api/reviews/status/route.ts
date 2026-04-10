@@ -59,12 +59,13 @@ export async function GET() {
     if (process.env.GOOGLE_PLACE_ID) {
       report.placeId = { source: 'env', value: process.env.GOOGLE_PLACE_ID, error: null }
     } else {
-      // Phone number lookup — no location bias needed, phone numbers are globally unique
+      const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+
+      // Name + phone combined — most specific query, eliminates wrong-business matches
       try {
-        const phone = encodeURIComponent('+13473867164')
+        const input = encodeURIComponent('Avenue Locks (347) 386-7164')
         const res = await fetch(
-          `https://maps.googleapis.com/maps/api/place/findplacefromtext/json` +
-          `?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
+          `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
         )
         const data = await res.json() as {
           status?: string
@@ -75,26 +76,25 @@ export async function GET() {
         if (id) {
           report.placeId = { source: 'phone_lookup', value: id, error: null }
         } else {
-          report.placeId.error = `Phone lookup: ${data.status ?? 'unknown'}${data.error_message ? ' — ' + data.error_message : ''}`
+          report.placeId.error = `Name+phone: ${data.status ?? 'unknown'}${data.error_message ? ' — ' + data.error_message : ''}`
         }
       } catch (e) {
-        report.placeId.error = `Phone lookup threw: ${String(e)}`
+        report.placeId.error = `Name+phone threw: ${String(e)}`
       }
 
-      // textsearch fallback — handles SABs better than findplacefromtext
+      // Name + city fallback
       if (!report.placeId.value) {
         try {
-          const query = encodeURIComponent('Avenue Locks locksmith')
+          const query = encodeURIComponent('Avenue Locks Brooklyn NY')
           const res = await fetch(
-            `https://maps.googleapis.com/maps/api/place/textsearch/json` +
-            `?query=${query}&location=40.60841,-74.0460655&radius=10000&key=${apiKey}`,
+            `${base}?input=${query}&inputtype=textquery&fields=place_id&key=${apiKey}`,
           )
           const data = await res.json() as {
             status?: string
-            results?: { place_id: string }[]
+            candidates?: { place_id: string }[]
             error_message?: string
           }
-          const id = data.results?.[0]?.place_id ?? null
+          const id = data.candidates?.[0]?.place_id ?? null
           report.placeId = {
             source: 'text_query',
             value: id,

@@ -48,12 +48,13 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
   // 1. Prefer explicit env var (fastest, no extra API call)
   if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
 
-  // 2. Phone number lookup — no location bias needed, phone numbers are globally unique
+  const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+
+  // 2. Name + phone combined — most specific, eliminates wrong-business matches
   try {
-    const phone = encodeURIComponent('+13473867164')
+    const input = encodeURIComponent('Avenue Locks (347) 386-7164')
     const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/findplacefromtext/json` +
-      `?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
+      `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
     )
     if (res.ok) {
       const data = await res.json() as { candidates?: { place_id: string }[] }
@@ -62,17 +63,15 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
     }
   } catch { /* fall through */ }
 
-  // 3. Text search with location — textsearch handles SABs better than findplacefromtext
-  //    Coordinates from the verified Google Maps URL for Avenue Locks
+  // 3. Name + city fallback
   try {
-    const query = encodeURIComponent('Avenue Locks locksmith')
+    const input = encodeURIComponent('Avenue Locks Brooklyn NY')
     const res = await fetch(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json` +
-      `?query=${query}&location=40.60841,-74.0460655&radius=10000&key=${apiKey}`,
+      `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
     )
     if (res.ok) {
-      const data = await res.json() as { results?: { place_id: string }[] }
-      const id = data.results?.[0]?.place_id
+      const data = await res.json() as { candidates?: { place_id: string }[] }
+      const id = data.candidates?.[0]?.place_id
       if (id) return id
     }
   } catch { /* fall through */ }
