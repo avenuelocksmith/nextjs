@@ -48,15 +48,12 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
   // 1. Prefer explicit env var (fastest, no extra API call)
   if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
 
-  const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
-  // Coordinates from the verified Google Maps URL for Avenue Locks
-  const locationBias = 'circle:500@40.60841,-74.0460655'
-
-  // 2. Phone number lookup with location bias
+  // 2. Phone number lookup — no location bias needed, phone numbers are globally unique
   try {
     const phone = encodeURIComponent('+13473867164')
     const res = await fetch(
-      `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
+      `https://maps.googleapis.com/maps/api/place/findplacefromtext/json` +
+      `?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
     )
     if (res.ok) {
       const data = await res.json() as { candidates?: { place_id: string }[] }
@@ -65,15 +62,18 @@ async function resolvePlaceId(apiKey: string): Promise<string | null> {
     }
   } catch { /* fall through */ }
 
-  // 3. Name + location bias (exact coordinates eliminate wrong-business matches)
+  // 3. Text search with location — textsearch handles SABs better than findplacefromtext
+  //    Coordinates from the verified Google Maps URL for Avenue Locks
   try {
-    const input = encodeURIComponent('Avenue Locks')
+    const query = encodeURIComponent('Avenue Locks locksmith')
     const res = await fetch(
-      `${base}?input=${input}&inputtype=textquery&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
+      `https://maps.googleapis.com/maps/api/place/textsearch/json` +
+      `?query=${query}&location=40.60841,-74.0460655&radius=10000&key=${apiKey}`,
     )
     if (res.ok) {
-      const data = await res.json() as { candidates?: { place_id: string }[] }
-      return data.candidates?.[0]?.place_id ?? null
+      const data = await res.json() as { results?: { place_id: string }[] }
+      const id = data.results?.[0]?.place_id
+      if (id) return id
     }
   } catch { /* fall through */ }
 

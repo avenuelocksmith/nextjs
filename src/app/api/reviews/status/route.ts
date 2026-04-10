@@ -59,14 +59,12 @@ export async function GET() {
     if (process.env.GOOGLE_PLACE_ID) {
       report.placeId = { source: 'env', value: process.env.GOOGLE_PLACE_ID, error: null }
     } else {
-      const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
-      const locationBias = 'circle:500@40.60841,-74.0460655'
-
-      // Phone number lookup with location bias
+      // Phone number lookup — no location bias needed, phone numbers are globally unique
       try {
         const phone = encodeURIComponent('+13473867164')
         const res = await fetch(
-          `${base}?input=${phone}&inputtype=phonenumber&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
+          `https://maps.googleapis.com/maps/api/place/findplacefromtext/json` +
+          `?input=${phone}&inputtype=phonenumber&fields=place_id&key=${apiKey}`,
         )
         const data = await res.json() as {
           status?: string
@@ -83,19 +81,20 @@ export async function GET() {
         report.placeId.error = `Phone lookup threw: ${String(e)}`
       }
 
-      // Name + location bias fallback
+      // textsearch fallback — handles SABs better than findplacefromtext
       if (!report.placeId.value) {
         try {
-          const input = encodeURIComponent('Avenue Locks')
+          const query = encodeURIComponent('Avenue Locks locksmith')
           const res = await fetch(
-            `${base}?input=${input}&inputtype=textquery&fields=place_id&locationbias=${locationBias}&key=${apiKey}`,
+            `https://maps.googleapis.com/maps/api/place/textsearch/json` +
+            `?query=${query}&location=40.60841,-74.0460655&radius=10000&key=${apiKey}`,
           )
           const data = await res.json() as {
             status?: string
-            candidates?: { place_id: string }[]
+            results?: { place_id: string }[]
             error_message?: string
           }
-          const id = data.candidates?.[0]?.place_id ?? null
+          const id = data.results?.[0]?.place_id ?? null
           report.placeId = {
             source: 'text_query',
             value: id,
