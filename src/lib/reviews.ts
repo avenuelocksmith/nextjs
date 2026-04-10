@@ -1,123 +1,121 @@
 /**
  * Google Reviews — server-side utility (edge-compatible)
  *
- * Strategy:
- *  1. Resolve the Google Place ID (env var or auto-discover via text search)
- *  2. Fetch up to 5 most-recent reviews from Google Places API
- *  3. Filter to 5-star only; never read profile_photo_url
- *  4. Upsert new reviews into Supabase `google_reviews` table (accumulates over time)
- *  5. Return ALL stored 5-star rows from Supabase, newest first
+ * Uses Google Business Profile API (OAuth) — works for Service Area
+ * Businesses (SABs) which don't have accessible Place IDs via the
+ * standard Places API.
  *
- * ISR revalidation is controlled at the calling page (export const revalidate = 3600).
- * Cloudflare env vars: GOOGLE_PLACES_API_KEY, GOOGLE_PLACE_ID (optional),
- *                      NEXT_PUBLIC_SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY
+ * Required Cloudflare env vars:
+ *   GOOGLE_OAUTH_CLIENT_ID
+ *   GOOGLE_OAUTH_CLIENT_SECRET
+ *   GOOGLE_REFRESH_TOKEN
+ *   GOOGLE_LOCATION_NAME  — e.g. "accounts/123456/locations/789012"
+ *   SUPABASE_URL          — (or NEXT_PUBLIC_SUPABASE_URL)
+ *   SUPABASE_SERVICE_ROLE_KEY
  */
 
 import { createClient } from '@supabase/supabase-js'
 
 export interface GoogleReview {
-  id: string           // author_url (unique per Google reviewer)
+  id: string
   authorName: string
   rating: number
   text: string
   time: number         // Unix timestamp
-  relativeTime: string // e.g. "a month ago"
+  relativeTime: string // e.g. "3 months ago"
 }
 
 // ─── Supabase client ────────────────────────────────────────────────────────
 
 function getSupabase() {
-  // SUPABASE_URL is a server-only runtime var (works in Cloudflare edge).
-  // NEXT_PUBLIC_SUPABASE_URL is build-time only and not available in edge functions at runtime.
   const url = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY
   if (!url || !key) throw new Error('Supabase env vars not configured')
   return createClient(url, key)
 }
 
-// ─── Place ID resolution ─────────────────────────────────────────────────────
-//
-// Avenue Locksmith is a Service Area Business (SAB) — the physical address is
-// hidden on Google Maps/Places API. Address-based text search therefore fails.
-// Strategy:
-//  1. Env var  — zero API cost, most reliable
-//  2. Phone    — `inputtype=phonenumber` works for SABs (no address needed)
-//  3. Name+city — last resort; risk of wrong match but kept as safety net
+// ─── Google OAuth token exchange ─────────────────────────────────────────────
 
-async function resolvePlaceId(apiKey: string): Promise<string | null> {
-  // 1. Prefer explicit env var (fastest, no extra API call)
-  if (process.env.GOOGLE_PLACE_ID) return process.env.GOOGLE_PLACE_ID
-
-  const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
-
-  // 2. Name + phone combined — most specific, eliminates wrong-business matches
-  try {
-    const input = encodeURIComponent('Avenue Locks (347) 386-7164')
-    const res = await fetch(
-      `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
-    )
-    if (res.ok) {
-      const data = await res.json() as { candidates?: { place_id: string }[] }
-      const id = data.candidates?.[0]?.place_id
-      if (id) return id
-    }
-  } catch { /* fall through */ }
-
-  // 3. Name + city fallback
-  try {
-    const input = encodeURIComponent('Avenue Locks Brooklyn NY')
-    const res = await fetch(
-      `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
-    )
-    if (res.ok) {
-      const data = await res.json() as { candidates?: { place_id: string }[] }
-      const id = data.candidates?.[0]?.place_id
-      if (id) return id
-    }
-  } catch { /* fall through */ }
-
-  return null
+async function getAccessToken(): Promise<string> {
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      client_id: process.env.GOOGLE_OAUTH_CLIENT_ID,
+      client_secret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+      grant_type: 'refresh_token',
+    }),
+  })
+  if (!res.ok) {
+    const err = await res.text()
+    throw new Error(`Token exchange failed (${res.status}): ${err}`)
+  }
+  const data = await res.json() as { access_token: string }
+  return data.access_token
 }
 
-// ─── Google Places API fetch ─────────────────────────────────────────────────
+// ─── Google Business Profile API ────────────────────────────────────────────
 
-interface PlacesReview {
-  author_name: string
-  author_url: string
-  rating: number
-  text: string
-  time: number
-  relative_time_description: string
+interface BizProfileReview {
+  name: string  // e.g. "accounts/x/locations/y/reviews/z"
+  reviewer: { displayName: string; isAnonymous?: boolean }
+  starRating: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE'
+  comment?: string
+  createTime: string  // ISO 8601
+  updateTime: string
 }
 
-async function fetchFromGoogle(placeId: string, apiKey: string): Promise<PlacesReview[]> {
-  const url =
-    `https://maps.googleapis.com/maps/api/place/details/json` +
-    `?place_id=${encodeURIComponent(placeId)}` +
-    `&fields=reviews` +
-    `&reviews_sort=newest` +
-    `&key=${apiKey}`
+const STAR: Record<string, number> = {
+  ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5,
+}
 
-  const res = await fetch(url)
-  if (!res.ok) return []
+async function fetchFromBusinessProfile(): Promise<BizProfileReview[]> {
+  const locationName = process.env.GOOGLE_LOCATION_NAME
+  if (!locationName) throw new Error('GOOGLE_LOCATION_NAME not configured')
 
-  const data = await res.json() as { result?: { reviews?: PlacesReview[] } }
-  return data.result?.reviews ?? []
+  const accessToken = await getAccessToken()
+
+  const res = await fetch(
+    `https://mybusiness.googleapis.com/v4/${locationName}/reviews?orderBy=updateTime+desc`,
+    { headers: { Authorization: `Bearer ${accessToken}` } },
+  )
+  if (!res.ok) {
+    const err = await res.text()
+    throw new Error(`Business Profile API (${res.status}): ${err}`)
+  }
+
+  const data = await res.json() as { reviews?: BizProfileReview[] }
+  return data.reviews ?? []
+}
+
+function relativeTime(iso: string): string {
+  const days = Math.floor((Date.now() - new Date(iso).getTime()) / 86_400_000)
+  if (days < 1)  return 'today'
+  if (days < 2)  return 'a day ago'
+  if (days < 7)  return `${days} days ago`
+  const weeks = Math.floor(days / 7)
+  if (weeks < 5) return weeks === 1 ? 'a week ago' : `${weeks} weeks ago`
+  const months = Math.floor(days / 30)
+  if (months < 12) return months === 1 ? 'a month ago' : `${months} months ago`
+  const years = Math.floor(days / 365)
+  return years === 1 ? 'a year ago' : `${years} years ago`
 }
 
 // ─── Supabase upsert ─────────────────────────────────────────────────────────
 
-async function upsertReviews(reviews: PlacesReview[]) {
+async function upsertReviews(reviews: BizProfileReview[]) {
   const supabase = getSupabase()
+
   const rows = reviews
-    .filter((r) => r.rating === 5 && r.text?.trim())
+    .filter((r) => STAR[r.starRating] === 5 && r.comment?.trim())
     .map((r) => ({
-      id: r.author_url,
-      author_name: r.author_name,
-      rating: r.rating,
-      text: r.text.trim(),
-      review_time: r.time,
-      relative_time: r.relative_time_description,
+      id: r.name,   // unique: "accounts/x/locations/y/reviews/z"
+      author_name: r.reviewer.displayName,
+      rating: 5,
+      text: r.comment!.trim(),
+      review_time: Math.floor(new Date(r.createTime).getTime() / 1000),
+      relative_time: relativeTime(r.createTime),
     }))
 
   if (rows.length === 0) return
@@ -140,11 +138,11 @@ async function readStoredReviews(): Promise<GoogleReview[]> {
   if (error || !data) return []
 
   return data.map((row) => ({
-    id: row.id as string,
-    authorName: row.author_name as string,
-    rating: row.rating as number,
-    text: row.text as string,
-    time: row.review_time as number,
+    id:           row.id as string,
+    authorName:   row.author_name as string,
+    rating:       row.rating as number,
+    text:         row.text as string,
+    time:         row.review_time as number,
     relativeTime: (row.relative_time as string) ?? '',
   }))
 }
@@ -152,33 +150,25 @@ async function readStoredReviews(): Promise<GoogleReview[]> {
 // ─── Public API ──────────────────────────────────────────────────────────────
 
 /**
- * Returns all stored 5-star Google reviews, freshening the cache from the
- * Google Places API if credentials are configured.
- *
- * Safe to call in any Server Component or API route — never throws.
+ * Returns all stored 5-star Google reviews.
+ * When OAuth env vars are present, fetches fresh reviews from the
+ * Google Business Profile API and upserts them into Supabase first.
+ * Never throws — falls back to stored reviews on any error.
  */
 export async function getGoogleReviews(): Promise<GoogleReview[]> {
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY
+  const hasOAuth =
+    process.env.GOOGLE_OAUTH_CLIENT_ID &&
+    process.env.GOOGLE_OAUTH_CLIENT_SECRET &&
+    process.env.GOOGLE_REFRESH_TOKEN &&
+    process.env.GOOGLE_LOCATION_NAME
 
-  // If no API key, serve whatever is already in Supabase (or empty)
-  if (!apiKey) {
+  if (hasOAuth) {
     try {
-      return await readStoredReviews()
-    } catch {
-      return []
-    }
-  }
-
-  try {
-    const placeId = await resolvePlaceId(apiKey)
-
-    if (placeId) {
-      const fresh = await fetchFromGoogle(placeId, apiKey)
-      // Upsert silently — even if it fails, we still serve stored reviews
+      const fresh = await fetchFromBusinessProfile()
       await upsertReviews(fresh).catch(() => undefined)
+    } catch {
+      // Fall through to serve whatever is already in Supabase
     }
-  } catch {
-    // API call failed — fall through to serve stored reviews
   }
 
   try {

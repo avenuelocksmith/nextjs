@@ -2,10 +2,8 @@
  * GET /api/reviews/status
  *
  * Public diagnostic endpoint — no auth required.
- * Walks through every step of the getGoogleReviews() pipeline with full error
- * capture and returns a JSON report showing exactly where things fail.
- *
- * Does NOT echo API key values — env vars are reported as booleans only.
+ * Tests the Google Business Profile API OAuth flow and Supabase connection.
+ * Env vars are reported as booleans only — values are never echoed.
  */
 
 import { NextResponse } from 'next/server'
@@ -15,14 +13,15 @@ export const runtime = 'edge'
 
 interface StatusReport {
   env: {
-    GOOGLE_PLACES_API_KEY: boolean
-    GOOGLE_PLACE_ID: boolean
-    NEXT_PUBLIC_SUPABASE_URL: boolean
+    GOOGLE_OAUTH_CLIENT_ID: boolean
+    GOOGLE_OAUTH_CLIENT_SECRET: boolean
+    GOOGLE_REFRESH_TOKEN: boolean
+    GOOGLE_LOCATION_NAME: boolean
+    SUPABASE_URL: boolean
     SUPABASE_SERVICE_ROLE_KEY: boolean
   }
-  placeId: {
-    source: 'env' | 'phone_lookup' | 'text_query' | null
-    value: string | null
+  oauth: {
+    accessToken: boolean
     error: string | null
   }
   googleReviews: {
@@ -39,116 +38,87 @@ interface StatusReport {
 }
 
 export async function GET() {
+  const locationName = process.env.GOOGLE_LOCATION_NAME
+
   const report: StatusReport = {
     env: {
-      GOOGLE_PLACES_API_KEY: !!process.env.GOOGLE_PLACES_API_KEY,
-      GOOGLE_PLACE_ID: !!process.env.GOOGLE_PLACE_ID,
-      NEXT_PUBLIC_SUPABASE_URL: !!(process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL),
-      SUPABASE_SERVICE_ROLE_KEY: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+      GOOGLE_OAUTH_CLIENT_ID:     !!process.env.GOOGLE_OAUTH_CLIENT_ID,
+      GOOGLE_OAUTH_CLIENT_SECRET: !!process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+      GOOGLE_REFRESH_TOKEN:       !!process.env.GOOGLE_REFRESH_TOKEN,
+      GOOGLE_LOCATION_NAME:       !!locationName,
+      SUPABASE_URL:               !!(process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL),
+      SUPABASE_SERVICE_ROLE_KEY:  !!process.env.SUPABASE_SERVICE_ROLE_KEY,
     },
-    placeId: { source: null, value: null, error: null },
+    oauth:        { accessToken: false, error: null },
     googleReviews: null,
-    supabase: { tableExists: false, rowCount: null, error: null },
+    supabase:     { tableExists: false, rowCount: null, error: null },
   }
 
-  const apiKey = process.env.GOOGLE_PLACES_API_KEY
+  // ── Step 1: Exchange refresh token for access token ──────────────────────────
 
-  // ── Step 1: Resolve Place ID ────────────────────────────────────────────────
+  let accessToken: string | null = null
 
-  if (apiKey) {
-    if (process.env.GOOGLE_PLACE_ID) {
-      report.placeId = { source: 'env', value: process.env.GOOGLE_PLACE_ID, error: null }
-    } else {
-      const base = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
-
-      // Name + phone combined — most specific query, eliminates wrong-business matches
-      try {
-        const input = encodeURIComponent('Avenue Locks (347) 386-7164')
-        const res = await fetch(
-          `${base}?input=${input}&inputtype=textquery&fields=place_id&key=${apiKey}`,
-        )
-        const data = await res.json() as {
-          status?: string
-          candidates?: { place_id: string }[]
-          error_message?: string
-        }
-        const id = data.candidates?.[0]?.place_id ?? null
-        if (id) {
-          report.placeId = { source: 'phone_lookup', value: id, error: null }
-        } else {
-          report.placeId.error = `Name+phone: ${data.status ?? 'unknown'}${data.error_message ? ' — ' + data.error_message : ''}`
-        }
-      } catch (e) {
-        report.placeId.error = `Name+phone threw: ${String(e)}`
+  if (
+    process.env.GOOGLE_OAUTH_CLIENT_ID &&
+    process.env.GOOGLE_OAUTH_CLIENT_SECRET &&
+    process.env.GOOGLE_REFRESH_TOKEN
+  ) {
+    try {
+      const res = await fetch('https://oauth2.googleapis.com/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_id:     process.env.GOOGLE_OAUTH_CLIENT_ID,
+          client_secret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+          refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+          grant_type:    'refresh_token',
+        }),
+      })
+      if (!res.ok) {
+        const err = await res.text()
+        report.oauth.error = `Token exchange failed (${res.status}): ${err}`
+      } else {
+        const data = await res.json() as { access_token: string }
+        accessToken = data.access_token
+        report.oauth.accessToken = true
       }
-
-      // Name + city fallback
-      if (!report.placeId.value) {
-        try {
-          const query = encodeURIComponent('Avenue Locks Brooklyn NY')
-          const res = await fetch(
-            `${base}?input=${query}&inputtype=textquery&fields=place_id&key=${apiKey}`,
-          )
-          const data = await res.json() as {
-            status?: string
-            candidates?: { place_id: string }[]
-            error_message?: string
-          }
-          const id = data.candidates?.[0]?.place_id ?? null
-          report.placeId = {
-            source: 'text_query',
-            value: id,
-            error: id
-              ? null
-              : `Text query: ${data.status ?? 'unknown'}${data.error_message ? ' — ' + data.error_message : ''}`,
-          }
-        } catch (e) {
-          report.placeId.error =
-            (report.placeId.error ? report.placeId.error + '; ' : '') +
-            `Text query threw: ${String(e)}`
-        }
-      }
+    } catch (e) {
+      report.oauth.error = `Token exchange threw: ${String(e)}`
     }
+  } else {
+    report.oauth.error = 'OAuth env vars missing'
+  }
 
-    // ── Step 2: Fetch reviews from Google Places ──────────────────────────────
+  // ── Step 2: Fetch reviews from Business Profile API ──────────────────────────
 
-    if (report.placeId.value) {
-      try {
-        const url =
-          `https://maps.googleapis.com/maps/api/place/details/json` +
-          `?place_id=${encodeURIComponent(report.placeId.value)}` +
-          `&fields=reviews` +
-          `&reviews_sort=newest` +
-          `&key=${apiKey}`
-        const res = await fetch(url)
-        const data = await res.json() as {
-          status?: string
-          result?: { reviews?: { rating: number }[] }
-          error_message?: string
-        }
-        if (!res.ok || data.status !== 'OK') {
-          report.googleReviews = {
-            ok: false,
-            totalFetched: 0,
-            fiveStarCount: 0,
-            error: `Places Details: ${data.status ?? res.status}${data.error_message ? ' — ' + data.error_message : ''}`,
-          }
-        } else {
-          const reviews = data.result?.reviews ?? []
-          report.googleReviews = {
-            ok: true,
-            totalFetched: reviews.length,
-            fiveStarCount: reviews.filter((r) => r.rating === 5).length,
-            error: null,
-          }
-        }
-      } catch (e) {
+  if (accessToken && locationName) {
+    try {
+      const res = await fetch(
+        `https://mybusiness.googleapis.com/v4/${locationName}/reviews?orderBy=updateTime+desc`,
+        { headers: { Authorization: `Bearer ${accessToken}` } },
+      )
+      if (!res.ok) {
+        const err = await res.text()
         report.googleReviews = {
-          ok: false,
-          totalFetched: 0,
-          fiveStarCount: 0,
-          error: `Places Details threw: ${String(e)}`,
+          ok: false, totalFetched: 0, fiveStarCount: 0,
+          error: `Business Profile API (${res.status}): ${err}`,
         }
+      } else {
+        const data = await res.json() as {
+          reviews?: { starRating: string }[]
+        }
+        const reviews = data.reviews ?? []
+        report.googleReviews = {
+          ok: true,
+          totalFetched: reviews.length,
+          fiveStarCount: reviews.filter((r) => r.starRating === 'FIVE').length,
+          error: null,
+        }
+      }
+    } catch (e) {
+      report.googleReviews = {
+        ok: false, totalFetched: 0, fiveStarCount: 0,
+        error: `Business Profile API threw: ${String(e)}`,
       }
     }
   }
@@ -157,6 +127,7 @@ export async function GET() {
 
   const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
   if (supabaseUrl && supabaseKey) {
     try {
       const supabase = createClient(supabaseUrl, supabaseKey)
@@ -164,7 +135,6 @@ export async function GET() {
         .from('google_reviews')
         .select('*', { count: 'exact', head: true })
       if (error) {
-        // PostgREST code 42P01 = "undefined_table" (migration not run)
         report.supabase = {
           tableExists: error.code !== '42P01',
           rowCount: null,
