@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
+import { HowItWorks } from '@/components/sections/HowItWorks'
+import { HowACallRuns } from '@/components/sections/HowACallRuns'
 import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 import dynamic from 'next/dynamic'
 import { JsonLd } from '@/components/schema/JsonLd'
@@ -87,58 +89,17 @@ export default function HomePage() {
         variant="homepage"
       />
 
+      {/* How It Works — 3-step mobile-first explainer */}
+      <HowItWorks />
+
       {/* Services Grid */}
       <ServicesGrid
         title="Complete Locksmith Services for Brooklyn & NYC"
         subtitle="From emergency lockouts to full security system installations — residential, commercial, and automotive."
       />
 
-      {/* Trust: license, insurance, real address — asymmetric editorial block */}
-      <section className="py-14 md:py-20 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-start">
-            <div className="md:col-span-3">
-              <p className="text-sm font-semibold text-brand-amber uppercase tracking-wider mb-3">
-                Founded 2010 · Brooklyn-based
-              </p>
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal leading-tight mb-4">
-                A real locksmith shop at 973 E 55th St, not a national dispatcher pretending to be local.
-              </h2>
-              <p className="text-brand-text leading-relaxed mb-4">
-                NYC has a documented locksmith scam problem: out-of-state call centers buy Google ads, subcontract to untrained drivers, and quote one price on the phone and another at your door. Avenue Locksmith is a licensed Brooklyn shop with an owner who answers the phone, a fixed address in Flatlands, and technicians who dispatch from within the borough.
-              </p>
-              <p className="text-brand-text leading-relaxed">
-                Every quote is firm before any tool touches a lock. Every invoice is itemized. Every technician is a direct employee — never a middleman or subcontractor. If you ever need to verify our NYC DCWP Locksmith License, ask the dispatcher on the phone and we&apos;ll recite the number before we&apos;re dispatched.
-              </p>
-            </div>
-            <aside className="md:col-span-2 border-l-4 border-brand-amber pl-6 space-y-4 text-sm">
-              <div>
-                <div className="font-semibold text-brand-charcoal">Licensed</div>
-                <div className="text-brand-muted">NYC DCWP Locksmith License, bonded and insured in New York State.</div>
-              </div>
-              <div>
-                <div className="font-semibold text-brand-charcoal">Address</div>
-                <div className="text-brand-muted">{BUSINESS.address.full}</div>
-              </div>
-              <div>
-                <div className="font-semibold text-brand-charcoal">Dispatch</div>
-                <div className="text-brand-muted">Technicians stationed across Brooklyn. 15–25 minute typical arrival.</div>
-              </div>
-              <div>
-                <div className="font-semibold text-brand-charcoal">Hours</div>
-                <div className="text-brand-muted">24 hours a day, 7 days a week — same rate overnight and weekends.</div>
-              </div>
-              <a
-                href={BUSINESS.phoneHref}
-                className="inline-flex items-center gap-2 text-brand-charcoal font-semibold hover:text-brand-amber transition-colors"
-              >
-                <Phone size={16} aria-hidden="true" />
-                {BUSINESS.phone}
-              </a>
-            </aside>
-          </div>
-        </div>
-      </section>
+      {/* How a call runs — editorial trust block (replaces Why-Choose-Us anti-pattern) */}
+      <HowACallRuns />
 
       {/* Testimonials */}
       <TestimonialsSection
