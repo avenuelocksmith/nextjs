@@ -16,7 +16,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Brand + Contact */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-4" aria-label="Avenue Locksmith — Home">
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-4" aria-label="Avenue Locksmith — Home">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/gallery/avenue-locksmith-logo.svg"
+                alt=""
+                width={44}
+                height={44}
+                className="w-11 h-11"
+                aria-hidden="true"
+              />
               <span className="text-2xl font-bold text-white tracking-tight">
                 Avenue <span className="text-brand-amber">Locksmith</span>
               </span>
