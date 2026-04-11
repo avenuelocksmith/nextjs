@@ -86,7 +86,7 @@ export default function CommercialLocksmithPage() {
             A residential lockout is an inconvenience. A commercial lockout — at 7am when your staff cannot get in, or at 2am after a break-in — is a business continuity emergency with direct financial impact. Avenue Locksmith treats commercial calls with the urgency they deserve.
           </p>
           <p className="text-brand-text leading-relaxed mb-6">
-            We work with Brooklyn restaurants, retail shops, offices, warehouses, medical practices, and multi-unit buildings. Whether you need a master key system designed from scratch or an employee credential revoked within the hour, we respond the same day.
+            We work with Brooklyn restaurants, retail shops, offices, warehouses, medical practices, and multi-unit buildings. A master key system designed from scratch, an employee credential revoked within the hour, or a 3am storefront lockout after a break-in — all three dispatch from the same shop on the same day.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[

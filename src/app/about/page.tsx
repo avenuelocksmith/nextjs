@@ -119,9 +119,10 @@ export default function AboutPage() {
               drives everything we do.
             </p>
             <p>
-              Our mission is simple: make quality security accessible to every Brooklyn resident
-              and business owner, at a price that is honest and transparent. No hidden fees.
-              No bait-and-switch quotes. No strangers at your door.
+              Every price is quoted before the truck is dispatched, every invoice is itemized,
+              and every technician is a direct employee — not a subcontractor, not a ride-share
+              driver, not a call-center middleman. If the number on the phone changes at the
+              door, the job ends there and nothing is owed.
             </p>
           </div>
         </div>
@@ -250,11 +251,11 @@ export default function AboutPage() {
       <section className="py-14 md:py-20 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Need a Locksmith? We&apos;re Here.
+            Talk to the Brooklyn shop direct — one number, one licensed operator
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Questions about our business? Call or email us — we are happy to talk. No pressure,
-            no obligation.
+            Call or email the shop at 973 E 55th St. No phone tree, no offshore dispatcher —
+            the person answering can verify our DCWP license number on the spot.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a

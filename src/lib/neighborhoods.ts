@@ -265,7 +265,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'Someone has a copy of my Crown Heights apartment key and I feel unsafe — what should I do tonight?',
-        answer: 'Call us now. Rekeying takes 20 minutes and immediately invalidates all existing keys. If you feel you are in immediate danger, call 911 first, then us. We do emergency rekey calls 24/7. For $65–$85 you will have peace of mind that the person with the old key can no longer enter.',
+        answer: 'Call us now. Rekeying takes 20 minutes and immediately invalidates every copy of the old key — the cylinder pins are re-stacked to match a brand-new key only, so the person holding the old brass is locked out permanently. If you feel you are in immediate danger, call 911 first, then us. We do emergency rekey calls 24/7. Crown Heights rekey runs $65–$85 per cylinder.',
       },
       {
         question: 'Can I get a locksmith in Crown Heights on a Sunday morning?',
@@ -865,7 +865,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'My Windsor Terrace apartment is near Prospect Park — is there a security issue with ground-floor units?',
-        answer: 'Ground-floor units near park perimeters have two considerations: visibility (passers-by can see when you are away) and accessible windows. Beyond a Grade 1 deadbolt, we recommend window stops on ground-floor double-hungs and a secondary door lock (chain or swing bar) for nighttime peace of mind. A door camera or video doorbell adds another layer without complex installation.',
+        answer: 'Ground-floor units near park perimeters have two considerations: visibility (passers-by can see when you are away) and accessible windows. Beyond a Grade 1 deadbolt, we recommend window stops on ground-floor double-hungs and a secondary door lock (chain or swing bar) on the inside of the front door for nighttime use. A door camera or video doorbell adds another layer without complex installation.',
       },
       {
         question: 'Can a locksmith in Windsor Terrace also install window locks?',

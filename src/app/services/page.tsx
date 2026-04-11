@@ -172,10 +172,11 @@ export default function ServicesPage() {
       <section className="py-14 md:py-20 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Need a Locksmith in Brooklyn?
+            Brooklyn locksmith dispatch — one number, one licensed shop
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Call now for immediate service or a free quote. Available 24/7, 365 days a year.
+            24/7 service out of 973 E 55th St. Price quoted on the phone, no surcharges overnight
+            or on holidays.
           </p>
           <a
             href={BUSINESS.phoneHref}

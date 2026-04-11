@@ -249,10 +249,11 @@ export default function HomePage() {
         </div>
         <div className="relative container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Need a Locksmith in Brooklyn Right Now?
+            Brooklyn locksmith dispatch — 24/7, straight from the shop at 973 E 55th St
           </h2>
           <p className="text-white/75 mb-8 text-lg">
-            We&apos;re available 24 hours a day, 7 days a week. One call and we&apos;ll be there in 15–25 minutes or less.
+            The same phone number reaches a licensed Brooklyn shop at 3am, 8pm, or Sunday morning.
+            15–25 minute arrival across the borough, price locked before the truck leaves.
           </p>
           <a
             href={BUSINESS.phoneHref}

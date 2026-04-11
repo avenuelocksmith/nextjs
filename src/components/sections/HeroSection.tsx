@@ -55,9 +55,10 @@ function CallbackRequestCard() {
       {status === 'success' ? (
         <div className="flex flex-col items-center text-center gap-3 py-4">
           <CheckCircle size={40} className="text-brand-amber" aria-hidden="true" />
-          <p className="text-white font-bold text-lg leading-tight">We&apos;ll call you back!</p>
+          <p className="text-white font-bold text-lg leading-tight">Callback request received</p>
           <p className="text-white/65 text-sm">
-            Our team will reach out to you shortly. For urgent issues, call us now.
+            A Brooklyn dispatcher will call you back shortly. If you&apos;re locked out or in an
+            emergency, call the shop directly.
           </p>
           <a
             href={BUSINESS.phoneHref}

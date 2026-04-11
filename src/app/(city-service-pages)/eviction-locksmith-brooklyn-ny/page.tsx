@@ -49,8 +49,8 @@ export default function EvictionLocksmithBkPage() {
       <FAQSection faqs={FAQS} title="Eviction Locksmith FAQ" />
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Post-Eviction Lock Change in Brooklyn?</h2>
-          <p className="text-white/80 mb-8">Same-day service. Have your paperwork ready when you call.</p>
+          <h2 className="text-3xl font-bold mb-3">Marshal-warrant lock changes — same-day, paperwork-verified</h2>
+          <p className="text-white/80 mb-8">Have the NYC Marshal&apos;s warrant and your landlord ID ready when you call — we start cutting keys as soon as paperwork checks out.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl"><Phone size={26} aria-hidden="true" />{BUSINESS.phone}</a>
         </div>
       </section>

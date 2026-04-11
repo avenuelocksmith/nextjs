@@ -53,9 +53,12 @@ export default function GalleryPage() {
       {/* CTA */}
       <section className="py-14 bg-brand-navy text-white text-center">
         <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="text-2xl font-bold mb-3">Ready to Get Started?</h2>
+          <h2 className="text-2xl font-bold mb-3">
+            Put a real Brooklyn locksmith on your door, not a dispatch center
+          </h2>
           <p className="text-white/80 mb-6">
-            Licensed & insured. Upfront pricing before any work begins. Available 24/7.
+            NYC DCWP licensed. Firm price before dispatch. Every tech is a direct employee out of
+            the Flatlands shop — available 24/7.
           </p>
           <a
             href={BUSINESS.phoneHref}

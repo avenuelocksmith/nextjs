@@ -51,8 +51,8 @@ export default function EmergencyLocksmithBkNYPage() {
       <FAQSection faqs={FAQS} title="Emergency Locksmith FAQ" />
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Emergency in Brooklyn? Call Right Now.</h2>
-          <p className="text-white/80 mb-8">Broken key, burglary, locked out — we respond in 15–25 minutes, 24/7.</p>
+          <h2 className="text-3xl font-bold mb-3">Brooklyn emergency dispatch — picks out first, drills last</h2>
+          <p className="text-white/80 mb-8">Burglary repairs jump the queue ahead of routine lockouts — 15–25 minute arrival, non-destructive entry, 24/7.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-12 py-6 rounded-xl text-2xl transition-colors shadow-2xl"><Phone size={30} aria-hidden="true" />{BUSINESS.phone}</a>
         </div>
       </section>
