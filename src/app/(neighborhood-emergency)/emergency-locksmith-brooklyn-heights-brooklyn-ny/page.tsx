@@ -46,7 +46,7 @@ export default function EmergencyLocksmithBrooklynHeightsPage() {
       <FAQSection faqs={FAQS} title="Brooklyn Heights Lockout FAQ" />
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Locked Out in Brooklyn Heights? Call Now.</h2>
+          <h2 className="text-3xl font-bold mb-3">Brooklyn Heights lockout dispatch — historic hardware specialists</h2>
           <p className="text-white/80 mb-8">15–25 minute response. Historic hardware specialists. No hidden fees.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-12 py-6 rounded-xl text-2xl transition-colors shadow-2xl"><Phone size={30} aria-hidden="true" />{BUSINESS.phone}</a>
         </div>

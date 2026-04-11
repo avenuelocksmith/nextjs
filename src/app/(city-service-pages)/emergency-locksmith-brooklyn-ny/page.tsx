@@ -18,7 +18,7 @@ const FAQS = [
   { question: 'Can you extract a broken key from a lock?', answer: 'Yes — broken key extraction is one of our most common emergency calls. We use professional extraction tools to remove the broken piece without damaging the lock cylinder in most cases.' },
   { question: 'My door was kicked in. Can you help right now?', answer: 'Yes. We provide emergency burglary repair — we secure your door immediately (temporary or permanent repair based on damage level), change the locks, and reinforce the frame if needed. We respond to burglary situations with the same 15–25 minute priority.' },
   { question: 'What is emergency rekeying?', answer: 'If you believe someone unauthorized has a key to your home — after a break-in, a stolen purse, or a domestic situation — emergency rekeying immediately invalidates all existing keys. It is one of the fastest security responses available.' },
-  { question: 'Do you do burglary repairs at night?', answer: 'Yes — burglary repairs are treated as highest priority emergencies and are handled 24/7. We understand that leaving your home unsecured after a break-in overnight is not an option.' },
+  { question: 'Do you do burglary repairs at night?', answer: 'Yes — burglary repairs are treated as highest priority emergencies and are handled 24/7. A broken lock overnight is a security hole, not a next-morning problem, so these calls get dispatched ahead of routine lockouts.' },
 ]
 
 export default function EmergencyLocksmithBkNYPage() {

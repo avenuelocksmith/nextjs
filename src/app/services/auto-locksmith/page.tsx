@@ -183,7 +183,7 @@ export default function AutoLocksmithPage() {
 
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Locked Out of Your Car in Brooklyn?</h2>
+          <h2 className="text-3xl font-bold mb-3">Brooklyn car lockout dispatch — street, garage, or lot</h2>
           <p className="text-white/80 mb-8">
             15–25 minute response. Available 24/7. We come to you — street, garage, or parking lot.
           </p>

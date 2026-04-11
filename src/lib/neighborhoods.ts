@@ -1409,7 +1409,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'Can you come to Gerritsen Beach for a non-emergency lock upgrade on a weekend?',
-        answer: 'Yes. Weekend service — including Saturday and Sunday — is available for scheduled work throughout Gerritsen Beach. Call ahead to confirm availability. We understand that Gerritsen Beach residents prefer working within the community\'s traffic patterns, so we schedule arrival windows that work for you.',
+        answer: 'Yes. Weekend service — including Saturday and Sunday — is available for scheduled work throughout Gerritsen Beach. Gerritsen Beach residents often ask for arrival windows that dodge the one-way loops around Plumb Beach Channel and the weekend launch traffic at the marina, so call ahead and we\'ll schedule around them.',
       },
       {
         question: 'My Gerritsen Beach home was inherited — the locks are very old. What is the best approach?',
