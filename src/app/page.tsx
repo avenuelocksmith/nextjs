@@ -2,9 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
+import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 import dynamic from 'next/dynamic'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
+import { getBeforeAfterPairs } from '@/lib/gallery'
 import { BUSINESS } from '@/lib/constants'
 
 const ServicesGrid        = dynamic(() => import('@/components/sections/ServicesGrid').then(m => ({ default: m.ServicesGrid })))
@@ -70,6 +72,7 @@ const TOP_NEIGHBORHOODS = [
 export default function HomePage() {
   const faqSchema = getFAQSchema(HOME_FAQS)
   const breadcrumbSchema = getBreadcrumbSchema([{ name: 'Home', url: '/' }])
+  const featuredPair = getBeforeAfterPairs()[0]
 
   return (
     <>
@@ -150,6 +153,31 @@ export default function HomePage() {
           See all {BUSINESS.reviewCount}+ reviews <ArrowRight size={14} />
         </Link>
       </div>
+
+      {/* Featured before/after project */}
+      {featuredPair && (
+        <section className="py-14 md:py-20 bg-brand-bg">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-8">
+              <p className="text-sm font-semibold text-brand-amber uppercase tracking-wider mb-2">
+                Project Spotlight
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-3">
+                {featuredPair.after.title.replace(/ — After$/, '')}
+              </h2>
+              <p className="text-brand-muted text-sm md:text-base max-w-xl mx-auto">
+                Drag the divider to see the same door before and after our technicians finished the job.
+              </p>
+            </div>
+            <BeforeAfterSlider
+              beforeSrc={`/gallery/${featuredPair.before.filename}`}
+              afterSrc={`/gallery/${featuredPair.after.filename}`}
+              alt={featuredPair.after.alt}
+              caption={`${featuredPair.after.title.replace(/ — After$/, '')} · Completed ${featuredPair.after.dateCompleted}`}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Gallery Preview */}
       <GallerySection

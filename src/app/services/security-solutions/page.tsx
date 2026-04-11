@@ -3,10 +3,13 @@ import Link from 'next/link'
 import { Phone, Shield, Lock, Eye, Cpu, Fingerprint, DoorOpen, Zap } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
+import { GallerySection } from '@/components/sections/GallerySection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
+import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
+import { getBeforeAfterPairs } from '@/lib/gallery'
 import { buildServiceMetadata } from '@/lib/seo'
 import { BUSINESS, SECURITY_BRANDS } from '@/lib/constants'
 
@@ -47,6 +50,8 @@ const FAQS = [
 ]
 
 export default function SecuritySolutionsPage() {
+  const securityPair = getBeforeAfterPairs({ category: 'security' })[0]
+
   return (
     <>
       <JsonLd data={getServiceSchema({ name: 'Security Solutions', description: 'Complete security solutions in Brooklyn, NY — high-security locks, access control systems, CCTV, smart locks, biometric entry, and reinforced door frames. Licensed & insured.', url: '/services/security-solutions/', serviceType: 'Security Solutions', brands: SECURITY_BRANDS })} />
@@ -97,6 +102,39 @@ export default function SecuritySolutionsPage() {
           </div>
         </div>
       </section>
+
+      {/* Before/after upgrade showcase */}
+      {securityPair && (
+        <section className="py-14 bg-white">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-8">
+              <p className="text-sm font-semibold text-brand-amber uppercase tracking-wider mb-2">
+                Grade 3 → Grade 1 Upgrade
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy mb-3">
+                What a real lock upgrade looks like
+              </h2>
+              <p className="text-brand-muted text-sm md:text-base max-w-xl mx-auto">
+                Drag the slider to compare a builder-grade entry knob with the ANSI Grade 1 deadbolt installation we performed on the same door.
+              </p>
+            </div>
+            <BeforeAfterSlider
+              beforeSrc={`/gallery/${securityPair.before.filename}`}
+              afterSrc={`/gallery/${securityPair.after.filename}`}
+              alt={securityPair.after.alt}
+              caption={`ANSI Grade 1 deadbolt upgrade · Completed ${securityPair.after.dateCompleted}`}
+            />
+          </div>
+        </section>
+      )}
+
+      <GallerySection
+        title="Recent Security Upgrades"
+        subtitle="High-security deadbolts, CCTV installations, and smart-lock retrofits completed across Brooklyn."
+        category="security"
+        maxItems={6}
+        showFilters={false}
+      />
 
       <FAQSection faqs={FAQS} title="Security Solutions FAQ" />
 

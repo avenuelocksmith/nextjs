@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Phone, CheckCircle, ArrowRight, Clock, Home } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
+import { GallerySection } from '@/components/sections/GallerySection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
@@ -150,6 +151,15 @@ export default function ResidentialLockoutPage() {
           </div>
         </div>
       </section>
+
+      {/* Contextual gallery — residential category */}
+      <GallerySection
+        title="Recent Residential Lockout Jobs"
+        subtitle="Deadbolts opened without damage, mortise repairs, and rekey work completed across Brooklyn homes and apartments."
+        category="residential"
+        maxItems={6}
+        showFilters={false}
+      />
 
       <FAQSection faqs={FAQS} title="Residential Lockout FAQ — What Brooklyn Residents Ask" />
 
