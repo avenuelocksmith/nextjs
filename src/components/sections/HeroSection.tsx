@@ -5,6 +5,7 @@ import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
 import { HeroTrustLogos } from '@/components/ui/HeroTrustLogos'
+import { HeroTrustBadges } from '@/components/ui/HeroTrustBadges'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { Phone, CheckCircle, Loader2 } from 'lucide-react'
@@ -198,7 +199,7 @@ export function HeroSection({
                   <HeroTrustLogos />
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-8 lg:mb-0">
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-5">
                   <PhoneButton
                     variant="primary"
                     size="xl"
@@ -211,6 +212,11 @@ export function HeroSection({
                     Get a Free Quote
                   </Link>
                 </div>
+
+                <HeroTrustBadges
+                  variant="light"
+                  className="justify-center lg:justify-start mb-8 lg:mb-0"
+                />
               </div>
 
               {/* Right: callback request form */}
@@ -238,7 +244,7 @@ export function HeroSection({
                 </p>
               )}
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
                 <PhoneButton
                   variant="primary"
                   size="lg"
@@ -253,6 +259,8 @@ export function HeroSection({
                   </Link>
                 )}
               </div>
+
+              <HeroTrustBadges variant="light" className="justify-center mb-8" />
             </div>
           )}
 
