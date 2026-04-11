@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith DUMBO — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in DUMBO, Brooklyn. Loft & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-dumbo/',
+  path: '/emergency-locksmith-dumbo-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithDumboPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith DUMBO — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in DUMBO, Brooklyn. Loft & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-dumbo/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — DUMBO', description: 'Emergency locksmith in DUMBO, Brooklyn. 15–25 minute response for loft and apartment lockouts.', url: '/emergency-locksmith-dumbo/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith DUMBO — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in DUMBO, Brooklyn. Loft & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-dumbo-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — DUMBO', description: 'Emergency locksmith in DUMBO, Brooklyn. 15–25 minute response for loft and apartment lockouts.', url: '/emergency-locksmith-dumbo-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith DUMBO', url: '/emergency-locksmith-dumbo/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith DUMBO', url: '/emergency-locksmith-dumbo-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith DUMBO' }]} />
       <HeroSection h1="Emergency Locksmith in DUMBO — 15–25 minute response" subheadline="Locked out of your DUMBO loft or apartment? We arrive within 15–25 minutes, any time. Non-destructive entry, no after-hours surcharge. Licensed & insured." variant="emergency" showTrustBar ctaLabel="Call Now — Fast Response" />
       <section className="py-10 bg-white">

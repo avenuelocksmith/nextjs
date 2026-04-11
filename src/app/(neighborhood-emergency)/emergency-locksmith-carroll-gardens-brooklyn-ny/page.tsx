@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Carroll Gardens — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Carroll Gardens, Brooklyn. Brownstone & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164.',
-  path: '/emergency-locksmith-carroll-gardens/',
+  path: '/emergency-locksmith-carroll-gardens-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithCarrollGardensPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Carroll Gardens — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Carroll Gardens, Brooklyn. Brownstone & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-carroll-gardens/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Carroll Gardens', description: 'Emergency locksmith in Carroll Gardens, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-carroll-gardens/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Carroll Gardens — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Carroll Gardens, Brooklyn. Brownstone & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-carroll-gardens-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Carroll Gardens', description: 'Emergency locksmith in Carroll Gardens, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-carroll-gardens-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Carroll Gardens', url: '/emergency-locksmith-carroll-gardens/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Carroll Gardens', url: '/emergency-locksmith-carroll-gardens-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Carroll Gardens' }]} />
       <HeroSection h1="Emergency Locksmith in Carroll Gardens — 15–25 minute response" subheadline="Locked out of your Carroll Gardens brownstone or apartment? We arrive in 15–25 minutes, open your door without damage, and charge the same rate at any hour." variant="emergency" showTrustBar ctaLabel="Call Now — We Answer 24/7" />
       <section className="py-10 bg-white">

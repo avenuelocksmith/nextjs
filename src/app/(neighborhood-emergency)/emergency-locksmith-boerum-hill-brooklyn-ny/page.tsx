@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Boerum Hill — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Boerum Hill, Brooklyn. Locked out of your apartment or home? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-boerum-hill/',
+  path: '/emergency-locksmith-boerum-hill-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithBoerumHillPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Boerum Hill — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Boerum Hill, Brooklyn. Locked out of your apartment or home? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-boerum-hill/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Boerum Hill', description: 'Emergency locksmith in Boerum Hill, Brooklyn. 15–25 minute response for apartment and home lockouts.', url: '/emergency-locksmith-boerum-hill/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Boerum Hill — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Boerum Hill, Brooklyn. Locked out of your apartment or home? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-boerum-hill-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Boerum Hill', description: 'Emergency locksmith in Boerum Hill, Brooklyn. 15–25 minute response for apartment and home lockouts.', url: '/emergency-locksmith-boerum-hill-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Boerum Hill', url: '/emergency-locksmith-boerum-hill/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Boerum Hill', url: '/emergency-locksmith-boerum-hill-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Boerum Hill' }]} />
       <HeroSection h1="Emergency Locksmith in Boerum Hill — 15–25 minute response" subheadline="Locked out of your Boerum Hill apartment? We arrive within 15–25 minutes, open your door without damage, and are available 24 hours a day with no after-hours surcharge." variant="emergency" showTrustBar ctaLabel="Call Now — We're On Our Way" />
       <section className="py-10 bg-white">

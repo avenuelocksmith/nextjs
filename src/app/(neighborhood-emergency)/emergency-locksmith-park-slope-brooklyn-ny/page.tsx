@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Park Slope — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Park Slope, Brooklyn. Locked out of your brownstone or apartment? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164.',
-  path: '/emergency-locksmith-park-slope/',
+  path: '/emergency-locksmith-park-slope-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithParkSlopePage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Park Slope — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Park Slope, Brooklyn. Locked out of your brownstone or apartment? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-park-slope/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Park Slope', description: 'Emergency locksmith in Park Slope, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-park-slope/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Park Slope — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Park Slope, Brooklyn. Locked out of your brownstone or apartment? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-park-slope-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Park Slope', description: 'Emergency locksmith in Park Slope, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-park-slope-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Park Slope', url: '/emergency-locksmith-park-slope/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Park Slope', url: '/emergency-locksmith-park-slope-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Park Slope' }]} />
       <HeroSection h1="Emergency Locksmith in Park Slope — 15–25 minute response" subheadline="Locked out of your Park Slope brownstone or apartment? We arrive in 15–25 minutes, open any door without damage, and are available 24/7 with no after-hours surcharge." variant="emergency" showTrustBar ctaLabel="Call Now — On Our Way" />
       <section className="py-10 bg-white">

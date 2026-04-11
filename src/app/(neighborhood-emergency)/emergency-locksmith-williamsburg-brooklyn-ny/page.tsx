@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Williamsburg — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Williamsburg, Brooklyn. Apartment lockouts, 24/7 response, 15–25 minute arrival. No after-hours fees. Licensed & insured. Call (347) 386-7164.',
-  path: '/emergency-locksmith-williamsburg/',
+  path: '/emergency-locksmith-williamsburg-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithWilliamsburgPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Williamsburg — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Williamsburg, Brooklyn. Apartment lockouts, 24/7 response, 15–25 minute arrival. No after-hours fees. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-williamsburg/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Williamsburg', description: 'Emergency locksmith in Williamsburg, Brooklyn. 15–25 minute response for apartment lockouts, 24/7.', url: '/emergency-locksmith-williamsburg/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Williamsburg — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Williamsburg, Brooklyn. Apartment lockouts, 24/7 response, 15–25 minute arrival. No after-hours fees. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-williamsburg-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Williamsburg', description: 'Emergency locksmith in Williamsburg, Brooklyn. 15–25 minute response for apartment lockouts, 24/7.', url: '/emergency-locksmith-williamsburg-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Williamsburg', url: '/emergency-locksmith-williamsburg/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Williamsburg', url: '/emergency-locksmith-williamsburg-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Williamsburg' }]} />
       <HeroSection h1="Emergency Locksmith in Williamsburg — 15–25 minute response" subheadline="Locked out of your Williamsburg apartment? We arrive in 15–25 minutes, any time of day or night. No after-hours surcharge. Non-destructive entry. Licensed & insured." variant="emergency" showTrustBar ctaLabel="Call Now — We Answer 24/7" />
       <section className="py-10 bg-white">

@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Columbia Waterfront District — 30-Min | Avenue Locksmith',
   description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. Apartment & home lockouts, 24/7. 15–25 minute arrival. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-columbia-waterfront-district/',
+  path: '/emergency-locksmith-columbia-waterfront-district-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithColumbiaWaterfrontPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Columbia Waterfront District — 30-Min | Avenue Locksmith', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. Apartment & home lockouts, 24/7. 15–25 minute arrival. Call (347) 386-7164 now.', url: '/emergency-locksmith-columbia-waterfront-district/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Columbia Waterfront District', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-columbia-waterfront-district/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Columbia Waterfront District — 30-Min | Avenue Locksmith', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. Apartment & home lockouts, 24/7. 15–25 minute arrival. Call (347) 386-7164 now.', url: '/emergency-locksmith-columbia-waterfront-district-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Columbia Waterfront District', description: 'Emergency locksmith in Columbia Waterfront District, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-columbia-waterfront-district-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Columbia Waterfront District', url: '/emergency-locksmith-columbia-waterfront-district/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Columbia Waterfront District', url: '/emergency-locksmith-columbia-waterfront-district-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Columbia Waterfront' }]} />
       <HeroSection h1="Emergency Locksmith in Columbia Waterfront District — 15–25 Min Response" subheadline="Locked out of your Columbia Waterfront District apartment or home? We arrive within 15–25 minutes, 24/7. Non-destructive entry, no after-hours surcharge." variant="emergency" showTrustBar ctaLabel="Call Now — Fast Response" />
       <section className="py-10 bg-white">

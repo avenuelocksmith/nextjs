@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Mill Basin — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Mill Basin, Brooklyn. Home lockouts, 24/7 response. Licensed & insured. 15–25 minute arrival. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-mill-basin/',
+  path: '/emergency-locksmith-mill-basin-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithMillBasinPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Mill Basin — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Mill Basin, Brooklyn. Home lockouts, 24/7 response. Licensed & insured. 15–25 minute arrival. Call (347) 386-7164 now.', url: '/emergency-locksmith-mill-basin/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Mill Basin', description: 'Emergency locksmith in Mill Basin, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-mill-basin/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Mill Basin — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Mill Basin, Brooklyn. Home lockouts, 24/7 response. Licensed & insured. 15–25 minute arrival. Call (347) 386-7164 now.', url: '/emergency-locksmith-mill-basin-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Mill Basin', description: 'Emergency locksmith in Mill Basin, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-mill-basin-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Mill Basin', url: '/emergency-locksmith-mill-basin/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Mill Basin', url: '/emergency-locksmith-mill-basin-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Mill Basin' }]} />
       <HeroSection h1="Emergency Locksmith in Mill Basin — 15–25 minute response" subheadline="Locked out of your Mill Basin home? We arrive within 15–25 minutes for emergency lockouts throughout South Brooklyn. 24/7, no surcharges, licensed & insured." variant="emergency" showTrustBar ctaLabel="Call Now — Fast Response" />
       <section className="py-10 bg-white">

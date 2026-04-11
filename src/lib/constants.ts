@@ -138,13 +138,13 @@ export const FOOTER_SERVICE_LINKS = [
 
 export const FOOTER_LOCATION_LINKS = [
   { label: 'Locksmith Near Me', href: '/locksmith-near-me/' },
-  { label: 'Park Slope', href: '/locksmith-near-me/park-slope/' },
-  { label: 'Williamsburg', href: '/locksmith-near-me/williamsburg/' },
-  { label: 'DUMBO', href: '/locksmith-near-me/dumbo/' },
-  { label: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights/' },
-  { label: 'Flatbush', href: '/locksmith-near-me/flatbush/' },
-  { label: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge/' },
-  { label: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant/' },
+  { label: 'Park Slope', href: '/locksmith-near-me/park-slope-11215-11217/' },
+  { label: 'Williamsburg', href: '/locksmith-near-me/williamsburg-11211-11249/' },
+  { label: 'DUMBO', href: '/locksmith-near-me/dumbo-11201/' },
+  { label: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights-11201/' },
+  { label: 'Flatbush', href: '/locksmith-near-me/flatbush-11226-11210/' },
+  { label: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge-11209/' },
+  { label: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant-11216-11221-11233/' },
   { label: '24-Hour Brooklyn', href: '/24-hour-locksmith-in-brooklyn-ny/' },
   { label: 'Emergency Brooklyn', href: '/emergency-locksmith-in-brooklyn-ny/' },
 ] as const

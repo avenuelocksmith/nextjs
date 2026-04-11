@@ -54,18 +54,18 @@ const HOME_FAQS = [
 ]
 
 const TOP_NEIGHBORHOODS = [
-  { name: 'Park Slope', href: '/locksmith-near-me/park-slope/' },
-  { name: 'Williamsburg', href: '/locksmith-near-me/williamsburg/' },
-  { name: 'DUMBO', href: '/locksmith-near-me/dumbo/' },
-  { name: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights/' },
-  { name: 'Flatbush', href: '/locksmith-near-me/flatbush/' },
-  { name: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge/' },
-  { name: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant/' },
-  { name: 'Crown Heights', href: '/locksmith-near-me/crown-heights/' },
-  { name: 'Bushwick', href: '/locksmith-near-me/bushwick/' },
-  { name: 'Sunset Park', href: '/locksmith-near-me/sunset-park/' },
-  { name: 'Cobble Hill', href: '/locksmith-near-me/cobble-hill/' },
-  { name: 'Carroll Gardens', href: '/locksmith-near-me/carroll-gardens/' },
+  { name: 'Park Slope', href: '/locksmith-near-me/park-slope-11215-11217/' },
+  { name: 'Williamsburg', href: '/locksmith-near-me/williamsburg-11211-11249/' },
+  { name: 'DUMBO', href: '/locksmith-near-me/dumbo-11201/' },
+  { name: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights-11201/' },
+  { name: 'Flatbush', href: '/locksmith-near-me/flatbush-11226-11210/' },
+  { name: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge-11209/' },
+  { name: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant-11216-11221-11233/' },
+  { name: 'Crown Heights', href: '/locksmith-near-me/crown-heights-11213-11216-11225-11233/' },
+  { name: 'Bushwick', href: '/locksmith-near-me/bushwick-11221/' },
+  { name: 'Sunset Park', href: '/locksmith-near-me/sunset-park-11220-11232/' },
+  { name: 'Cobble Hill', href: '/locksmith-near-me/cobble-hill-11201/' },
+  { name: 'Carroll Gardens', href: '/locksmith-near-me/carroll-gardens-11231/' },
 ]
 
 export default function HomePage() {

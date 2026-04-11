@@ -5,6 +5,8 @@ export interface NeighborhoodFAQ {
 
 export interface Neighborhood {
   slug: string
+  /** Previous URL slug used before the ZIP-embedded rewrite. Used to emit 301 redirects. */
+  legacySlug?: string
   name: string
   zip: string
   borough: string
@@ -16,7 +18,8 @@ export interface Neighborhood {
 
 export const NEIGHBORHOODS: Neighborhood[] = [
   {
-    slug: 'park-slope',
+    slug: 'park-slope-11215-11217',
+    legacySlug: 'park-slope',
     name: 'Park Slope',
     zip: '11215',
     borough: 'Brooklyn',
@@ -47,7 +50,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'williamsburg',
+    slug: 'williamsburg-11211-11249',
+    legacySlug: 'williamsburg',
     name: 'Williamsburg',
     zip: '11211',
     borough: 'Brooklyn',
@@ -78,7 +82,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'dumbo',
+    slug: 'dumbo-11201',
+    legacySlug: 'dumbo',
     name: 'DUMBO',
     zip: '11201',
     borough: 'Brooklyn',
@@ -109,7 +114,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'brooklyn-heights',
+    slug: 'brooklyn-heights-11201',
+    legacySlug: 'brooklyn-heights',
     name: 'Brooklyn Heights',
     zip: '11201',
     borough: 'Brooklyn',
@@ -140,7 +146,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'flatbush',
+    slug: 'flatbush-11226-11210',
+    legacySlug: 'flatbush',
     name: 'Flatbush',
     zip: '11226',
     borough: 'Brooklyn',
@@ -171,7 +178,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'bay-ridge',
+    slug: 'bay-ridge-11209',
+    legacySlug: 'bay-ridge',
     name: 'Bay Ridge',
     zip: '11209',
     borough: 'Brooklyn',
@@ -202,7 +210,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'bedford-stuyvesant',
+    slug: 'bedford-stuyvesant-11216-11221-11233',
+    legacySlug: 'bedford-stuyvesant',
     name: 'Bedford-Stuyvesant',
     zip: '11233',
     borough: 'Brooklyn',
@@ -233,7 +242,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'crown-heights',
+    slug: 'crown-heights-11213-11216-11225-11233',
+    legacySlug: 'crown-heights',
     name: 'Crown Heights',
     zip: '11213',
     borough: 'Brooklyn',
@@ -264,7 +274,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'bushwick',
+    slug: 'bushwick-11221',
+    legacySlug: 'bushwick',
     name: 'Bushwick',
     zip: '11221',
     borough: 'Brooklyn',
@@ -295,7 +306,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'sunset-park',
+    slug: 'sunset-park-11220-11232',
+    legacySlug: 'sunset-park',
     name: 'Sunset Park',
     zip: '11220',
     borough: 'Brooklyn',
@@ -326,7 +338,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'cobble-hill',
+    slug: 'cobble-hill-11201',
+    legacySlug: 'cobble-hill',
     name: 'Cobble Hill',
     zip: '11201',
     borough: 'Brooklyn',
@@ -357,7 +370,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'carroll-gardens',
+    slug: 'carroll-gardens-11231',
+    legacySlug: 'carroll-gardens',
     name: 'Carroll Gardens',
     zip: '11231',
     borough: 'Brooklyn',
@@ -388,7 +402,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'boerum-hill',
+    slug: 'boerum-hill-11217-11201',
+    legacySlug: 'boerum-hill',
     name: 'Boerum Hill',
     zip: '11217',
     borough: 'Brooklyn',
@@ -419,7 +434,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'prospect-heights',
+    slug: 'prospect-heights-11238-11217',
+    legacySlug: 'prospect-heights',
     name: 'Prospect Heights',
     zip: '11238',
     borough: 'Brooklyn',
@@ -450,7 +466,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'greenpoint',
+    slug: 'greenpoint-11222',
+    legacySlug: 'greenpoint',
     name: 'Greenpoint',
     zip: '11222',
     borough: 'Brooklyn',
@@ -481,7 +498,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'red-hook',
+    slug: 'red-hook-11231',
+    legacySlug: 'red-hook',
     name: 'Red Hook',
     zip: '11231',
     borough: 'Brooklyn',
@@ -512,7 +530,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'east-flatbush',
+    slug: 'east-flatbush-11203-11212-11226',
+    legacySlug: 'east-flatbush',
     name: 'East Flatbush',
     zip: '11203',
     borough: 'Brooklyn',
@@ -543,7 +562,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'borough-park',
+    slug: 'borough-park-11219',
+    legacySlug: 'borough-park',
     name: 'Borough Park',
     zip: '11219',
     borough: 'Brooklyn',
@@ -574,7 +594,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'bensonhurst',
+    slug: 'bensonhurst-11214-11204',
+    legacySlug: 'bensonhurst',
     name: 'Bensonhurst',
     zip: '11204',
     borough: 'Brooklyn',
@@ -605,7 +626,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'sheepshead-bay',
+    slug: 'sheepshead-bay-11235-11229',
+    legacySlug: 'sheepshead-bay',
     name: 'Sheepshead Bay',
     zip: '11235',
     borough: 'Brooklyn',
@@ -636,7 +658,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'canarsie',
+    slug: 'canarsie-11236',
+    legacySlug: 'canarsie',
     name: 'Canarsie',
     zip: '11236',
     borough: 'Brooklyn',
@@ -667,7 +690,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'flatlands',
+    slug: 'flatlands-11234',
+    legacySlug: 'flatlands',
     name: 'Flatlands',
     zip: '11234',
     borough: 'Brooklyn',
@@ -698,7 +722,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'mill-basin',
+    slug: 'mill-basin-11234',
+    legacySlug: 'mill-basin',
     name: 'Mill Basin',
     zip: '11234',
     borough: 'Brooklyn',
@@ -729,7 +754,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'marine-park',
+    slug: 'marine-park-11234',
+    legacySlug: 'marine-park',
     name: 'Marine Park',
     zip: '11234',
     borough: 'Brooklyn',
@@ -760,7 +786,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'midwood',
+    slug: 'midwood-11230',
+    legacySlug: 'midwood',
     name: 'Midwood',
     zip: '11230',
     borough: 'Brooklyn',
@@ -791,7 +818,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'kensington',
+    slug: 'kensington-in-11218',
+    legacySlug: 'kensington',
     name: 'Kensington',
     zip: '11218',
     borough: 'Brooklyn',
@@ -822,7 +850,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'windsor-terrace',
+    slug: 'windsor-terrace-11215-11218',
+    legacySlug: 'windsor-terrace',
     name: 'Windsor Terrace',
     zip: '11218',
     borough: 'Brooklyn',
@@ -853,7 +882,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'ditmas-park',
+    slug: 'ditmas-park-11226',
+    legacySlug: 'ditmas-park',
     name: 'Ditmas Park',
     zip: '11218',
     borough: 'Brooklyn',
@@ -884,7 +914,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'east-new-york',
+    slug: 'east-new-york-11207-11208',
+    legacySlug: 'east-new-york',
     name: 'East New York',
     zip: '11207',
     borough: 'Brooklyn',
@@ -915,7 +946,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'brownsville',
+    slug: 'brownsville-11212-11233',
+    legacySlug: 'brownsville',
     name: 'Brownsville',
     zip: '11212',
     borough: 'Brooklyn',
@@ -946,7 +978,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'gowanus',
+    slug: 'gowanus-11215-11217',
+    legacySlug: 'gowanus',
     name: 'Gowanus',
     zip: '11231',
     borough: 'Brooklyn',
@@ -977,7 +1010,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'downtown-brooklyn',
+    slug: 'downtown-brooklyn-11201',
+    legacySlug: 'downtown-brooklyn',
     name: 'Downtown Brooklyn',
     zip: '11201',
     borough: 'Brooklyn',
@@ -1008,7 +1042,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'fort-greene',
+    slug: 'fort-greene-11205-11217',
+    legacySlug: 'fort-greene',
     name: 'Fort Greene',
     zip: '11205',
     borough: 'Brooklyn',
@@ -1039,7 +1074,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'clinton-hill',
+    slug: 'clinton-hill-11205-11238',
+    legacySlug: 'clinton-hill',
     name: 'Clinton Hill',
     zip: '11205',
     borough: 'Brooklyn',
@@ -1070,7 +1106,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'gravesend',
+    slug: 'gravesend-11223',
+    legacySlug: 'gravesend',
     name: 'Gravesend',
     zip: '11223',
     borough: 'Brooklyn',
@@ -1101,7 +1138,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'dyker-heights',
+    slug: 'dyker-heights-11228',
+    legacySlug: 'dyker-heights',
     name: 'Dyker Heights',
     zip: '11228',
     borough: 'Brooklyn',
@@ -1132,7 +1170,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'vinegar-hill',
+    slug: 'vinegar-hill-11201',
+    legacySlug: 'vinegar-hill',
     name: 'Vinegar Hill',
     zip: '11201',
     borough: 'Brooklyn',
@@ -1163,7 +1202,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'columbia-waterfront',
+    slug: 'columbia-waterfront-11231',
+    legacySlug: 'columbia-waterfront',
     name: 'Columbia Waterfront District',
     zip: '11231',
     borough: 'Brooklyn',
@@ -1194,7 +1234,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'highland-park',
+    slug: 'highland-park-11208',
+    legacySlug: 'highland-park',
     name: 'Highland Park',
     zip: '11208',
     borough: 'Brooklyn',
@@ -1225,7 +1266,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'cypress-hills',
+    slug: 'cypress-hills-11208',
+    legacySlug: 'cypress-hills',
     name: 'Cypress Hills',
     zip: '11208',
     borough: 'Brooklyn',
@@ -1256,7 +1298,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'prospect-lefferts-gardens',
+    slug: 'prospect-lefferts-gardens-11225',
+    legacySlug: 'prospect-lefferts-gardens',
     name: 'Prospect Lefferts Gardens',
     zip: '11225',
     borough: 'Brooklyn',
@@ -1287,7 +1330,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'homecrest',
+    slug: 'homecrest-11229',
+    legacySlug: 'homecrest',
     name: 'Homecrest',
     zip: '11229',
     borough: 'Brooklyn',
@@ -1318,7 +1362,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'bergen-beach',
+    slug: 'bergen-beach-11234',
+    legacySlug: 'bergen-beach',
     name: 'Bergen Beach',
     zip: '11234',
     borough: 'Brooklyn',
@@ -1349,7 +1394,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'gerritsen-beach',
+    slug: 'gerritsen-beach-11229',
+    legacySlug: 'gerritsen-beach',
     name: 'Gerritsen Beach',
     zip: '11229',
     borough: 'Brooklyn',
@@ -1380,7 +1426,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'manhattan-beach',
+    slug: 'manhattan-beach-11235',
+    legacySlug: 'manhattan-beach',
     name: 'Manhattan Beach',
     zip: '11235',
     borough: 'Brooklyn',
@@ -1411,7 +1458,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'brighton-beach',
+    slug: 'brighton-beach-11235',
+    legacySlug: 'brighton-beach',
     name: 'Brighton Beach',
     zip: '11235',
     borough: 'Brooklyn',
@@ -1442,7 +1490,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'coney-island',
+    slug: 'coney-island-11224',
+    legacySlug: 'coney-island',
     name: 'Coney Island',
     zip: '11224',
     borough: 'Brooklyn',
@@ -1473,7 +1522,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'stuyvesant-heights',
+    slug: 'stuyvesant-heights-11233',
+    legacySlug: 'stuyvesant-heights',
     name: 'Stuyvesant Heights',
     zip: '11233',
     borough: 'Brooklyn',
@@ -1504,7 +1554,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     ],
   },
   {
-    slug: 'east-williamsburg',
+    slug: 'east-williamsburg-11206-11211-11237',
+    legacySlug: 'east-williamsburg',
     name: 'East Williamsburg',
     zip: '11206',
     borough: 'Brooklyn',

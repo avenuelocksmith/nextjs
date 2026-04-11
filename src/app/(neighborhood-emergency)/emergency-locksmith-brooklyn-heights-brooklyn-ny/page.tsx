@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Brooklyn Heights — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Brooklyn Heights. Townhouse & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-brooklyn-heights/',
+  path: '/emergency-locksmith-brooklyn-heights-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithBrooklynHeightsPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Brooklyn Heights — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Brooklyn Heights. Townhouse & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-brooklyn-heights/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Brooklyn Heights', description: 'Emergency locksmith in Brooklyn Heights. 15–25 minute response for townhouse and apartment lockouts.', url: '/emergency-locksmith-brooklyn-heights/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Brooklyn Heights — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Brooklyn Heights. Townhouse & apartment lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-brooklyn-heights-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Brooklyn Heights', description: 'Emergency locksmith in Brooklyn Heights. 15–25 minute response for townhouse and apartment lockouts.', url: '/emergency-locksmith-brooklyn-heights-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Brooklyn Heights', url: '/emergency-locksmith-brooklyn-heights/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Brooklyn Heights', url: '/emergency-locksmith-brooklyn-heights-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Brooklyn Heights' }]} />
       <HeroSection h1="Emergency Locksmith in Brooklyn Heights — 15–25 minute response" subheadline="Locked out of your Brooklyn Heights townhouse or apartment? We arrive within 15–25 minutes and open any door — from antique mortise locks to modern high-security deadbolts — without damage." variant="emergency" showTrustBar ctaLabel="Call Now — Fast Response" />
       <section className="py-10 bg-white">

@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Vinegar Hill — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Vinegar Hill, Brooklyn. Locked out of your home? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-vinegar-hill/',
+  path: '/emergency-locksmith-vinegar-hill-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithVinegarHillPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Vinegar Hill — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Vinegar Hill, Brooklyn. Locked out of your home? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-vinegar-hill/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Vinegar Hill', description: 'Emergency locksmith in Vinegar Hill, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-vinegar-hill/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Vinegar Hill — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Vinegar Hill, Brooklyn. Locked out of your home? 15–25 minute response, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-vinegar-hill-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Vinegar Hill', description: 'Emergency locksmith in Vinegar Hill, Brooklyn. 15–25 minute response for home and apartment lockouts.', url: '/emergency-locksmith-vinegar-hill-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Vinegar Hill', url: '/emergency-locksmith-vinegar-hill/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Vinegar Hill', url: '/emergency-locksmith-vinegar-hill-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Vinegar Hill' }]} />
       <HeroSection h1="Emergency Locksmith in Vinegar Hill — 15–25 minute response" subheadline="Locked out of your Vinegar Hill home or apartment? Fast non-destructive entry 24/7. No after-hours surcharge. Licensed & insured." variant="emergency" showTrustBar ctaLabel="Call Now — Fast Response" />
       <section className="py-10 bg-white">

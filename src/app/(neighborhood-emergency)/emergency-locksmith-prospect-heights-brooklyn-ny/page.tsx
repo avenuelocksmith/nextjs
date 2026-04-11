@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Prospect Heights — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Prospect Heights, Brooklyn. Apartment & home lockouts. 15–25 minute arrival, 24/7. Licensed & insured. Call (347) 386-7164 now.',
-  path: '/emergency-locksmith-prospect-heights/',
+  path: '/emergency-locksmith-prospect-heights-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithProspectHeightsPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Prospect Heights — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Prospect Heights, Brooklyn. Apartment & home lockouts. 15–25 minute arrival, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-prospect-heights/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Prospect Heights', description: 'Emergency locksmith in Prospect Heights, Brooklyn. 15–25 minute response for apartment and home lockouts.', url: '/emergency-locksmith-prospect-heights/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Prospect Heights — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Prospect Heights, Brooklyn. Apartment & home lockouts. 15–25 minute arrival, 24/7. Licensed & insured. Call (347) 386-7164 now.', url: '/emergency-locksmith-prospect-heights-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Prospect Heights', description: 'Emergency locksmith in Prospect Heights, Brooklyn. 15–25 minute response for apartment and home lockouts.', url: '/emergency-locksmith-prospect-heights-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Prospect Heights', url: '/emergency-locksmith-prospect-heights/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Prospect Heights', url: '/emergency-locksmith-prospect-heights-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Prospect Heights' }]} />
       <HeroSection h1="Emergency Locksmith in Prospect Heights — 15–25 minute response" subheadline="Locked out of your Prospect Heights apartment? Fast non-destructive entry, 24 hours a day. No after-hours surcharge. Licensed & insured." variant="emergency" showTrustBar ctaLabel="Call Now — 30-Min Arrival" />
       <section className="py-10 bg-white">

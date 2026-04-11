@@ -11,7 +11,7 @@ import { BUSINESS, LOCK_BRANDS } from '@/lib/constants'
 export const metadata: Metadata = buildMetadata({
   title: 'Emergency Locksmith Cobble Hill — 15–25 Min Response | Avenue Locksmith',
   description: 'Emergency locksmith in Cobble Hill, Brooklyn. Apartment & brownstone lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164.',
-  path: '/emergency-locksmith-cobble-hill/',
+  path: '/emergency-locksmith-cobble-hill-brooklyn-ny/',
 })
 
 const FAQS = [
@@ -24,10 +24,10 @@ const FAQS = [
 export default function EmergencyLocksmithCobbleHillPage() {
   return (
     <>
-      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Cobble Hill — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Cobble Hill, Brooklyn. Apartment & brownstone lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-cobble-hill/' })} />
-      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Cobble Hill', description: 'Emergency locksmith in Cobble Hill, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-cobble-hill/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
+      <JsonLd data={getWebPageSchema({ title: 'Emergency Locksmith Cobble Hill — 15–25 Min Response | Avenue Locksmith', description: 'Emergency locksmith in Cobble Hill, Brooklyn. Apartment & brownstone lockouts, 24/7. 15–25 minute arrival. Licensed & insured. Call (347) 386-7164.', url: '/emergency-locksmith-cobble-hill-brooklyn-ny/' })} />
+      <JsonLd data={getServiceSchema({ name: 'Emergency Locksmith — Cobble Hill', description: 'Emergency locksmith in Cobble Hill, Brooklyn. 15–25 minute response for brownstone and apartment lockouts.', url: '/emergency-locksmith-cobble-hill-brooklyn-ny/', serviceType: 'Emergency Lockout Service', brands: LOCK_BRANDS })} />
       <JsonLd data={getFAQSchema(FAQS)} />
-      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Cobble Hill', url: '/emergency-locksmith-cobble-hill/' }])} />
+      <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Emergency Locksmith Cobble Hill', url: '/emergency-locksmith-cobble-hill-brooklyn-ny/' }])} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Emergency Locksmith Cobble Hill' }]} />
       <HeroSection h1="Emergency Locksmith in Cobble Hill — 15–25 minute response" subheadline="Locked out of your Cobble Hill brownstone or apartment? We arrive within 15–25 minutes, open any door without damage, and are available 24/7 with no after-hours fees." variant="emergency" showTrustBar ctaLabel="Call Now — On Our Way" />
       <section className="py-10 bg-white">
