@@ -30,7 +30,7 @@ export default function AutomotiveLocksmithBkNYPage() {
       <JsonLd data={getBreadcrumbSchema([{ name: 'Home', url: '/' }, { name: 'Auto Locksmith Brooklyn NY', url: '/automotive-locksmith-brooklyn-ny/' }])} />
       <JsonLd data={getWebPageSchema({ title: 'Auto Locksmith Brooklyn NY — Key Programming & Transponder Keys | Avenue Locksmith', description: 'Auto locksmith in Brooklyn, NY specializing in key programming & transponder keys. Toyota, Honda, BMW, Ford & more. Up to 80% less than dealers. Call (347) 386-7164.', url: '/automotive-locksmith-brooklyn-ny/' })} />
       <BreadcrumbNav items={[{ label: 'Home', href: '/' }, { label: 'Auto Locksmith Brooklyn NY' }]} />
-      <HeroSection h1="Auto Locksmith Brooklyn, NY — Key Programming & Transponder Keys" subheadline="Need a new car key programmed in Brooklyn? We program transponder keys, smart keys, and key fobs for most makes and models — at a fraction of dealership cost." variant="service" showTrustBar />
+      <HeroSection h1="Auto Locksmith Brooklyn, NY — Key Programming & Transponder Keys" subheadline="Mobile transponder, smart-key, and push-to-start programming across Brooklyn. We cut and program curbside in 15–25 minutes — typical bill runs 60–80% below a dealership tow-and-program." variant="service" showTrustBar />
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-2xl font-bold text-brand-navy mb-5">Car Key Programming in Brooklyn</h2>
@@ -53,8 +53,8 @@ export default function AutomotiveLocksmithBkNYPage() {
       <FAQSection faqs={FAQS} title="Car Key Programming FAQ" />
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Need Car Key Programming in Brooklyn?</h2>
-          <p className="text-white/80 mb-8">We come to you. Mobile key programming across all Brooklyn neighborhoods.</p>
+          <h2 className="text-3xl font-bold mb-3">Mobile transponder programming — we come to the car</h2>
+          <p className="text-white/80 mb-8">Brooklyn-wide curbside dispatch. OBD programmer on every truck, covering most domestic and foreign immobilizers.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl"><Phone size={26} aria-hidden="true" />{BUSINESS.phone}</a>
         </div>
       </section>

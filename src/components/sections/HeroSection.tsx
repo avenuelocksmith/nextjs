@@ -5,6 +5,7 @@ import { TrustBar } from '@/components/ui/TrustBar'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
 import { HeroVisitorStrip } from '@/components/ui/HeroVisitorStrip'
 import { HeroTrustLogos } from '@/components/ui/HeroTrustLogos'
+import { HeroTrustBadges } from '@/components/ui/HeroTrustBadges'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { Phone, CheckCircle, Loader2 } from 'lucide-react'
@@ -55,9 +56,10 @@ function CallbackRequestCard() {
       {status === 'success' ? (
         <div className="flex flex-col items-center text-center gap-3 py-4">
           <CheckCircle size={40} className="text-brand-amber" aria-hidden="true" />
-          <p className="text-white font-bold text-lg leading-tight">We&apos;ll call you back!</p>
+          <p className="text-white font-bold text-lg leading-tight">Callback request received</p>
           <p className="text-white/65 text-sm">
-            Our team will reach out to you shortly. For urgent issues, call us now.
+            A Brooklyn dispatcher will call you back shortly. If you&apos;re locked out or in an
+            emergency, call the shop directly.
           </p>
           <a
             href={BUSINESS.phoneHref}
@@ -183,7 +185,7 @@ export function HeroSection({
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
               {/* Left: text + CTAs */}
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="font-bold leading-tight mb-4 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
+                <h1 className="font-bold mb-4 text-white text-fluid-hero">
                   {h1}
                 </h1>
 
@@ -197,7 +199,7 @@ export function HeroSection({
                   <HeroTrustLogos />
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-8 lg:mb-0">
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-5">
                   <PhoneButton
                     variant="primary"
                     size="xl"
@@ -210,6 +212,11 @@ export function HeroSection({
                     Get a Free Quote
                   </Link>
                 </div>
+
+                <HeroTrustBadges
+                  variant="light"
+                  className="justify-center lg:justify-start mb-8 lg:mb-0"
+                />
               </div>
 
               {/* Right: callback request form */}
@@ -237,7 +244,7 @@ export function HeroSection({
                 </p>
               )}
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-5">
                 <PhoneButton
                   variant="primary"
                   size="lg"
@@ -252,6 +259,8 @@ export function HeroSection({
                   </Link>
                 )}
               </div>
+
+              <HeroTrustBadges variant="light" className="justify-center mb-8" />
             </div>
           )}
 

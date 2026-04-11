@@ -279,10 +279,11 @@ export default function LocksmithNearMePage() {
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Need a Locksmith in Brooklyn Right Now?
+            Brooklyn neighborhood dispatch — 15–25 minutes, borough-wide
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            15–25 minute response guaranteed. Available 24/7, 365 days a year. We quote the full price before we start.
+            Technicians staged across Brooklyn from the Flatlands shop. Price locked before the
+            truck leaves. 24/7, 365 days a year.
           </p>
           <a
             href={BUSINESS.phoneHref}

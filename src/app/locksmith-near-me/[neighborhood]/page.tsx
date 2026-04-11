@@ -5,6 +5,7 @@ import { Phone, CheckCircle, MapPin, Shield, Clock, Star } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
+import { ReviewsStrip } from '@/components/sections/ReviewsStrip'
 import { MapEmbed } from '@/components/ui/MapEmbed'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
@@ -132,7 +133,13 @@ export default async function NeighborhoodPage({
           </h2>
           <p className="text-brand-text text-lg leading-relaxed mb-5">{n.localContext}</p>
           <p className="text-brand-text leading-relaxed mb-6">
-            Whether you are locked out, moving in and need your locks rekeyed, or looking to upgrade your apartment security, Avenue Locksmith is the trusted local choice in {n.name}. We serve all of {n.borough} and respond to {n.name} in 15–25 minutes. Every technician is background-checked, licensed, and carries ID you can verify at the door.
+            Calls from {n.name} route straight to our Flatlands shop — no offshore dispatcher,
+            no subcontracted ride-share driver pretending to be a locksmith. Our techs drive
+            Brooklyn routes daily and know the block-level quirks of {n.name} ({n.zip}): which
+            building types take mortise cylinders, which ones run Grade 1 deadbolts, and which
+            curbside sections cost you five extra minutes in a loading zone. Every tech is a
+            direct employee, NYC DCWP licensed, and carries photo ID you can verify before any
+            work begins.
           </p>
 
           {/* Trust signals row */}
@@ -222,6 +229,12 @@ export default async function NeighborhoodPage({
         title={`Common Questions About Locksmith Service in ${n.name}`}
       />
 
+      {/* Contextual reviews strip — falls back to GMB CTA while reviews.ts is empty */}
+      <ReviewsStrip
+        neighborhood={n.slug}
+        title={`What ${n.name} customers say on Google`}
+      />
+
       {/* Nearby neighborhoods */}
       {nearbyWithSlugs.length > 0 && (
         <section className="py-10 bg-brand-bg">
@@ -277,10 +290,11 @@ export default async function NeighborhoodPage({
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-3">
-            Locked Out in {n.name}? Call Now.
+            {n.name} dispatch — tech en route in 15–25 minutes
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            We will be at your door in 15–25 minutes. Available 24/7, 365 days a year. Upfront pricing — no surprises.
+            One call reaches a licensed Brooklyn technician already staged within {n.borough}.
+            Price locked on the phone, 24/7, 365 days a year.
           </p>
           <a
             href={BUSINESS.phoneHref}

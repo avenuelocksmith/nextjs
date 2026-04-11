@@ -72,17 +72,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url('/services/security-solutions/reinforced-door-frame-system/', 0.7, 'monthly'),
 
     // ── Tier 5: Neighborhood emergency pages ─────────────────────
-    url('/emergency-locksmith-boerum-hill/', 0.75, 'monthly'),
-    url('/emergency-locksmith-brooklyn-heights/', 0.75, 'monthly'),
-    url('/emergency-locksmith-carroll-gardens/', 0.75, 'monthly'),
-    url('/emergency-locksmith-cobble-hill/', 0.75, 'monthly'),
-    url('/emergency-locksmith-columbia-waterfront-district/', 0.7, 'monthly'),
-    url('/emergency-locksmith-dumbo/', 0.75, 'monthly'),
-    url('/emergency-locksmith-mill-basin/', 0.7, 'monthly'),
-    url('/emergency-locksmith-park-slope/', 0.75, 'monthly'),
-    url('/emergency-locksmith-prospect-heights/', 0.75, 'monthly'),
-    url('/emergency-locksmith-vinegar-hill/', 0.7, 'monthly'),
-    url('/emergency-locksmith-williamsburg/', 0.75, 'monthly'),
+    url('/emergency-locksmith-boerum-hill-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-brooklyn-heights-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-carroll-gardens-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-cobble-hill-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-columbia-waterfront-district-brooklyn-ny/', 0.7, 'monthly'),
+    url('/emergency-locksmith-dumbo-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-mill-basin-brooklyn-ny/', 0.7, 'monthly'),
+    url('/emergency-locksmith-park-slope-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-prospect-heights-brooklyn-ny/', 0.75, 'monthly'),
+    url('/emergency-locksmith-vinegar-hill-brooklyn-ny/', 0.7, 'monthly'),
+    url('/emergency-locksmith-williamsburg-brooklyn-ny/', 0.75, 'monthly'),
 
     // ── Tier 6: Dynamic neighborhood pages ───────────────────────
     ...neighborhoodPages,

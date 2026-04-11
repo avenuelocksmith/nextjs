@@ -32,7 +32,7 @@ export default function LockoutServiceBkPage() {
       <HeroSection h1="Lockout Service in Brooklyn, NY — Home, Car & Business" subheadline="Locked out? We handle home, apartment, car, and business lockouts throughout Brooklyn. 15–25 minute arrival, 24/7 — same price at 3am as 3pm." variant="emergency" showTrustBar ctaLabel="Call Now — 15–25 Min Response" />
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <p className="text-brand-text text-lg leading-relaxed mb-8">Whether you are standing outside your apartment door, locked out of your car on Atlantic Avenue, or locked out of your shop in the morning rush — Avenue Locksmith dispatches from Brooklyn and arrives fast. One phone number handles every type of lockout situation.</p>
+          <p className="text-brand-text text-lg leading-relaxed mb-8">Apartment door at midnight, car on Atlantic Avenue at 6am, or a retail shutter jammed fifteen minutes before opening — every type of Brooklyn lockout dispatches from the same East 55th Street shop, and the same phone number reaches a real person on every call. Average arrival is 15–25 minutes borough-wide, price locked before the truck leaves.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {[
               { title: 'Home & Apartment Lockout', items: ['Apartment lockouts', 'House lockouts', 'Condo & co-op lockouts', 'Deadbolt & knob lock entry', 'Mortise lock entry', 'Non-destructive in all cases'] },
@@ -54,7 +54,7 @@ export default function LockoutServiceBkPage() {
       <FAQSection faqs={FAQS} title="Lockout Service FAQ" />
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Locked Out in Brooklyn?</h2>
+          <h2 className="text-3xl font-bold mb-3">Brooklyn lockout dispatch — home, car, or business</h2>
           <p className="text-white/80 mb-8">Home, car, or business — we arrive in 15–25 minutes, 24/7.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-12 py-6 rounded-xl text-2xl transition-colors shadow-2xl"><Phone size={30} aria-hidden="true" />{BUSINESS.phone}</a>
         </div>

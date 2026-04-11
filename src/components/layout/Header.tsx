@@ -4,9 +4,10 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Lock, Cpu, Eye, Fingerprint, DoorOpen, RefreshCw, ArrowLeftRight, ShieldCheck, Copy, Archive, Mail, UserCheck } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { BUSINESS, NAV_LINKS } from '@/lib/constants'
+import { BUSINESS, NAV_LINKS, AREAS_MEGA_MENU } from '@/lib/constants'
 import { useAvailability } from '@/hooks/useAvailability'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
+import { MapPin } from 'lucide-react'
 
 const MEGA_MENU = [
   {
@@ -49,9 +50,12 @@ const MEGA_MENU = [
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
+  const [mobileAreasOpen, setMobileAreasOpen] = useState(false)
   const [megaOpen, setMegaOpen] = useState(false)
+  const [areasOpen, setAreasOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const areasCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const afterHours = useAvailability()
 
   useEffect(() => {
@@ -62,6 +66,9 @@ export function Header() {
 
   function openMega() {
     if (closeTimer.current) clearTimeout(closeTimer.current)
+    // Only one mega-menu open at a time
+    if (areasCloseTimer.current) clearTimeout(areasCloseTimer.current)
+    setAreasOpen(false)
     setMegaOpen(true)
   }
 
@@ -69,9 +76,21 @@ export function Header() {
     closeTimer.current = setTimeout(() => setMegaOpen(false), 120)
   }
 
+  function openAreas() {
+    if (areasCloseTimer.current) clearTimeout(areasCloseTimer.current)
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setMegaOpen(false)
+    setAreasOpen(true)
+  }
+
+  function closeAreas() {
+    areasCloseTimer.current = setTimeout(() => setAreasOpen(false), 120)
+  }
+
   function closeMobileMenu() {
     setMobileOpen(false)
     setMobileServicesOpen(false)
+    setMobileAreasOpen(false)
   }
 
   return (
@@ -187,6 +206,87 @@ export function Header() {
                 )
               }
 
+              if (link.label === 'Service Areas') {
+                return (
+                  <li
+                    key={link.href}
+                    className="relative"
+                    onMouseEnter={openAreas}
+                    onMouseLeave={closeAreas}
+                  >
+                    <button
+                      aria-haspopup="true"
+                      aria-expanded={areasOpen}
+                      className={cn(
+                        'flex items-center gap-1 text-sm font-medium transition-colors',
+                        areasOpen ? 'text-brand-amber' : 'text-white/80 hover:text-brand-amber'
+                      )}
+                    >
+                      Service Areas
+                      <ChevronDown
+                        size={14}
+                        className={cn('transition-transform duration-200', areasOpen && 'rotate-180')}
+                        aria-hidden="true"
+                      />
+                    </button>
+
+                    {areasOpen && (
+                      <div
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[760px] bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 grid grid-cols-3 gap-6"
+                        role="menu"
+                        onMouseEnter={openAreas}
+                        onMouseLeave={closeAreas}
+                      >
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-l border-t border-gray-100 rotate-45" />
+
+                        {AREAS_MEGA_MENU.map((col) => (
+                          <div key={col.heading}>
+                            <p className="text-xs font-bold text-brand-amber uppercase tracking-wider mb-3 px-1">
+                              {col.heading}
+                            </p>
+                            <ul className="space-y-0.5" role="list">
+                              {col.items.map((item) => (
+                                <li key={item.href}>
+                                  <Link
+                                    href={item.href}
+                                    role="menuitem"
+                                    onClick={() => setAreasOpen(false)}
+                                    className="flex items-start gap-2.5 px-2 py-2 rounded-lg hover:bg-gray-50 group transition-colors"
+                                  >
+                                    <MapPin
+                                      size={14}
+                                      className="text-brand-amber shrink-0 mt-0.5 group-hover:scale-110 transition-transform"
+                                      aria-hidden="true"
+                                    />
+                                    <div>
+                                      <p className="text-sm font-semibold text-brand-charcoal leading-tight group-hover:text-brand-amber transition-colors">
+                                        {item.label}
+                                      </p>
+                                      <p className="text-xs text-brand-muted leading-snug mt-0.5">
+                                        {item.desc}
+                                      </p>
+                                    </div>
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                            {col.heading === 'North Brooklyn' && (
+                              <Link
+                                href="/locksmith-near-me/"
+                                onClick={() => setAreasOpen(false)}
+                                className="inline-flex items-center gap-1 mt-3 px-2 text-xs font-bold text-brand-amber hover:underline"
+                              >
+                                View all neighborhoods →
+                              </Link>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                )
+              }
+
               return (
                 <li key={link.href}>
                   <Link
@@ -227,7 +327,7 @@ export function Header() {
           id="mobile-menu"
           className={cn(
             'md:hidden overflow-hidden transition-all duration-300',
-            mobileOpen ? 'max-h-[600px] opacity-100 pt-4' : 'max-h-0 opacity-0'
+            mobileOpen ? 'max-h-[calc(100vh-120px)] overflow-y-auto opacity-100 pt-4' : 'max-h-0 opacity-0'
           )}
         >
           <ul className="flex flex-col gap-1 pb-4" role="list">
@@ -237,7 +337,7 @@ export function Header() {
                   <li key={link.href}>
                     <button
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className="w-full flex items-center justify-between px-3 py-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                      className="w-full flex items-center justify-between px-3 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium tap-target"
                       aria-expanded={mobileServicesOpen}
                     >
                       <span>Services</span>
@@ -266,7 +366,7 @@ export function Header() {
                                   <Link
                                     href={item.href}
                                     onClick={closeMobileMenu}
-                                    className="flex items-center gap-2 px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-sm"
+                                    className="flex items-center gap-2 px-3 py-3 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-sm tap-target"
                                   >
                                     <item.icon size={13} className="text-brand-amber shrink-0" aria-hidden="true" />
                                     {item.label}
@@ -279,9 +379,66 @@ export function Header() {
                         <Link
                           href="/services/"
                           onClick={closeMobileMenu}
-                          className="block px-3 py-2 text-brand-amber font-bold text-sm hover:underline"
+                          className="flex items-center px-3 py-3 text-brand-amber font-bold text-sm hover:underline tap-target"
                         >
                           View all services →
+                        </Link>
+                      </div>
+                    </div>
+                  </li>
+                )
+              }
+
+              if (link.label === 'Service Areas') {
+                return (
+                  <li key={link.href}>
+                    <button
+                      onClick={() => setMobileAreasOpen(!mobileAreasOpen)}
+                      className="w-full flex items-center justify-between px-3 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium tap-target"
+                      aria-expanded={mobileAreasOpen}
+                    >
+                      <span>Service Areas</span>
+                      <ChevronDown
+                        size={16}
+                        className={cn('transition-transform duration-200', mobileAreasOpen && 'rotate-180')}
+                        aria-hidden="true"
+                      />
+                    </button>
+
+                    <div
+                      className={cn(
+                        'overflow-hidden transition-all duration-300',
+                        mobileAreasOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+                      )}
+                    >
+                      <div className="pl-3 pt-1 pb-2 space-y-3">
+                        {AREAS_MEGA_MENU.map((col) => (
+                          <div key={col.heading}>
+                            <p className="text-[10px] font-bold text-brand-amber uppercase tracking-wider px-3 py-1">
+                              {col.heading}
+                            </p>
+                            <ul role="list">
+                              {col.items.map((item) => (
+                                <li key={item.href}>
+                                  <Link
+                                    href={item.href}
+                                    onClick={closeMobileMenu}
+                                    className="flex items-center gap-2 px-3 py-3 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-sm tap-target"
+                                  >
+                                    <MapPin size={13} className="text-brand-amber shrink-0" aria-hidden="true" />
+                                    {item.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                        <Link
+                          href="/locksmith-near-me/"
+                          onClick={closeMobileMenu}
+                          className="flex items-center px-3 py-3 text-brand-amber font-bold text-sm hover:underline tap-target"
+                        >
+                          View all neighborhoods →
                         </Link>
                       </div>
                     </div>
@@ -293,7 +450,7 @@ export function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block px-3 py-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                    className="flex items-center px-3 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium tap-target"
                     onClick={closeMobileMenu}
                   >
                     {link.label}
@@ -305,10 +462,10 @@ export function Header() {
             <li className="pt-2">
               <a
                 href={BUSINESS.phoneHref}
-                className="flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-3 rounded-xl transition-all"
+                className="flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-3 rounded-xl transition-all tap-target"
               >
                 <Phone size={18} aria-hidden="true" />
-                <span>Call {BUSINESS.phone}</span>
+                <span className="whitespace-nowrap">Call {BUSINESS.phone}</span>
               </a>
             </li>
           </ul>

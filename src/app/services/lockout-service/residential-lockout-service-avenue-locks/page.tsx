@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Phone, CheckCircle, ArrowRight, Clock, Home } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
+import { GallerySection } from '@/components/sections/GallerySection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
@@ -151,6 +152,15 @@ export default function ResidentialLockoutPage() {
         </div>
       </section>
 
+      {/* Contextual gallery — residential category */}
+      <GallerySection
+        title="Recent Residential Lockout Jobs"
+        subtitle="Deadbolts opened without damage, mortise repairs, and rekey work completed across Brooklyn homes and apartments."
+        category="residential"
+        maxItems={6}
+        showFilters={false}
+      />
+
       <FAQSection faqs={FAQS} title="Residential Lockout FAQ — What Brooklyn Residents Ask" />
 
       {/* Internal links */}
@@ -176,7 +186,7 @@ export default function ResidentialLockoutPage() {
 
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Locked Out of Your Home in Brooklyn?</h2>
+          <h2 className="text-3xl font-bold mb-3">Brooklyn home lockout dispatch — picks out first, drills last</h2>
           <p className="text-white/80 mb-8">Call now — we will be there in 15–25 minutes. Available 24/7, 365 days.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}

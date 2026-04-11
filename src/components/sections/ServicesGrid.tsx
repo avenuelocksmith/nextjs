@@ -45,20 +45,28 @@ export function ServicesGrid({
             ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-6'
             : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
         )}>
-          {SERVICES.map((service) => {
+          {SERVICES.map((service, i) => {
             const Icon = iconMap[service.icon] ?? Key
             return (
               <Link
                 key={service.slug}
                 href={service.href}
                 className={cn(
-                  'group bg-white rounded-xl border border-brand-border shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-brand-amber/50 transition-all duration-200 flex flex-col',
+                  'group relative overflow-hidden bg-white rounded-xl border border-brand-border shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:border-brand-amber/50 transition-all duration-200 flex flex-col',
                   compact ? 'p-4 items-center text-center' : 'p-6'
                 )}
                 aria-label={`Learn about ${service.name}`}
               >
+                {!compact && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-3 right-4 font-heading font-extrabold text-brand-amber/20 text-5xl leading-none pointer-events-none select-none"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                )}
                 <div className={cn(
-                  'rounded-lg bg-gradient-to-br from-amber-400/20 to-amber-600/10 group-hover:from-amber-400/30 group-hover:to-amber-600/20 transition-all duration-200',
+                  'relative rounded-lg bg-gradient-to-br from-amber-400/20 to-amber-600/10 group-hover:from-amber-400/30 group-hover:to-amber-600/20 transition-all duration-200',
                   compact ? 'p-3 mb-3 w-12 h-12 flex items-center justify-center' : 'p-3 w-12 h-12 flex items-center justify-center mb-4'
                 )}>
                   <Icon
@@ -69,18 +77,18 @@ export function ServicesGrid({
                 </div>
 
                 <h3 className={cn(
-                  'font-bold text-brand-charcoal group-hover:text-brand-amber transition-colors',
-                  compact ? 'text-sm' : 'text-lg mb-2'
+                  'relative font-bold text-brand-charcoal group-hover:text-brand-amber transition-colors',
+                  compact ? 'text-sm' : 'text-lg mb-2 pr-12'
                 )}>
                   {service.name}
                 </h3>
 
                 {!compact && (
                   <>
-                    <p className="text-brand-muted text-sm leading-relaxed flex-1 mb-4">
+                    <p className="relative text-brand-muted text-sm leading-relaxed flex-1 mb-4">
                       {service.description}
                     </p>
-                    <span className="flex items-center gap-1 group-hover:gap-2 text-brand-amber text-sm font-semibold mt-auto transition-all duration-200">
+                    <span className="relative flex items-center gap-1 group-hover:gap-2 text-brand-amber text-sm font-semibold mt-auto transition-all duration-200">
                       Learn More <ArrowRight size={14} />
                     </span>
                   </>

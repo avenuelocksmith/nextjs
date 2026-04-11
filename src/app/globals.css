@@ -170,4 +170,19 @@
     min-height: 48px;
     min-width: 48px;
   }
+
+  /* Fluid typography — scales smoothly 360px → 1440px */
+  .text-fluid-hero {
+    font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .text-fluid-h2 {
+    font-size: clamp(1.5rem, 2.5vw + 0.75rem, 2.5rem);
+    line-height: 1.15;
+  }
+  .text-fluid-body {
+    font-size: clamp(1rem, 0.5vw + 0.9rem, 1.125rem);
+    line-height: 1.6;
+  }
 }

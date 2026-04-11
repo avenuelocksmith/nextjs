@@ -2,13 +2,16 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Phone, MapPin, ArrowRight } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
+import { HowItWorks } from '@/components/sections/HowItWorks'
+import { HowACallRuns } from '@/components/sections/HowACallRuns'
+import { BeforeAfterSlider } from '@/components/ui/BeforeAfterSlider'
 import dynamic from 'next/dynamic'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema } from '@/lib/schema'
+import { getBeforeAfterPairs } from '@/lib/gallery'
 import { BUSINESS } from '@/lib/constants'
 
 const ServicesGrid        = dynamic(() => import('@/components/sections/ServicesGrid').then(m => ({ default: m.ServicesGrid })))
-const WhyChooseUs         = dynamic(() => import('@/components/sections/WhyChooseUs').then(m => ({ default: m.WhyChooseUs })))
 const TestimonialsSection = dynamic(() => import('@/components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })))
 const FAQSection          = dynamic(() => import('@/components/sections/FAQSection').then(m => ({ default: m.FAQSection })))
 const ContactFormSection  = dynamic(() => import('@/components/sections/ContactFormSection').then(m => ({ default: m.ContactFormSection })))
@@ -54,23 +57,24 @@ const HOME_FAQS = [
 ]
 
 const TOP_NEIGHBORHOODS = [
-  { name: 'Park Slope', href: '/locksmith-near-me/park-slope/' },
-  { name: 'Williamsburg', href: '/locksmith-near-me/williamsburg/' },
-  { name: 'DUMBO', href: '/locksmith-near-me/dumbo/' },
-  { name: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights/' },
-  { name: 'Flatbush', href: '/locksmith-near-me/flatbush/' },
-  { name: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge/' },
-  { name: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant/' },
-  { name: 'Crown Heights', href: '/locksmith-near-me/crown-heights/' },
-  { name: 'Bushwick', href: '/locksmith-near-me/bushwick/' },
-  { name: 'Sunset Park', href: '/locksmith-near-me/sunset-park/' },
-  { name: 'Cobble Hill', href: '/locksmith-near-me/cobble-hill/' },
-  { name: 'Carroll Gardens', href: '/locksmith-near-me/carroll-gardens/' },
+  { name: 'Park Slope', href: '/locksmith-near-me/park-slope-11215-11217/' },
+  { name: 'Williamsburg', href: '/locksmith-near-me/williamsburg-11211-11249/' },
+  { name: 'DUMBO', href: '/locksmith-near-me/dumbo-11201/' },
+  { name: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights-11201/' },
+  { name: 'Flatbush', href: '/locksmith-near-me/flatbush-11226-11210/' },
+  { name: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge-11209/' },
+  { name: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant-11216-11221-11233/' },
+  { name: 'Crown Heights', href: '/locksmith-near-me/crown-heights-11213-11216-11225-11233/' },
+  { name: 'Bushwick', href: '/locksmith-near-me/bushwick-11221/' },
+  { name: 'Sunset Park', href: '/locksmith-near-me/sunset-park-11220-11232/' },
+  { name: 'Cobble Hill', href: '/locksmith-near-me/cobble-hill-11201/' },
+  { name: 'Carroll Gardens', href: '/locksmith-near-me/carroll-gardens-11231/' },
 ]
 
 export default function HomePage() {
   const faqSchema = getFAQSchema(HOME_FAQS)
   const breadcrumbSchema = getBreadcrumbSchema([{ name: 'Home', url: '/' }])
+  const featuredPair = getBeforeAfterPairs()[0]
 
   return (
     <>
@@ -85,14 +89,17 @@ export default function HomePage() {
         variant="homepage"
       />
 
+      {/* How It Works — 3-step mobile-first explainer */}
+      <HowItWorks />
+
       {/* Services Grid */}
       <ServicesGrid
         title="Complete Locksmith Services for Brooklyn & NYC"
         subtitle="From emergency lockouts to full security system installations — residential, commercial, and automotive."
       />
 
-      {/* Why Choose Us */}
-      <WhyChooseUs title="Why Brooklyn Trusts Avenue Locksmith" />
+      {/* How a call runs — editorial trust block (replaces Why-Choose-Us anti-pattern) */}
+      <HowACallRuns />
 
       {/* Testimonials */}
       <TestimonialsSection
@@ -107,6 +114,31 @@ export default function HomePage() {
           See all {BUSINESS.reviewCount}+ reviews <ArrowRight size={14} />
         </Link>
       </div>
+
+      {/* Featured before/after project */}
+      {featuredPair && (
+        <section className="py-14 md:py-20 bg-brand-bg">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <div className="text-center mb-8">
+              <p className="text-sm font-semibold text-brand-amber uppercase tracking-wider mb-2">
+                Project Spotlight
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-3">
+                {featuredPair.after.title.replace(/ — After$/, '')}
+              </h2>
+              <p className="text-brand-muted text-sm md:text-base max-w-xl mx-auto">
+                Drag the divider to see the same door before and after our technicians finished the job.
+              </p>
+            </div>
+            <BeforeAfterSlider
+              beforeSrc={`/gallery/${featuredPair.before.filename}`}
+              afterSrc={`/gallery/${featuredPair.after.filename}`}
+              alt={featuredPair.after.alt}
+              caption={`${featuredPair.after.title.replace(/ — After$/, '')} · Completed ${featuredPair.after.dateCompleted}`}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Gallery Preview */}
       <GallerySection
@@ -178,10 +210,11 @@ export default function HomePage() {
         </div>
         <div className="relative container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Need a Locksmith in Brooklyn Right Now?
+            Brooklyn locksmith dispatch — 24/7, straight from the shop at 973 E 55th St
           </h2>
           <p className="text-white/75 mb-8 text-lg">
-            We&apos;re available 24 hours a day, 7 days a week. One call and we&apos;ll be there in 15–25 minutes or less.
+            The same phone number reaches a licensed Brooklyn shop at 3am, 8pm, or Sunday morning.
+            15–25 minute arrival across the borough, price locked before the truck leaves.
           </p>
           <a
             href={BUSINESS.phoneHref}

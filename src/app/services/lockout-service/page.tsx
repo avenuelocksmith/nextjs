@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, Home, Building, Car, CheckCircle } from 'lucide-react'
+import { Phone, Home, Building, Car } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
+import { ReviewsStrip } from '@/components/sections/ReviewsStrip'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
@@ -100,34 +101,61 @@ export default function LockoutServicePage() {
         </div>
       </section>
 
-      <section className="py-12 bg-brand-bg">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-2xl font-bold text-brand-navy mb-6">Why Choose Avenue Locksmith for Lockouts?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              'Licensed, bonded & insured — NYC DCWP licensed',
-              '15–25 minute arrival guarantee across Brooklyn',
-              'Non-destructive entry — no unnecessary damage',
-              'Upfront pricing before work begins',
-              'No after-hours surcharges',
-              'Real person answers every call',
-              'Serving all Brooklyn neighborhoods 24/7',
-              '4.9/5 rating from 150+ verified customers',
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-2.5 bg-white rounded-lg p-3 border border-brand-border">
-                <CheckCircle size={16} className="text-brand-amber shrink-0" aria-hidden="true" />
-                <span className="text-brand-text text-sm">{item}</span>
+      <section className="py-14 bg-brand-bg">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
+            <div className="md:col-span-3">
+              <p className="text-sm font-semibold text-brand-amber uppercase tracking-wider mb-3">
+                How a Brooklyn lockout call actually runs
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-navy leading-tight mb-4">
+                One number, one licensed Brooklyn shop, one firm price
+              </h2>
+              <p className="text-brand-text leading-relaxed mb-4">
+                When the phone rings at 973 E 55th St, a dispatcher at the shop — not an offshore
+                call center — picks up, confirms your address and cross street, and reads back a
+                firm total before any truck moves. That number is what you pay on arrival. If a
+                technician discovers the lock needs more than a standard open (a broken internal
+                cam, a drilled Medeco, a burglary-damaged mortise), the dispatcher calls you back
+                and quotes the additional work before it starts.
+              </p>
+              <p className="text-brand-text leading-relaxed">
+                Overnight and weekend dispatch run on the same rate card as weekday daytime work.
+                No &ldquo;after-hours multiplier,&rdquo; no &ldquo;distance surcharge,&rdquo; no
+                invented &ldquo;high-security&rdquo; upcharge on your front step. Every technician
+                on the truck is a direct Avenue Locksmith employee carrying an NYC DCWP credential
+                you can photograph before work begins.
+              </p>
+            </div>
+            <aside className="md:col-span-2 border-l-4 border-brand-amber pl-6 space-y-4 text-sm">
+              <div>
+                <div className="font-semibold text-brand-navy">Arrival window</div>
+                <div className="text-brand-muted">15–25 minutes, borough-wide, measured from dispatch — not &ldquo;from your call.&rdquo;</div>
               </div>
-            ))}
+              <div>
+                <div className="font-semibold text-brand-navy">Entry method</div>
+                <div className="text-brand-muted">Pick first, bypass second, drill only when the cylinder is physically seized or broken.</div>
+              </div>
+              <div>
+                <div className="font-semibold text-brand-navy">ID policy</div>
+                <div className="text-brand-muted">We verify tenancy before opening any door — photo ID plus proof of address.</div>
+              </div>
+              <div>
+                <div className="font-semibold text-brand-navy">Receipts</div>
+                <div className="text-brand-muted">Itemized invoice with line-item pricing, emailed or printed on the spot.</div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
       <FAQSection faqs={FAQS} title="Lockout Service FAQ" />
 
+      <ReviewsStrip service="lockout-service" title="Brooklyn lockout customers on Google" />
+
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Locked Out in Brooklyn? Call Now.</h2>
+          <h2 className="text-3xl font-bold mb-3">Brooklyn lockout hotline — 24/7, one number</h2>
           <p className="text-white/80 mb-8 text-lg">15–25 minute response. Available 24/7, 365 days a year.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}

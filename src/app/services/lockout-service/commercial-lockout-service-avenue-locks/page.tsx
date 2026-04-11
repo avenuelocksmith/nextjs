@@ -18,7 +18,7 @@ export const metadata: Metadata = buildMetadata({
 const FAQS = [
   {
     question: 'I am locked out of my business at 5 AM before the morning shift — how fast can you get here?',
-    answer: 'This is one of our highest-priority call types. Call (347) 386-7164 and tell the dispatcher it is a commercial lockout before opening — we will route the nearest available technician immediately. Typical response in Brooklyn is 15–25 minutes. We understand that your entire workforce may be standing outside and every minute matters. We dispatch first, discuss details second.',
+    answer: 'This is one of our highest-priority call types. Call (347) 386-7164 and tell the dispatcher it is a commercial lockout before opening — we will route the nearest available technician immediately. Typical response in Brooklyn is 15–25 minutes. Every minute a storefront stays closed with a crew standing on the sidewalk is revenue lost, so we dispatch the nearest tech before finishing the intake call.',
   },
   {
     question: 'My restaurant just started service and the manager is locked out of the office where the safe is — can you come while we are open?',
@@ -174,8 +174,8 @@ export default function CommercialLockoutPage() {
 
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Business Locked Out in Brooklyn?</h2>
-          <p className="text-white/80 mb-8">Call now — 15–25 minute response, available 24/7. Invoice provided for all work.</p>
+          <h2 className="text-3xl font-bold mb-3">Commercial dispatch — every minute a storefront stays closed is revenue lost</h2>
+          <p className="text-white/80 mb-8">Call the Brooklyn shop directly. 15–25 minute arrival, itemized invoice on the spot for insurance and accounting.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}
           </a>

@@ -117,6 +117,7 @@ export const SERVICES = [
 
 export const NAV_LINKS = [
   { label: 'Services', href: '/services/' },
+  { label: 'Service Areas', href: '/locksmith-near-me/' },
   { label: 'About', href: '/about/' },
   { label: 'Testimonials', href: '/testimonials/' },
   { label: 'Blog', href: '/residential-locksmith-services/' },
@@ -136,15 +137,57 @@ export const FOOTER_SERVICE_LINKS = [
   { label: 'Safe Locksmith', href: '/services/safe-locksmith/' },
 ] as const
 
+// Service Areas mega-menu — sourced from NEIGHBORHOODS with ZIP-suffixed slugs.
+// Three columns mirror the geographic split Brooklyn residents think in.
+export const AREAS_MEGA_MENU = [
+  {
+    heading: 'North Brooklyn',
+    items: [
+      { label: 'Williamsburg', href: '/locksmith-near-me/williamsburg-11211-11249/', desc: 'Bedford Ave, Metropolitan Ave corridors' },
+      { label: 'Greenpoint', href: '/locksmith-near-me/greenpoint-11222/', desc: 'Manhattan Ave, industrial lofts' },
+      { label: 'Bushwick', href: '/locksmith-near-me/bushwick-11221/', desc: 'Myrtle Ave, Wyckoff Ave buildings' },
+      { label: 'DUMBO', href: '/locksmith-near-me/dumbo-11201/', desc: 'Waterfront lofts + converted factories' },
+      { label: 'Downtown Brooklyn', href: '/locksmith-near-me/downtown-brooklyn-11201/', desc: 'High-rise condos, Metro Tech' },
+      { label: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights-11201/', desc: 'Pre-war co-ops, historic brownstones' },
+      { label: 'Fort Greene', href: '/locksmith-near-me/fort-greene-11205-11217/', desc: 'DeKalb Ave brownstones' },
+      { label: 'Clinton Hill', href: '/locksmith-near-me/clinton-hill-11205-11238/', desc: 'Lafayette Ave pre-war co-ops' },
+    ],
+  },
+  {
+    heading: 'Central & South',
+    items: [
+      { label: 'Park Slope', href: '/locksmith-near-me/park-slope-11215-11217/', desc: 'Limestone row houses, 5th/7th Ave' },
+      { label: 'Prospect Heights', href: '/locksmith-near-me/prospect-heights-11238-11217/', desc: 'Vanderbilt Ave, Washington Ave' },
+      { label: 'Crown Heights', href: '/locksmith-near-me/crown-heights-11213-11216-11225-11233/', desc: 'Eastern Parkway, Franklin Ave' },
+      { label: 'Bedford-Stuyvesant', href: '/locksmith-near-me/bedford-stuyvesant-11216-11221-11233/', desc: 'Nostrand Ave, Tompkins Ave' },
+      { label: 'Flatbush', href: '/locksmith-near-me/flatbush-11226-11210/', desc: 'Church Ave, Cortelyou Rd co-ops' },
+      { label: 'Kensington', href: '/locksmith-near-me/kensington-in-11218/', desc: 'Church Ave, Ocean Pkwy' },
+      { label: 'Windsor Terrace', href: '/locksmith-near-me/windsor-terrace-11215-11218/', desc: 'Prospect Park SW side streets' },
+    ],
+  },
+  {
+    heading: 'Shore & East',
+    items: [
+      { label: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge-11209/', desc: '3rd Ave, Shore Rd single-family' },
+      { label: 'Sheepshead Bay', href: '/locksmith-near-me/sheepshead-bay-11235-11229/', desc: 'Ocean Ave, Emmons Ave' },
+      { label: 'Marine Park', href: '/locksmith-near-me/marine-park-11234/', desc: 'Avenue U, single-family homes' },
+      { label: 'Flatlands', href: '/locksmith-near-me/flatlands-11234/', desc: 'Kings Hwy, shop neighborhood' },
+      { label: 'Mill Basin', href: '/locksmith-near-me/mill-basin-11234/', desc: 'Avenue N waterfront homes' },
+      { label: 'Canarsie', href: '/locksmith-near-me/canarsie-11236/', desc: 'Rockaway Pkwy, Flatlands Ave' },
+      { label: 'Gerritsen Beach', href: '/locksmith-near-me/gerritsen-beach-11229/', desc: 'Plumb Beach Channel cottages' },
+    ],
+  },
+] as const
+
 export const FOOTER_LOCATION_LINKS = [
   { label: 'Locksmith Near Me', href: '/locksmith-near-me/' },
-  { label: 'Park Slope', href: '/locksmith-near-me/park-slope/' },
-  { label: 'Williamsburg', href: '/locksmith-near-me/williamsburg/' },
-  { label: 'DUMBO', href: '/locksmith-near-me/dumbo/' },
-  { label: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights/' },
-  { label: 'Flatbush', href: '/locksmith-near-me/flatbush/' },
-  { label: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge/' },
-  { label: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant/' },
+  { label: 'Park Slope', href: '/locksmith-near-me/park-slope-11215-11217/' },
+  { label: 'Williamsburg', href: '/locksmith-near-me/williamsburg-11211-11249/' },
+  { label: 'DUMBO', href: '/locksmith-near-me/dumbo-11201/' },
+  { label: 'Brooklyn Heights', href: '/locksmith-near-me/brooklyn-heights-11201/' },
+  { label: 'Flatbush', href: '/locksmith-near-me/flatbush-11226-11210/' },
+  { label: 'Bay Ridge', href: '/locksmith-near-me/bay-ridge-11209/' },
+  { label: 'Bed-Stuy', href: '/locksmith-near-me/bedford-stuyvesant-11216-11221-11233/' },
   { label: '24-Hour Brooklyn', href: '/24-hour-locksmith-in-brooklyn-ny/' },
   { label: 'Emergency Brooklyn', href: '/emergency-locksmith-in-brooklyn-ny/' },
 ] as const

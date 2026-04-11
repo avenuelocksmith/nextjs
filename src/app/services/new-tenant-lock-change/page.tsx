@@ -198,9 +198,10 @@ export default function NewTenantLockChangePage() {
 
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-3">Moving Into a Brooklyn Apartment?</h2>
+          <h2 className="text-3xl font-bold mb-3">Move-in day lock swap — schedule by your lease start date</h2>
           <p className="text-white/80 mb-8 text-lg">
-            Same-day move-in lock service available across all Brooklyn neighborhoods.
+            Book same-day or book ahead. Either way, you keep the new keys before the landlord
+            touches the cylinder, satisfying NYC §27-2043 in one visit.
           </p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}
