@@ -184,7 +184,7 @@ export function HeroSection({
             <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
               {/* Left: text + CTAs */}
               <div className="flex-1 text-center lg:text-left">
-                <h1 className="font-bold leading-tight mb-4 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
+                <h1 className="font-bold mb-4 text-white text-fluid-hero">
                   {h1}
                 </h1>
 

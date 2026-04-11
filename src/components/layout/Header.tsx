@@ -237,7 +237,7 @@ export function Header() {
                   <li key={link.href}>
                     <button
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className="w-full flex items-center justify-between px-3 py-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                      className="w-full flex items-center justify-between px-3 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium tap-target"
                       aria-expanded={mobileServicesOpen}
                     >
                       <span>Services</span>
@@ -266,7 +266,7 @@ export function Header() {
                                   <Link
                                     href={item.href}
                                     onClick={closeMobileMenu}
-                                    className="flex items-center gap-2 px-3 py-2 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-sm"
+                                    className="flex items-center gap-2 px-3 py-3 text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors text-sm tap-target"
                                   >
                                     <item.icon size={13} className="text-brand-amber shrink-0" aria-hidden="true" />
                                     {item.label}
@@ -279,7 +279,7 @@ export function Header() {
                         <Link
                           href="/services/"
                           onClick={closeMobileMenu}
-                          className="block px-3 py-2 text-brand-amber font-bold text-sm hover:underline"
+                          className="flex items-center px-3 py-3 text-brand-amber font-bold text-sm hover:underline tap-target"
                         >
                           View all services →
                         </Link>
@@ -293,7 +293,7 @@ export function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block px-3 py-2.5 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium"
+                    className="flex items-center px-3 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-colors font-medium tap-target"
                     onClick={closeMobileMenu}
                   >
                     {link.label}
@@ -305,10 +305,10 @@ export function Header() {
             <li className="pt-2">
               <a
                 href={BUSINESS.phoneHref}
-                className="flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-3 rounded-xl transition-all"
+                className="flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-5 py-3 rounded-xl transition-all tap-target"
               >
                 <Phone size={18} aria-hidden="true" />
-                <span>Call {BUSINESS.phone}</span>
+                <span className="whitespace-nowrap">Call {BUSINESS.phone}</span>
               </a>
             </li>
           </ul>
