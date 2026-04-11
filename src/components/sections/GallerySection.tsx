@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { X, ChevronLeft, ChevronRight, ArrowRight, ImageOff } from 'lucide-react'
@@ -8,9 +8,13 @@ import {
   GALLERY_ITEMS,
   GALLERY_CATEGORIES,
   getGalleryByService,
+  getContextualGallery,
   type GalleryItem,
   type GalleryCategory,
+  type GalleryCategoryValue,
 } from '@/lib/gallery'
+import { getImageObjectSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/schema/JsonLd'
 
 // Tiny 1×1 gray pixel — shown instantly while the real image loads (avoids layout shift)
 const BLUR_PLACEHOLDER =
@@ -21,7 +25,11 @@ interface GallerySectionProps {
   maxItems?: number
   /** When set, filters to items relevant to this service slug */
   serviceSlug?: string
-  /** Show filter tabs (default: true, hidden when serviceSlug is set) */
+  /** When set, pulls items whose category matches (via contextual cascade) */
+  category?: GalleryCategoryValue
+  /** When set, pulls items whose neighborhood slug matches (via contextual cascade) */
+  neighborhood?: string
+  /** Show filter tabs (default: true, hidden when a context prop is set) */
   showFilters?: boolean
   /** Section heading */
   title?: string
@@ -220,6 +228,8 @@ function Lightbox({
 export function GallerySection({
   maxItems,
   serviceSlug,
+  category,
+  neighborhood,
   showFilters = true,
   title = 'Our Recent Projects',
   subtitle = 'A selection of locksmith jobs completed across Brooklyn and NYC.',
@@ -228,16 +238,32 @@ export function GallerySection({
   const [activeTag, setActiveTag] = useState<GalleryCategory>('all')
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
-  const baseItems = serviceSlug
-    ? getGalleryByService(serviceSlug)
-    : GALLERY_ITEMS
+  const isContextual = Boolean(serviceSlug || category || neighborhood)
+
+  const baseItems = useMemo<GalleryItem[]>(() => {
+    if (category || neighborhood) {
+      return getContextualGallery({
+        category,
+        neighborhood,
+        serviceSlug,
+        maxImages: maxItems ?? 12,
+      })
+    }
+    if (serviceSlug) return getGalleryByService(serviceSlug)
+    return GALLERY_ITEMS
+  }, [category, neighborhood, serviceSlug, maxItems])
 
   const filtered =
-    serviceSlug || activeTag === 'all'
+    isContextual || activeTag === 'all'
       ? baseItems
       : baseItems.filter((item) => item.tags.includes(activeTag))
 
   const displayed = maxItems ? filtered.slice(0, maxItems) : filtered
+
+  const imageSchema = useMemo(
+    () => displayed.map((item) => getImageObjectSchema(item)),
+    [displayed]
+  )
 
   const openLightbox = useCallback((idx: number) => setLightboxIndex(idx), [])
   const closeLightbox = useCallback(() => setLightboxIndex(null), [])
@@ -250,10 +276,11 @@ export function GallerySection({
     [displayed.length]
   )
 
-  const displayFilters = showFilters && !serviceSlug
+  const displayFilters = showFilters && !isContextual
 
   return (
     <section className="py-14 md:py-20 bg-white">
+      {imageSchema.length > 0 && <JsonLd data={imageSchema} />}
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10">

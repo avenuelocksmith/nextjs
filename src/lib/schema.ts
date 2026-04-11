@@ -1,4 +1,5 @@
 import { BUSINESS } from './constants'
+import type { GalleryItem } from './gallery'
 
 // Global LocalBusiness schema — included on every page via root layout
 export function getLocalBusinessSchema() {
@@ -447,6 +448,123 @@ export function getArticleSchema({
         url: BUSINESS.logo,
       },
     },
+  }
+}
+
+export function getImageObjectSchema(item: GalleryItem) {
+  const contentUrl = `${BUSINESS.url}/gallery/${item.filename}`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    '@id': `${contentUrl}#image`,
+    contentUrl,
+    url: contentUrl,
+    name: item.title,
+    caption: item.alt,
+    description: item.alt,
+    width: item.width,
+    height: item.height,
+    representativeOfPage: false,
+    datePublished: item.dateCompleted,
+    creditText: BUSINESS.name,
+    creator: {
+      '@type': 'Organization',
+      '@id': BUSINESS.entityId,
+      name: BUSINESS.name,
+    },
+    copyrightHolder: {
+      '@type': 'Organization',
+      '@id': BUSINESS.entityId,
+      name: BUSINESS.name,
+    },
+    license: `${BUSINESS.url}/accessibility-statement/`,
+    acquireLicensePage: `${BUSINESS.url}/contact/`,
+    keywords: [item.category, ...item.tags].join(', '),
+  }
+}
+
+export function getImageGallerySchema({
+  items,
+  url,
+  name,
+  description,
+}: {
+  items: GalleryItem[]
+  url: string
+  name: string
+  description: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    '@id': `${BUSINESS.url}${url}#gallery`,
+    name,
+    description,
+    url: `${BUSINESS.url}${url}`,
+    inLanguage: 'en-US',
+    publisher: {
+      '@type': 'Organization',
+      '@id': BUSINESS.entityId,
+      name: BUSINESS.name,
+    },
+    associatedMedia: items.map((item) => getImageObjectSchema(item)),
+  }
+}
+
+export function getReviewSchema({
+  authorName,
+  reviewBody,
+  ratingValue,
+  datePublished,
+}: {
+  authorName: string
+  reviewBody: string
+  ratingValue: number
+  datePublished: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Review',
+    author: {
+      '@type': 'Person',
+      name: authorName,
+    },
+    reviewBody,
+    datePublished,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    itemReviewed: {
+      '@type': 'LocalBusiness',
+      '@id': BUSINESS.entityId,
+      name: BUSINESS.name,
+    },
+  }
+}
+
+export function getAggregateRatingSchema({
+  value,
+  count,
+}: {
+  value: number
+  count: number
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AggregateRating',
+    itemReviewed: {
+      '@type': 'LocalBusiness',
+      '@id': BUSINESS.entityId,
+      name: BUSINESS.name,
+      url: BUSINESS.url,
+    },
+    ratingValue: value,
+    reviewCount: count,
+    bestRating: 5,
+    worstRating: 1,
   }
 }
 
