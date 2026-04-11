@@ -114,7 +114,16 @@ export function Header() {
       <nav className="container mx-auto px-4 py-3" role="navigation" aria-label="Main navigation">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0" aria-label="Avenue Locksmith — Home">
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0" aria-label="Avenue Locksmith — Home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/gallery/avenue-locksmith-logo.svg"
+              alt=""
+              width={40}
+              height={40}
+              className="w-9 h-9 md:w-10 md:h-10"
+              aria-hidden="true"
+            />
             <span className="text-2xl font-bold text-white tracking-tight">
               Avenue <span className="text-brand-amber">Locksmith</span>
             </span>
