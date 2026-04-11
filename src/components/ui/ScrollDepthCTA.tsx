@@ -41,7 +41,7 @@ export function ScrollDepthCTA() {
 
   return (
     <div
-      className={`fixed bottom-16 md:bottom-0 left-0 right-0 z-40 flex justify-center px-4 pb-4 pointer-events-none transition-all duration-500 ease-out ${
+      className={`fixed bottom-16 md:bottom-0 left-0 right-0 z-40 hidden md:flex justify-center px-4 pb-4 pointer-events-none transition-all duration-500 ease-out ${
         visible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
       }`}
     >

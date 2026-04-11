@@ -65,6 +65,7 @@ export function RecentCallTicker() {
       aria-atomic="true"
       className={`
         fixed bottom-20 left-4 z-50 md:bottom-6
+        hidden md:block
         transition-all duration-500 ease-in-out
         ${visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-3 pointer-events-none'}
       `}
