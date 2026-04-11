@@ -4,6 +4,7 @@ import { Phone, Home, Building, Car, CheckCircle } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
+import { ReviewsStrip } from '@/components/sections/ReviewsStrip'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
@@ -124,6 +125,8 @@ export default function LockoutServicePage() {
       </section>
 
       <FAQSection faqs={FAQS} title="Lockout Service FAQ" />
+
+      <ReviewsStrip service="lockout-service" title="Brooklyn lockout customers on Google" />
 
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">

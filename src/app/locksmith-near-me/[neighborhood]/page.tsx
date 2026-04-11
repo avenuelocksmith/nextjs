@@ -5,6 +5,7 @@ import { Phone, CheckCircle, MapPin, Shield, Clock, Star } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'
+import { ReviewsStrip } from '@/components/sections/ReviewsStrip'
 import { MapEmbed } from '@/components/ui/MapEmbed'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
@@ -220,6 +221,12 @@ export default async function NeighborhoodPage({
       <FAQSection
         faqs={n.faqs}
         title={`Common Questions About Locksmith Service in ${n.name}`}
+      />
+
+      {/* Contextual reviews strip — falls back to GMB CTA while reviews.ts is empty */}
+      <ReviewsStrip
+        neighborhood={n.slug}
+        title={`What ${n.name} customers say on Google`}
       />
 
       {/* Nearby neighborhoods */}

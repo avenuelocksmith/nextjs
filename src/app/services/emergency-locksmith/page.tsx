@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Phone, CheckCircle, AlertTriangle, Clock, Shield, MapPin } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
+import { ReviewsStrip } from '@/components/sections/ReviewsStrip'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getFAQSchema, getBreadcrumbSchema, getWebPageSchema, getServiceSchema } from '@/lib/schema'
@@ -196,6 +197,8 @@ export default function EmergencyLocksmithPage() {
       </section>
 
       <FAQSection faqs={FAQS} title="Emergency Locksmith FAQ — Real Questions, Honest Answers" />
+
+      <ReviewsStrip service="emergency-locksmith" title="What Brooklyn customers say about our emergency response" />
 
       {/* Internal links */}
       <section className="py-10 bg-brand-bg">
