@@ -193,7 +193,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'Can you set up a master key system for my Bay Ridge two-family home?',
-        answer: 'Yes. A master key system lets you have one key that opens all units while each tenant has a key that opens only their own unit. We design and install master key systems for two-family and multi-family homes throughout Bay Ridge. The system is pinned in our shop and installed on-site — usually completed in 2–3 hours for a two-family.',
+        answer: 'Yes. A master key system lets you have one key that opens all units while each tenant has a key that opens only their own unit. We design and install master key systems for two-family and multi-family homes throughout Bay Ridge. The system is pinned and installed on-site — usually completed in 2–3 hours for a two-family.',
       },
       {
         question: 'How do I know if my Bay Ridge home\'s locks are high enough quality to get a break-in discount on insurance?',
