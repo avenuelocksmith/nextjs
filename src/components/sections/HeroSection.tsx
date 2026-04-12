@@ -168,7 +168,7 @@ export function HeroSection({
           aria-hidden="true"
         />
 
-        <div className="relative container mx-auto px-4">
+        <div className="relative container mx-auto px-4 max-w-6xl">
           {isHomepage && <HeroVisitorStrip />}
 
           {isEmergency && (
