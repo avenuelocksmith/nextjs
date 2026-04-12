@@ -26,7 +26,7 @@ export function TrustBar({ className }: TrustBarProps) {
     {
       icon: Clock,
       label: '15–25 Min Response',
-      sublabel: 'Emergency Guarantee',
+      sublabel: 'Emergency Service',
     },
     {
       icon: Phone,

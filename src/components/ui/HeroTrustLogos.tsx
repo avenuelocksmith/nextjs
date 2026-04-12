@@ -48,12 +48,6 @@ export function HeroTrustLogos() {
         <span className="text-white text-xs font-semibold">Apple Pay</span>
       </div>
 
-      {/* Zelle */}
-      <div className="inline-flex items-center bg-white/10 border border-white/15 rounded-lg px-3 py-1.5">
-        <svg viewBox="0 0 54 18" width="46" height="16" aria-hidden="true">
-          <text x="0" y="14" fontFamily="Arial" fontWeight="bold" fontSize="16" fill="#6D1ED4">Zelle</text>
-        </svg>
-      </div>
     </div>
   )
 }
