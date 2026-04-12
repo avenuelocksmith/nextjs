@@ -5,18 +5,28 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { Phone, Send, CheckCircle, ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 import { BUSINESS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
+
+// ---------------------------------------------------------------------------
+// Schema
+// ---------------------------------------------------------------------------
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your name'),
   phone: z.string().min(10, 'Please enter a valid phone number'),
   email: z.string().email('Please enter a valid email').optional().or(z.literal('')),
+  category: z.string().min(1, 'Please select a category'),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().optional(),
 })
 
 type ContactFormData = z.infer<typeof contactSchema>
+
+// ---------------------------------------------------------------------------
+// Service data — category → sub-services
+// ---------------------------------------------------------------------------
 
 interface ServiceOption {
   value: string
@@ -24,21 +34,65 @@ interface ServiceOption {
   hint: string
 }
 
-const SERVICE_OPTIONS: ServiceOption[] = [
-  { value: 'Emergency Lockout', label: 'Emergency Lockout', hint: 'Locked out right now' },
-  { value: 'Residential Locksmith', label: 'Residential', hint: 'Home locks & deadbolts' },
-  { value: 'Commercial Locksmith', label: 'Commercial', hint: 'Office, shop, building' },
-  { value: 'Automotive Locksmith', label: 'Automotive', hint: 'Car keys & lockouts' },
-  { value: 'Lock Rekey', label: 'Lock Rekey', hint: 'Same lock, new key' },
-  { value: 'Lock Change / Installation', label: 'Lock Change', hint: 'Install new hardware' },
-  { value: 'Deadbolt Installation', label: 'Deadbolt Install', hint: 'Add or upgrade deadbolt' },
-  { value: 'Smart Lock / Access Control', label: 'Smart Lock', hint: 'Keyless, keypad, app' },
-  { value: 'Safe Locksmith', label: 'Safe Locksmith', hint: 'Open or repair safe' },
-  { value: 'Eviction Locksmith', label: 'Eviction', hint: 'Court-ordered lockout' },
-  { value: 'Key Duplication', label: 'Key Duplication', hint: 'Cut a copy' },
-  { value: 'Mailbox Lock', label: 'Mailbox Lock', hint: 'Building mailbox' },
-  { value: 'Other', label: 'Other / Not sure', hint: 'Describe below' },
+interface CategoryOption {
+  value: string
+  label: string
+  hint: string
+}
+
+const CATEGORIES: CategoryOption[] = [
+  { value: 'Residential', label: 'Residential', hint: 'Home, apartment, or condo' },
+  { value: 'Commercial', label: 'Commercial', hint: 'Office, retail, or building' },
+  { value: 'Automotive', label: 'Automotive', hint: 'Car, truck, or vehicle' },
 ]
+
+const SERVICES_BY_CATEGORY: Record<string, ServiceOption[]> = {
+  Residential: [
+    { value: 'Emergency Lockout', label: 'Emergency Lockout', hint: 'Locked out right now' },
+    { value: 'Lock Rekey', label: 'Lock Rekey', hint: 'Same lock, new key' },
+    { value: 'Lock Change / Installation', label: 'Lock Change', hint: 'Install new hardware' },
+    { value: 'Deadbolt Installation', label: 'Deadbolt Install', hint: 'Add or upgrade deadbolt' },
+    { value: 'Smart Lock Installation', label: 'Smart Lock', hint: 'Keyless, keypad, app' },
+    { value: 'Key Duplication', label: 'Key Duplication', hint: 'Cut a spare key' },
+    { value: 'Mailbox Lock', label: 'Mailbox Lock', hint: 'Building mailbox' },
+    { value: 'Safe Locksmith', label: 'Safe Locksmith', hint: 'Open or repair safe' },
+    { value: 'Other Residential', label: 'Other / Not sure', hint: 'Describe below' },
+  ],
+  Commercial: [
+    { value: 'Business Lockout', label: 'Business Lockout', hint: 'Locked out of office or shop' },
+    { value: 'Office / Commercial Rekey', label: 'Office Rekey', hint: 'Rekey office locks' },
+    { value: 'Master Key System', label: 'Master Key System', hint: 'One key, multiple doors' },
+    { value: 'Access Control / Keypad', label: 'Access Control', hint: 'Keypad, fob, or buzzer' },
+    { value: 'High-Security Locks', label: 'High-Security Locks', hint: 'Medeco, Mul-T-Lock, etc.' },
+    { value: 'Eviction Locksmith', label: 'Eviction Locksmith', hint: 'Court-ordered lock change' },
+    { value: 'Other Commercial', label: 'Other / Not sure', hint: 'Describe below' },
+  ],
+  Automotive: [
+    { value: 'Car Lockout', label: 'Car Lockout', hint: 'Locked out of vehicle' },
+    { value: 'Transponder Key Programming', label: 'Transponder Key', hint: 'Chip key programming' },
+    { value: 'Key Fob Replacement', label: 'Key Fob Replacement', hint: 'Remote / smart key' },
+    { value: 'Broken Key Extraction', label: 'Broken Key Extraction', hint: 'Key snapped in lock' },
+    { value: 'Other Automotive', label: 'Other / Not sure', hint: 'Describe below' },
+  ],
+}
+
+// Flat list for the legacy single-step dropdown
+const ALL_SERVICES: ServiceOption[] = [
+  { value: 'Emergency Lockout', label: 'Emergency Lockout', hint: '' },
+  { value: 'Lock Rekey', label: 'Lock Rekey', hint: '' },
+  { value: 'Lock Change / Installation', label: 'Lock Change / Installation', hint: '' },
+  { value: 'Deadbolt Installation', label: 'Deadbolt Installation', hint: '' },
+  { value: 'Smart Lock Installation', label: 'Smart Lock / Access Control', hint: '' },
+  { value: 'Business Lockout', label: 'Business Lockout', hint: '' },
+  { value: 'Master Key System', label: 'Master Key System', hint: '' },
+  { value: 'Car Lockout', label: 'Car Lockout', hint: '' },
+  { value: 'Key Duplication', label: 'Key Duplication', hint: '' },
+  { value: 'Other', label: 'Other / Not sure', hint: '' },
+]
+
+// ---------------------------------------------------------------------------
+// Component
+// ---------------------------------------------------------------------------
 
 interface ContactFormSectionProps {
   className?: string
@@ -55,10 +109,10 @@ export function ContactFormSection({
   compact = false,
   multiStep,
 }: ContactFormSectionProps) {
-  // Default: multi-step unless the caller opts into the legacy compact single-step form
   const useMultiStep = multiStep ?? !compact
+  const pathname = usePathname()
 
-  const [step, setStep] = useState<1 | 2 | 3>(1)
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(1)
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState(false)
@@ -77,12 +131,14 @@ export function ContactFormSection({
       name: '',
       phone: '',
       email: '',
+      category: '',
       service: '',
       message: '',
     },
   })
 
   const values = watch()
+  const subServices = SERVICES_BY_CATEGORY[values.category] ?? []
 
   async function onSubmit(data: ContactFormData) {
     setSubmitting(true)
@@ -91,7 +147,7 @@ export function ContactFormSection({
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, pageRef: pathname }),
       })
       if (res.ok) {
         setSubmitted(true)
@@ -105,14 +161,25 @@ export function ContactFormSection({
     }
   }
 
+  function selectCategory(cat: string) {
+    setValue('category', cat, { shouldValidate: true, shouldTouch: true })
+    // Reset service when category changes
+    setValue('service', '', { shouldValidate: false })
+  }
+
   async function goToStep2() {
-    const ok = await trigger(['service'])
+    const ok = await trigger(['category'])
     if (ok) setStep(2)
   }
 
   async function goToStep3() {
-    const ok = await trigger(['name', 'phone', 'email'])
+    const ok = await trigger(['service'])
     if (ok) setStep(3)
+  }
+
+  async function goToStep4() {
+    const ok = await trigger(['name', 'phone', 'email'])
+    if (ok) setStep(4)
   }
 
   // ---------- Success state ----------
@@ -202,27 +269,57 @@ export function ContactFormSection({
               </div>
             </div>
 
-            <div>
-              <label htmlFor="service-single" className="block text-sm font-semibold text-brand-text mb-1">
-                Service Type <span className="text-red-500" aria-hidden="true">*</span>
-              </label>
-              <select
-                id="service-single"
-                {...register('service')}
-                className={cn(
-                  'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30',
-                  errors.service ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/40'
+            <div className={cn('grid gap-4', compact ? 'grid-cols-1' : 'grid-cols-1 sm:grid-cols-2')}>
+              <div>
+                <label htmlFor="category-single" className="block text-sm font-semibold text-brand-text mb-1">
+                  Category <span className="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <select
+                  id="category-single"
+                  {...register('category')}
+                  onChange={(e) => {
+                    setValue('category', e.target.value, { shouldValidate: true })
+                    setValue('service', '', { shouldValidate: false })
+                  }}
+                  className={cn(
+                    'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30',
+                    errors.category ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/40'
+                  )}
+                  aria-invalid={errors.category ? 'true' : 'false'}
+                >
+                  <option value="">Select a category...</option>
+                  {CATEGORIES.map((c) => (
+                    <option key={c.value} value={c.value}>{c.label}</option>
+                  ))}
+                </select>
+                {errors.category && (
+                  <p role="alert" className="text-red-500 text-xs mt-1">{errors.category.message}</p>
                 )}
-                aria-invalid={errors.service ? 'true' : 'false'}
-              >
-                <option value="">Select a service...</option>
-                {SERVICE_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-              </select>
-              {errors.service && (
-                <p role="alert" className="text-red-500 text-xs mt-1">{errors.service.message}</p>
-              )}
+              </div>
+
+              <div>
+                <label htmlFor="service-single" className="block text-sm font-semibold text-brand-text mb-1">
+                  Service <span className="text-red-500" aria-hidden="true">*</span>
+                </label>
+                <select
+                  id="service-single"
+                  {...register('service')}
+                  disabled={!values.category}
+                  className={cn(
+                    'w-full px-4 py-2.5 border rounded-lg text-sm bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-charcoal/30 disabled:opacity-50',
+                    errors.service ? 'border-red-400' : 'border-brand-border hover:border-brand-charcoal/40'
+                  )}
+                  aria-invalid={errors.service ? 'true' : 'false'}
+                >
+                  <option value="">{values.category ? 'Select a service...' : 'Pick a category first'}</option>
+                  {(values.category ? (SERVICES_BY_CATEGORY[values.category] ?? []) : ALL_SERVICES).map((opt) => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+                {errors.service && (
+                  <p role="alert" className="text-red-500 text-xs mt-1">{errors.service.message}</p>
+                )}
+              </div>
             </div>
 
             {!compact && (
@@ -280,12 +377,12 @@ export function ContactFormSection({
     )
   }
 
-  // ---------- Multi-step form ----------
-  const selectedService = values.service
-  const progressSteps: Array<{ num: 1 | 2 | 3; label: string }> = [
-    { num: 1, label: 'Service' },
-    { num: 2, label: 'Contact' },
-    { num: 3, label: 'Review' },
+  // ---------- Multi-step form (4 steps) ----------
+  const progressSteps: Array<{ num: 1 | 2 | 3 | 4; label: string }> = [
+    { num: 1, label: 'Category' },
+    { num: 2, label: 'Service' },
+    { num: 3, label: 'Contact' },
+    { num: 4, label: 'Review' },
   ]
 
   return (
@@ -305,7 +402,7 @@ export function ContactFormSection({
         {/* Progress indicator */}
         <ol
           aria-label="Form progress"
-          className="flex items-center justify-between gap-2 mb-6 max-w-md mx-auto"
+          className="flex items-center justify-between gap-2 mb-6 max-w-lg mx-auto"
         >
           {progressSteps.map((s, i) => {
             const isDone = step > s.num
@@ -352,28 +449,85 @@ export function ContactFormSection({
           noValidate
           className="bg-brand-bg p-6 md:p-8 rounded-xl border border-brand-border"
         >
-          {/* Step 1 — Service selection */}
+          {/* Step 1 — Category */}
           {step === 1 && (
             <div className="space-y-5">
               <div>
                 <h3 className="text-lg font-bold text-brand-charcoal mb-1">
-                  What do you need?
+                  What type of service do you need?
                 </h3>
                 <p className="text-sm text-brand-muted">
-                  Pick the service that best describes your situation.
+                  Select the category that best fits your situation.
                 </p>
               </div>
 
-              {/* Hidden input keeps the field registered with RHF so trigger(['service']) works */}
+              <input type="hidden" {...register('category')} />
+
+              <div
+                role="radiogroup"
+                aria-label="Service category"
+                className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+              >
+                {CATEGORIES.map((cat) => {
+                  const checked = values.category === cat.value
+                  return (
+                    <button
+                      key={cat.value}
+                      type="button"
+                      role="radio"
+                      aria-checked={checked}
+                      onClick={() => selectCategory(cat.value)}
+                      className={cn(
+                        'text-left p-5 rounded-lg border-2 transition-all tap-target',
+                        checked
+                          ? 'border-brand-amber bg-brand-amber/10 shadow-sm'
+                          : 'border-brand-border bg-white hover:border-brand-charcoal/40'
+                      )}
+                    >
+                      <div className="font-semibold text-brand-charcoal text-base">{cat.label}</div>
+                      <div className="text-xs text-brand-muted mt-1">{cat.hint}</div>
+                    </button>
+                  )
+                })}
+              </div>
+
+              {errors.category && (
+                <p role="alert" className="text-red-500 text-xs">{errors.category.message}</p>
+              )}
+
+              <button
+                type="button"
+                onClick={goToStep2}
+                disabled={!values.category}
+                className="w-full flex items-center justify-center gap-2 btn-gradient-amber disabled:opacity-50 disabled:cursor-not-allowed text-brand-charcoal font-bold px-6 py-3.5 rounded-xl tap-target"
+              >
+                <span>Next</span>
+                <ArrowRight size={18} aria-hidden="true" />
+              </button>
+            </div>
+          )}
+
+          {/* Step 2 — Specific service */}
+          {step === 2 && (
+            <div className="space-y-5">
+              <div>
+                <h3 className="text-lg font-bold text-brand-charcoal mb-1">
+                  What do you need help with?
+                </h3>
+                <p className="text-sm text-brand-muted">
+                  {values.category} — pick the service that best describes your situation.
+                </p>
+              </div>
+
               <input type="hidden" {...register('service')} />
 
               <div
                 role="radiogroup"
-                aria-label="Service type"
+                aria-label="Specific service"
                 className="grid grid-cols-1 sm:grid-cols-2 gap-3"
               >
-                {SERVICE_OPTIONS.map((opt) => {
-                  const checked = selectedService === opt.value
+                {subServices.map((opt) => {
+                  const checked = values.service === opt.value
                   return (
                     <button
                       key={opt.value}
@@ -417,20 +571,30 @@ export function ContactFormSection({
                 />
               </div>
 
-              <button
-                type="button"
-                onClick={goToStep2}
-                disabled={!selectedService}
-                className="w-full flex items-center justify-center gap-2 btn-gradient-amber disabled:opacity-50 disabled:cursor-not-allowed text-brand-charcoal font-bold px-6 py-3.5 rounded-xl tap-target"
-              >
-                <span>Next</span>
-                <ArrowRight size={18} aria-hidden="true" />
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-brand-border hover:border-brand-charcoal text-brand-charcoal font-semibold px-6 py-3.5 rounded-xl tap-target transition-colors"
+                >
+                  <ArrowLeft size={18} aria-hidden="true" />
+                  <span>Back</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={goToStep3}
+                  disabled={!values.service}
+                  className="flex-1 flex items-center justify-center gap-2 btn-gradient-amber disabled:opacity-50 disabled:cursor-not-allowed text-brand-charcoal font-bold px-6 py-3.5 rounded-xl tap-target"
+                >
+                  <span>Next</span>
+                  <ArrowRight size={18} aria-hidden="true" />
+                </button>
+              </div>
             </div>
           )}
 
-          {/* Step 2 — Contact info */}
-          {step === 2 && (
+          {/* Step 3 — Contact info */}
+          {step === 3 && (
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-bold text-brand-charcoal mb-1">
@@ -509,7 +673,7 @@ export function ContactFormSection({
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <button
                   type="button"
-                  onClick={() => setStep(1)}
+                  onClick={() => setStep(2)}
                   className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-brand-border hover:border-brand-charcoal text-brand-charcoal font-semibold px-6 py-3.5 rounded-xl tap-target transition-colors"
                 >
                   <ArrowLeft size={18} aria-hidden="true" />
@@ -517,7 +681,7 @@ export function ContactFormSection({
                 </button>
                 <button
                   type="button"
-                  onClick={goToStep3}
+                  onClick={goToStep4}
                   className="flex-1 flex items-center justify-center gap-2 btn-gradient-amber text-brand-charcoal font-bold px-6 py-3.5 rounded-xl tap-target"
                 >
                   <span>Next</span>
@@ -527,8 +691,8 @@ export function ContactFormSection({
             </div>
           )}
 
-          {/* Step 3 — Review & submit */}
-          {step === 3 && (
+          {/* Step 4 — Review & submit */}
+          {step === 4 && (
             <div className="space-y-5">
               <div>
                 <h3 className="text-lg font-bold text-brand-charcoal mb-1">
@@ -546,7 +710,7 @@ export function ContactFormSection({
                       Service
                     </dt>
                     <dd className="text-sm font-semibold text-brand-charcoal">
-                      {values.service || '—'}
+                      {values.category} — {values.service || '—'}
                     </dd>
                     {values.message && (
                       <dd className="text-xs text-brand-muted mt-1 whitespace-pre-wrap">
@@ -577,7 +741,7 @@ export function ContactFormSection({
                   </div>
                   <button
                     type="button"
-                    onClick={() => setStep(2)}
+                    onClick={() => setStep(3)}
                     className="text-xs font-semibold text-brand-amber hover:underline shrink-0"
                   >
                     Edit
@@ -601,7 +765,7 @@ export function ContactFormSection({
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   type="button"
-                  onClick={() => setStep(2)}
+                  onClick={() => setStep(3)}
                   className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-brand-border hover:border-brand-charcoal text-brand-charcoal font-semibold px-6 py-3.5 rounded-xl tap-target transition-colors"
                 >
                   <ArrowLeft size={18} aria-hidden="true" />

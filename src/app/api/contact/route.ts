@@ -7,14 +7,53 @@ const contactSchema = z.object({
   name: z.string().min(2),
   phone: z.string().min(10),
   email: z.string().email().optional().or(z.literal('')),
+  category: z.string().min(1),
   service: z.string().min(1),
   message: z.string().optional(),
+  pageRef: z.string().optional(),
 })
+
+async function sendToTelegram(
+  data: z.infer<typeof contactSchema>,
+  source: string
+): Promise<void> {
+  const token = process.env.TELEGRAM_BOT_TOKEN
+  const chatId = process.env.TELEGRAM_CHAT_ID
+  if (!token || !chatId) throw new Error('Telegram not configured')
+
+  const timestamp = new Date().toLocaleString('en-US', {
+    timeZone: 'America/New_York',
+  })
+
+  const pageLabel = data.pageRef || source || 'direct'
+
+  const text =
+    `<b>📋 New Contact Form Lead — Avenue Locksmith</b>\n\n` +
+    `👤 <b>Name:</b> ${data.name}\n` +
+    `📞 <b>Phone:</b> ${data.phone}\n` +
+    (data.email ? `📧 <b>Email:</b> ${data.email}\n` : '') +
+    `🏷 <b>Category:</b> ${data.category}\n` +
+    `🔧 <b>Service:</b> ${data.service}\n` +
+    (data.message ? `💬 <b>Message:</b> ${data.message}\n` : '') +
+    `\n🕐 <b>Time:</b> ${timestamp} ET\n` +
+    `📄 <b>Page:</b> ${pageLabel}`
+
+  await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text,
+      parse_mode: 'HTML',
+    }),
+  })
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const data = contactSchema.parse(body)
+    const source = request.headers.get('referer') || 'direct'
 
     // Log submission server-side (visible in Vercel/server logs)
     console.log('[Contact Form Submission]', {
@@ -22,28 +61,18 @@ export async function POST(request: NextRequest) {
       name: data.name,
       phone: data.phone,
       email: data.email || '(not provided)',
+      category: data.category,
       service: data.service,
       message: data.message || '(none)',
-      source: request.headers.get('referer') || 'direct',
+      pageRef: data.pageRef || source,
     })
 
-    // ---------------------------------------------------------------
-    // TODO: Integrate email notification here.
-    // Options:
-    //   - Resend:   https://resend.com  (process.env.RESEND_API_KEY)
-    //   - SendGrid: https://sendgrid.com (process.env.SENDGRID_API_KEY)
-    //   - Nodemailer with SMTP
-    //
-    // Example with Resend:
-    //   import { Resend } from 'resend'
-    //   const resend = new Resend(process.env.RESEND_API_KEY)
-    //   await resend.emails.send({
-    //     from: 'leads@avenuelocks.com',
-    //     to: 'info@avenuelocks.com',
-    //     subject: `New Lead: ${data.service} — ${data.name}`,
-    //     text: `Name: ${data.name}\nPhone: ${data.phone}\nService: ${data.service}\nMessage: ${data.message}`,
-    //   })
-    // ---------------------------------------------------------------
+    // Send to Telegram (non-blocking — don't fail the request if Telegram is down)
+    try {
+      await sendToTelegram(data, source)
+    } catch (err) {
+      console.error('[Contact Form] Telegram send failed:', err)
+    }
 
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
