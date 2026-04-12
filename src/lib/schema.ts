@@ -23,10 +23,8 @@ export function getLocalBusinessSchema() {
     sameAs: [...BUSINESS.sameAs],
     address: {
       '@type': 'PostalAddress',
-      streetAddress: BUSINESS.address.street,
       addressLocality: BUSINESS.address.city,
       addressRegion: BUSINESS.address.state,
-      postalCode: BUSINESS.address.zip,
       addressCountry: {
         '@type': 'Country',
         name: 'US',
@@ -329,10 +327,8 @@ export function getServiceSchema({
       telephone: BUSINESS.phone,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
         addressLocality: BUSINESS.address.city,
         addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
         addressCountry: 'US',
       },
     },

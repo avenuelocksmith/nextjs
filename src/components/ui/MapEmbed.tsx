@@ -1,4 +1,3 @@
-import { BUSINESS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
 interface MapEmbedProps {
@@ -14,7 +13,7 @@ export function MapEmbed({
   height = '400px',
   title = 'Avenue Locksmith Service Area — Brooklyn, NY',
 }: MapEmbedProps) {
-  const searchQuery = query ?? `Avenue Locksmith, ${BUSINESS.address.full}`
+  const searchQuery = query ?? 'Avenue Locksmith, Brooklyn, NY'
   const encodedQuery = encodeURIComponent(searchQuery)
 
   return (

@@ -69,10 +69,8 @@ export default async function NeighborhoodPage({
       url: BUSINESS.url,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
         addressLocality: BUSINESS.address.city,
         addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
         addressCountry: 'US',
       },
       aggregateRating: {
