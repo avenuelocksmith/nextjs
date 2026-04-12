@@ -43,7 +43,7 @@ export const FLOW: Record<string, FlowNode> = {
     ],
   },
   lockout_urgent: {
-    bot: 'We can be there in 15–25 minutes, 24/7 — same price day or night, no surcharge. To dispatch a technician, share your number below.',
+    bot: 'We typically arrive in 15–25 minutes, 24/7 — same price day or night, no surcharge. To dispatch a technician, share your number below.',
     options: [
       { label: '📞 Leave my number', value: 'Leave number', next: 'phone_collect' },
       { label: '💬 I have questions first', value: 'Questions first', next: 'welcome' },
@@ -103,7 +103,7 @@ export const FLOW: Record<string, FlowNode> = {
     ],
   },
   info_emergency: {
-    bot: '24/7 emergency service with 15–25 minute arrival anywhere in Brooklyn. Same price day or night — zero after-hours surcharge. Covers home, car, and business lockouts.',
+    bot: '24/7 emergency service with typical 15–25 minute arrival in Brooklyn. Same price day or night — zero after-hours surcharge. Covers home, car, and business lockouts.',
     options: [
       { label: '📞 Dispatch now', value: 'Dispatch emergency', next: 'phone_collect' },
       { label: '← Back', value: 'Back', next: 'service_list' },

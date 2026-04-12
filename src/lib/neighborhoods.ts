@@ -101,7 +101,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'How do I find a locksmith in DUMBO who will not overcharge me?',
-        answer: 'Look for a locally operated company with a verifiable Brooklyn address (ours is 973 E 55th St, Brooklyn), real customer reviews on Google, and a commitment to upfront pricing before work starts. Avoid any locksmith whose website shows only a toll-free number and no physical address — those are lead aggregators who resell your call to unknown contractors.',
+        answer: 'Look for a locally operated company with verifiable Google reviews, a NYC DCWP license, and a commitment to upfront pricing before work starts. Avoid any locksmith whose website shows only a toll-free number — those are lead aggregators who resell your call to unknown contractors. Avenue Locksmith is a mobile service operating throughout Brooklyn.',
       },
       {
         question: 'My DUMBO co-op board requires proof that our locksmith is insured — can you provide that?',
@@ -325,7 +325,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'What is the fastest way to get a locksmith to Sunset Park?',
-        answer: 'Call (347) 386-7164 directly. Do not use Yelp or Google to click a call-now button without checking the company — many numbers in map listings are lead resellers who dispatch random contractors. When you call us, you get our dispatcher, our technician, and our price guarantee. Typical arrival in Sunset Park is 20–35 minutes.',
+        answer: 'Call (347) 386-7164 directly. Do not use Yelp or Google to click a call-now button without checking the company — many numbers in map listings are lead resellers who dispatch random contractors. When you call us, you get our dispatcher, our technician, and our upfront price. Typical arrival in Sunset Park is 20–35 minutes.',
       },
       {
         question: 'My Sunset Park storefront lock was drilled open during a break-in — what happens now?',
@@ -397,7 +397,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'How do I avoid locksmith scams when searching for help in Carroll Gardens?',
-        answer: 'Red flags: prices under $50 quoted on the phone, no local address listed, generic company name with a toll-free number only. Safe approach: search for the company name, look at their Google Maps listing, check that the address is a real Brooklyn location. Avenue Locksmith is located at 973 E 55th St, Brooklyn — a verifiable address. We quote full prices before arriving.',
+        answer: 'Red flags: prices under $50 quoted on the phone, generic company name with a toll-free number only. Safe approach: search for the company name, check their Google Maps listing and reviews, and confirm they have a NYC DCWP locksmith license. Avenue Locksmith is a licensed mobile service operating throughout Brooklyn. We quote full prices before arriving.',
       },
     ],
   },
@@ -485,7 +485,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'How do I know a Greenpoint locksmith is legitimate and not going to overcharge me?',
-        answer: 'Verify three things: a real local address (ours is 973 E 55th St, Brooklyn), Google reviews tied to that address, and an upfront written quote before work starts. We confirm the full price on the phone and in person before touching your lock. If the price changes at the door without explanation, send the technician away.',
+        answer: 'Verify three things: a NYC DCWP locksmith license, verifiable Google reviews, and an upfront written quote before work starts. We confirm the full price on the phone and in person before touching your lock. If the price changes at the door without explanation, send the technician away.',
       },
       {
         question: 'Can I get my Greenpoint apartment rekeyed while I am at work and have a family member present?',
@@ -701,7 +701,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     faqs: [
       {
         question: 'How fast can a locksmith get to Flatlands from your base in Brooklyn?',
-        answer: 'Our home base is on E 55th St in Brooklyn — Flatlands is one of our closest neighborhoods. Response times are typically 10–20 minutes, making it one of our fastest service areas. Emergency or scheduled, we are nearby.',
+        answer: 'Flatlands is one of our closest service areas. Response times are typically 10–20 minutes. Emergency or scheduled, we have techs nearby and ready to dispatch.',
       },
       {
         question: 'I have a detached garage in Flatlands — what is the best lock for the side door?',
@@ -1317,7 +1317,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'How do I find a legitimate locksmith serving Prospect Lefferts Gardens who is not a scam operation?',
-        answer: 'Check: (1) does the company have a physical Brooklyn address? (ours is 973 E 55th St, Brooklyn), (2) do their Google reviews match the address in Maps?, (3) do they give a full price on the phone — not a "starting from $35" teaser? All three yes = likely legitimate. We pass all three and will verify our NYC locksmith license number on request.',
+        answer: 'Check: (1) does the company have a NYC DCWP locksmith license?, (2) do their Google reviews look legitimate and consistent?, (3) do they give a full price on the phone — not a "starting from $35" teaser? All three yes = likely legitimate. Avenue Locksmith passes all three and will verify our NYC locksmith license number on request.',
       },
       {
         question: 'Can you install a smart lock on a PLG rowhouse door with a transom window above it?',
@@ -1373,7 +1373,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     faqs: [
       {
         question: 'Bergen Beach feels remote — do locksmiths actually service this area of Brooklyn?',
-        answer: 'Yes. Bergen Beach is in our regular service zone. We are based at 973 E 55th St in Brooklyn — not far from Bergen Beach — and response times are typically 15–25 minutes. We service every address in Bergen Beach including the waterfront blocks.',
+        answer: 'Yes. Bergen Beach is in our regular service zone. We have techs stationed nearby and response times are typically 15–25 minutes. We service every address in Bergen Beach including the waterfront blocks.',
       },
       {
         question: 'My Bergen Beach home has a wooden fence gate that needs a lock upgrade — what do you recommend?',
@@ -1421,7 +1421,7 @@ export const NEIGHBORHOODS: Neighborhood[] = [
       },
       {
         question: 'Is Avenue Locksmith the closest locksmith to Gerritsen Beach?',
-        answer: 'We are one of the closest Brooklyn-based locksmiths to Gerritsen Beach. Our location at 973 E 55th St in southeastern Brooklyn means we are typically among the fastest to arrive. Call (347) 386-7164 and we will give you an honest arrival estimate.',
+        answer: 'We are one of the closest Brooklyn-based locksmiths to Gerritsen Beach. We have techs stationed in southeastern Brooklyn so we are typically among the fastest to arrive. Call (347) 386-7164 and we will give you an honest arrival estimate.',
       },
     ],
   },
