@@ -42,7 +42,7 @@ const LOCKOUT_TYPES = [
 const FAQS = [
   {
     question: 'How quickly can you arrive for a lockout in Brooklyn?',
-    answer: 'We guarantee arrival within 15–25 minutes for lockout calls anywhere in Brooklyn. In most cases we are there in 15–20 minutes. We have technicians stationed throughout the borough.',
+    answer: 'Most lockout calls in Brooklyn arrive in 15–25 minutes. In many cases we are there in 15–20 minutes. We have technicians stationed throughout the borough.',
   },
   {
     question: 'Will you damage my lock or door to get me in?',
@@ -109,12 +109,12 @@ export default function LockoutServicePage() {
                 How a Brooklyn lockout call actually runs
               </p>
               <h2 className="text-2xl md:text-3xl font-bold text-brand-navy leading-tight mb-4">
-                One number, one licensed Brooklyn shop, one firm price
+                One number, one licensed Brooklyn team, one firm price
               </h2>
               <p className="text-brand-text leading-relaxed mb-4">
-                When the phone rings at 973 E 55th St, a dispatcher at the shop — not an offshore
+                When you call Avenue Locksmith, a Brooklyn dispatcher — not an offshore
                 call center — picks up, confirms your address and cross street, and reads back a
-                firm total before any truck moves. That number is what you pay on arrival. If a
+                firm total before any tech heads out. That number is what you pay on arrival. If a
                 technician discovers the lock needs more than a standard open (a broken internal
                 cam, a drilled Medeco, a burglary-damaged mortise), the dispatcher calls you back
                 and quotes the additional work before it starts.

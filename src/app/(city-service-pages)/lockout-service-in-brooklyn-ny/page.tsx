@@ -32,7 +32,7 @@ export default function LockoutServiceBkPage() {
       <HeroSection h1="Lockout Service in Brooklyn, NY — Home, Car & Business" subheadline="Locked out? We handle home, apartment, car, and business lockouts throughout Brooklyn. 15–25 minute arrival, 24/7 — same price at 3am as 3pm." variant="emergency" showTrustBar ctaLabel="Call Now — 15–25 Min Response" />
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <p className="text-brand-text text-lg leading-relaxed mb-8">Apartment door at midnight, car on Atlantic Avenue at 6am, or a retail shutter jammed fifteen minutes before opening — every type of Brooklyn lockout dispatches from the same East 55th Street shop, and the same phone number reaches a real person on every call. Average arrival is 15–25 minutes borough-wide, price locked before the truck leaves.</p>
+          <p className="text-brand-text text-lg leading-relaxed mb-8">Apartment door at midnight, car on Atlantic Avenue at 6am, or a retail shutter jammed fifteen minutes before opening — every type of Brooklyn lockout dispatches from the same team, and the same phone number reaches a real person on every call. Typical arrival is 15–25 minutes borough-wide, price quoted before the tech heads out.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {[
               { title: 'Home & Apartment Lockout', items: ['Apartment lockouts', 'House lockouts', 'Condo & co-op lockouts', 'Deadbolt & knob lock entry', 'Mortise lock entry', 'Non-destructive in all cases'] },

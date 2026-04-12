@@ -40,7 +40,7 @@ const CORE_SERVICES = [
     icon: Zap,
     label: 'Emergency Locksmith',
     href: '/services/emergency-locksmith/',
-    desc: '24/7 emergency lockout response — home, car, or business. 15–25 minute arrival guaranteed.',
+    desc: '24/7 emergency lockout response — home, car, or business. Typical 15–25 minute arrival.',
   },
   {
     icon: Key,
@@ -77,7 +77,7 @@ const FAQS = [
   },
   {
     question: 'How fast can you respond to a lockout in Brooklyn?',
-    answer: 'For emergency lockouts (home, car, business), we guarantee arrival within 15–25 minutes anywhere in Brooklyn. In most cases we are there in 15–20 minutes. We operate 24/7 with no after-hours surcharge. For non-emergency work, we offer same-day appointments with a specific arrival window.',
+    answer: 'For emergency lockouts (home, car, business), most Brooklyn calls arrive in 15–25 minutes. In many cases we are there in 15–20 minutes. We operate 24/7 with no after-hours surcharge. For non-emergency work, we offer same-day appointments with a specific arrival window.',
   },
   {
     question: 'What neighborhoods in Brooklyn do you serve?',
@@ -172,10 +172,10 @@ export default function ServicesPage() {
       <section className="py-14 md:py-20 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Brooklyn locksmith dispatch — one number, one licensed shop
+            Brooklyn mobile locksmith — one number, one licensed team
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            24/7 service out of 973 E 55th St. Price quoted on the phone, no surcharges overnight
+            24/7 mobile service across Brooklyn. Price quoted on the phone, no surcharges overnight
             or on holidays.
           </p>
           <a

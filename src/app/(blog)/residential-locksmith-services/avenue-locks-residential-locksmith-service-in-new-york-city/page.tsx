@@ -130,8 +130,8 @@ export default function ResidentialLocksmithArticlePage() {
           </div>
 
           <div className="mt-12 bg-brand-navy rounded-2xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-white mb-3">Brooklyn residential dispatch — licensed shop, not a referral network</h2>
-            <p className="text-white/80 mb-6">Emergency lockouts, move-in rekeys, and hardware upgrades all run out of the same Flatlands shop with the same rate card.</p>
+            <h2 className="text-2xl font-bold text-white mb-3">Brooklyn residential dispatch — licensed team, not a referral network</h2>
+            <p className="text-white/80 mb-6">Emergency lockouts, move-in rekeys, and hardware upgrades all handled by the same Brooklyn team with the same rate card.</p>
             <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-8 py-4 rounded-xl text-lg transition-colors shadow-xl"><Phone size={22} aria-hidden="true" />{BUSINESS.phone}</a>
           </div>
 

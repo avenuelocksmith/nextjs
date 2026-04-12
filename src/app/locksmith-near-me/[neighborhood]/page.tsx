@@ -131,13 +131,13 @@ export default async function NeighborhoodPage({
           </h2>
           <p className="text-brand-text text-lg leading-relaxed mb-5">{n.localContext}</p>
           <p className="text-brand-text leading-relaxed mb-6">
-            Calls from {n.name} route straight to our Flatlands shop — no offshore dispatcher,
+            Calls from {n.name} route straight to our Brooklyn team — no offshore dispatcher,
             no subcontracted ride-share driver pretending to be a locksmith. Our techs drive
             Brooklyn routes daily and know the block-level quirks of {n.name} ({n.zip}): which
             building types take mortise cylinders, which ones run Grade 1 deadbolts, and which
             curbside sections cost you five extra minutes in a loading zone. Every tech is a
-            direct employee, NYC DCWP licensed, and carries photo ID you can verify before any
-            work begins.
+            vetted Brooklyn locksmith, NYC DCWP licensed, and carries photo ID you can verify
+            before any work begins.
           </p>
 
           {/* Trust signals row */}

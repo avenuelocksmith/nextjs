@@ -32,9 +32,9 @@ export default function EmergencyLocksmithInBrooklynPage() {
       <HeroSection h1="Emergency Locksmith in Brooklyn, NY — 24/7 Rapid Response" subheadline="Locked out? We answer every call 24 hours a day and arrive within 15–25 minutes. No after-hours surcharge. Licensed & insured." variant="emergency" showTrustBar ctaLabel="Call Now — We Answer 24/7" />
       <section className="py-10 bg-white">
         <div className="container mx-auto px-4 max-w-3xl">
-          <p className="text-brand-text text-lg leading-relaxed mb-6">Apartment at 2am, car on Atlantic Avenue at 6am, storefront before opening — Avenue Locksmith handles all three from the same shop on East 55th Street. The 15–25 minute arrival window holds on weekends, holidays, and overnight, and the invoice at 3am matches the invoice at 3pm: no after-hours multiplier, no trip surcharge, no &ldquo;high-security&rdquo; upcharge invented on your front step.</p>
+          <p className="text-brand-text text-lg leading-relaxed mb-6">Apartment at 2am, car on Atlantic Avenue at 6am, storefront before opening — Avenue Locksmith handles all three from the same Brooklyn team. The typical 15–25 minute arrival window holds on weekends, holidays, and overnight, and the invoice at 3am matches the invoice at 3pm: no after-hours multiplier, no trip surcharge, no &ldquo;high-security&rdquo; upcharge invented on your front step.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-            {['Home & apartment lockout', 'Car lockout — all makes', 'Business & office lockout', 'Broken key extraction', 'Emergency lock change', 'Burglary door repair', '15–25 min arrival guaranteed', 'No after-hours surcharge'].map((item) => (
+            {['Home & apartment lockout', 'Car lockout — all makes', 'Business & office lockout', 'Broken key extraction', 'Emergency lock change', 'Burglary door repair', 'Typical 15–25 min arrival', 'No after-hours surcharge'].map((item) => (
               <div key={item} className="flex items-center gap-2.5"><CheckCircle size={16} className="text-brand-amber shrink-0" aria-hidden="true" /><span className="text-brand-text text-sm">{item}</span></div>
             ))}
           </div>
