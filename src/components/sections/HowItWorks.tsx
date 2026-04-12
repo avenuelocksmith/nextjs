@@ -19,14 +19,14 @@ interface HowItWorksProps {
 const DEFAULT_STEPS: Step[] = [
   {
     num: '01',
-    title: 'Call or text the shop',
-    body: 'One licensed Brooklyn operator answers — not a dispatch center. You get a flat quote and an ETA before the tech leaves the shop.',
+    title: 'Call or text us',
+    body: 'One licensed Brooklyn locksmith answers — not a call center. You get a flat quote and an ETA before the tech heads out.',
     icon: Phone,
   },
   {
     num: '02',
     title: 'Tech arrives in 15–25 min',
-    body: 'The nearest Brooklyn tech rolls out of the Flatlands shop with the right tools for your lock already on the truck. No callbacks for parts.',
+    body: 'The nearest Brooklyn tech rolls out with the right tools for your lock already on the truck. No callbacks for parts.',
     icon: Truck,
   },
   {
@@ -40,7 +40,7 @@ const DEFAULT_STEPS: Step[] = [
 export function HowItWorks({
   className,
   title = 'How a Brooklyn locksmith call actually runs',
-  subtitle = 'Three steps, one number, one shop. No referral hops, no surprise fees.',
+  subtitle = 'Three steps, one number, one team. No referral hops, no surprise fees.',
   steps = DEFAULT_STEPS,
 }: HowItWorksProps) {
   return (

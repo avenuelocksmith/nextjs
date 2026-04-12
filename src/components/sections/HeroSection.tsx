@@ -59,7 +59,7 @@ function CallbackRequestCard() {
           <p className="text-white font-bold text-lg leading-tight">Callback request received</p>
           <p className="text-white/65 text-sm">
             A Brooklyn dispatcher will call you back shortly. If you&apos;re locked out or in an
-            emergency, call the shop directly.
+            emergency, call us directly.
           </p>
           <a
             href={BUSINESS.phoneHref}
