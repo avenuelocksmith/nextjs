@@ -32,7 +32,7 @@ export function Footer() {
             </Link>
             <p className="text-white/70 text-sm mb-5 leading-relaxed">
               Brooklyn&apos;s trusted 24/7 locksmith. Licensed, bonded &amp; insured.
-              15–25 minute emergency response to Brooklyn, Queens, Manhattan &amp; Staten Island.
+              Typical 15–25 minute emergency response across all five NYC boroughs.
             </p>
             <div className="flex items-center gap-1.5 mb-1">
               {[...Array(5)].map((_, i) => (
@@ -57,10 +57,10 @@ export function Footer() {
                 <Mail size={15} aria-hidden="true" />
                 <span>{BUSINESS.email}</span>
               </a>
-              <address className="flex items-start gap-2 text-white/70 not-italic">
+              <div className="flex items-start gap-2 text-white/70">
                 <MapPin size={15} className="mt-0.5 flex-shrink-0" aria-hidden="true" />
-                <span>{BUSINESS.address.full}</span>
-              </address>
+                <span>Mobile service — Brooklyn &amp; all NYC boroughs</span>
+              </div>
               <div className="flex items-center gap-2 text-white/70">
                 <Clock size={15} aria-hidden="true" />
                 <span>{afterHours === false ? 'Open Now — 365 Days a Year' : 'Open 24/7 — 365 days a year'}</span>

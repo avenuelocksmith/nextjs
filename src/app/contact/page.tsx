@@ -98,12 +98,11 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-brand-navy mb-4">Serving All of Brooklyn</h2>
-              <p className="text-brand-text leading-relaxed mb-4">Avenue Locksmith operates as a mobile service throughout Brooklyn, NY. We do not have a walk-in retail location — all services are performed at your home, vehicle, or business address. We dispatch from multiple points in Brooklyn to maintain our 15–25 minute response guarantee.</p>
+              <h2 className="text-2xl font-bold text-brand-navy mb-4">Serving All of NYC</h2>
+              <p className="text-brand-text leading-relaxed mb-4">Avenue Locksmith is a mobile locksmith service covering all five NYC boroughs. We do not have a walk-in location — all services are performed at your home, vehicle, or business.</p>
               <div className="space-y-2 text-sm text-brand-text">
-                <p><strong>Address:</strong> {BUSINESS.address.full}</p>
-                <p><strong>Service Area:</strong> All Brooklyn neighborhoods + surrounding boroughs</p>
-                <p><strong>Response Time:</strong> 15–25 minutes throughout Brooklyn</p>
+                <p><strong>Service Area:</strong> Brooklyn, Queens, Manhattan, Staten Island &amp; the Bronx</p>
+                <p><strong>Response Time:</strong> Typically 15–25 minutes in Brooklyn</p>
                 <p><strong>Hours:</strong> 24/7 · 365 days a year</p>
               </div>
             </div>
