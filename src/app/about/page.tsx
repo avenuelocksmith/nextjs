@@ -119,10 +119,10 @@ export default function AboutPage() {
               drives everything we do.
             </p>
             <p>
-              Every price is quoted before the truck is dispatched, every invoice is itemized,
-              and every technician is a direct employee — not a subcontractor, not a ride-share
-              driver, not a call-center middleman. If the number on the phone changes at the
-              door, the job ends there and nothing is owed.
+              Every price is quoted before the tech heads out, every invoice is itemized,
+              and our technicians are vetted, licensed Brooklyn locksmiths — not subcontractors
+              from a referral network. If the price at the door doesn&apos;t match the quote on
+              the phone, the job ends there and nothing is owed.
             </p>
           </div>
         </div>
@@ -173,8 +173,8 @@ export default function AboutPage() {
           </p>
           <p className="text-brand-text text-lg leading-relaxed">
             When you call us, you will always speak to a real person at Avenue Locksmith — not a
-            call center operator in another state. And the technician who arrives will be an
-            Avenue Locksmith employee, not a subcontractor you have never met.
+            call center in another state. And the technician who arrives is a vetted, licensed
+            Brooklyn locksmith, not a random subcontractor from a referral network.
           </p>
         </div>
       </section>
@@ -216,10 +216,10 @@ export default function AboutPage() {
             Committed to Brooklyn and All of NYC
           </h2>
           <p className="text-brand-text text-lg leading-relaxed mb-5">
-            Our home base is Brooklyn — {BUSINESS.address.full}. We serve all Brooklyn neighborhoods
-            and extend coverage across Queens, Manhattan, and Staten Island. Because we are
+            Avenue Locksmith is a mobile service rooted in Brooklyn. We serve all Brooklyn neighborhoods
+            and cover Queens, Manhattan, Staten Island, and the Bronx. Because we are
             genuinely local, we know the fastest routes, the most common lock types in Brooklyn
-            apartment buildings, and what it takes to respond in 15–25 minutes.
+            apartment buildings, and what it takes to typically respond in 15–25 minutes.
           </p>
           <p className="text-brand-text text-lg leading-relaxed mb-5">
             We serve all five boroughs:{' '}
@@ -251,10 +251,10 @@ export default function AboutPage() {
       <section className="py-14 md:py-20 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Talk to the Brooklyn shop direct — one number, one licensed operator
+            Talk to a Brooklyn locksmith direct — one number, one licensed team
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Call or email the shop at 973 E 55th St. No phone tree, no offshore dispatcher —
+            Call or email us anytime. No phone tree, no offshore dispatcher —
             the person answering can verify our DCWP license number on the spot.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -274,7 +274,7 @@ export default function AboutPage() {
             </a>
           </div>
           <p className="text-white/50 text-sm mt-6">
-            Available 24/7 &mdash; 365 days a year &middot; {BUSINESS.address.display}
+            Available 24/7 &mdash; 365 days a year &middot; Mobile service across all NYC boroughs
           </p>
         </div>
       </section>

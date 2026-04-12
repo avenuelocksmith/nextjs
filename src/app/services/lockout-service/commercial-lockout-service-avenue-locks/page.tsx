@@ -68,10 +68,8 @@ export default function CommercialLockoutPage() {
       url: BUSINESS.url,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: BUSINESS.address.street,
         addressLocality: BUSINESS.address.city,
         addressRegion: BUSINESS.address.state,
-        postalCode: BUSINESS.address.zip,
         addressCountry: 'US',
       },
     },
@@ -175,7 +173,7 @@ export default function CommercialLockoutPage() {
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-3">Commercial dispatch — every minute a storefront stays closed is revenue lost</h2>
-          <p className="text-white/80 mb-8">Call the Brooklyn shop directly. 15–25 minute arrival, itemized invoice on the spot for insurance and accounting.</p>
+          <p className="text-white/80 mb-8">Call our Brooklyn team directly. Typical 15–25 minute arrival, itemized invoice on the spot for insurance and accounting.</p>
           <a href={BUSINESS.phoneHref} className="inline-flex items-center gap-3 bg-brand-amber hover:bg-brand-orange text-brand-navy font-bold px-10 py-5 rounded-xl text-xl transition-colors shadow-xl">
             <Phone size={26} aria-hidden="true" />{BUSINESS.phone}
           </a>

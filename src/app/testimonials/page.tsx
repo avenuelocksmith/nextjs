@@ -88,7 +88,7 @@ export default function TestimonialsPage() {
             Based on {BUSINESS.reviewCount}+ verified Google reviews
           </p>
           <p className="text-white/60 text-sm">
-            Avenue Locksmith is a NYC DCWP-licensed Brooklyn shop. Every review below links back to a
+            Avenue Locksmith is a NYC DCWP-licensed Brooklyn locksmith. Every review below links back to a
             real Google profile — we do not publish testimonials we cannot verify.
           </p>
         </div>
@@ -218,10 +218,10 @@ export default function TestimonialsPage() {
       <section className="py-14 bg-brand-navy text-white">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl font-bold mb-3">
-            Call the Brooklyn shop direct — same technician, same price, 24/7
+            Call our Brooklyn team direct — same technician, same price, 24/7
           </h2>
           <p className="text-white/80 mb-8">
-            One number, one licensed Brooklyn shop. No call-center middleman, no surprise invoice.
+            One number, one licensed Brooklyn team. No call-center middleman, no surprise invoice.
           </p>
           <a
             href={BUSINESS.phoneHref}

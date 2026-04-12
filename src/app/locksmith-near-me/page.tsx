@@ -22,12 +22,12 @@ const FAQS = [
   {
     question: 'How do I find a trustworthy locksmith near me in Brooklyn?',
     answer:
-      'Look for a locksmith with a verified Brooklyn address, Google reviews tied to that address, and an upfront price commitment before any work begins. Avoid companies that quote $35–$50 on the phone — that is a known bait-and-switch tactic common in NYC. Avenue Locksmith is located at 973 E 55th St, Brooklyn, NY 11234. We give you the full price before touching your lock.',
+      'Look for a locksmith with verifiable Google reviews, a NYC DCWP license, and an upfront price commitment before any work begins. Avoid companies that quote $35–$50 on the phone — that is a known bait-and-switch tactic common in NYC. Avenue Locksmith is a mobile service operating throughout Brooklyn. We give you the full price before touching your lock.',
   },
   {
     question: 'What is the difference between rekeying and replacing a lock?',
     answer:
-      'Rekeying changes the internal pin configuration inside your existing lock cylinder so old keys no longer work — same lock hardware, new key combination. It costs $65–$85 per lock. Lock replacement swaps the entire lock for new hardware, which is necessary when the lock is damaged, worn, or you want to upgrade the security grade. Replacement runs $95–$175 installed. If your lock is in good working condition, rekeying is almost always the right call.',
+      'Rekeying changes the internal pin configuration inside your existing lock cylinder so old keys no longer work — same lock hardware, new key combination. It typically costs $65–$85 per lock. Lock replacement swaps the entire lock for new hardware, which is necessary when the lock is damaged, worn, or you want to upgrade the security grade. Replacement typically runs $95–$175 installed. If your lock is in good working condition, rekeying is almost always the right call.',
   },
   {
     question: 'How fast does Avenue Locksmith respond to emergencies in Brooklyn?',
@@ -105,7 +105,7 @@ export default function LocksmithNearMePage() {
             When you search &ldquo;locksmith near me&rdquo; in Brooklyn, most results are national aggregators. They look local, but when you call, your job is dispatched to whoever is available — often a contractor from another borough with no accountability to the name you saw.
           </p>
           <p className="text-brand-text leading-relaxed mb-6">
-            Avenue Locksmith is different. We are based at <strong>973 E 55th St, Brooklyn, NY 11234</strong>. Our technicians live and work in Brooklyn. When you call us, you get our dispatcher, our truck, our technician, and our price guarantee. We have served Brooklyn neighborhoods for over a decade — one job at a time.
+            Avenue Locksmith is different. We are a mobile locksmith service with technicians who live and work in Brooklyn. When you call us, you get our dispatcher, our truck, our technician, and our upfront price. We have served Brooklyn neighborhoods for over a decade — one job at a time.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
@@ -237,7 +237,7 @@ export default function LocksmithNearMePage() {
             Our Service Area — All of Brooklyn
           </h2>
           <p className="text-brand-muted text-center mb-8 max-w-xl mx-auto text-sm">
-            Based in southeastern Brooklyn, we cover all 49 neighborhoods with the fastest response times in the borough.
+            Serving all of Brooklyn, we cover all 49 neighborhoods with fast response times across the borough.
           </p>
           <MapEmbed height="450px" title="Avenue Locksmith Service Area — Brooklyn, NY" />
         </div>
@@ -282,8 +282,8 @@ export default function LocksmithNearMePage() {
             Brooklyn neighborhood dispatch — 15–25 minutes, borough-wide
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Technicians staged across Brooklyn from the Flatlands shop. Price locked before the
-            truck leaves. 24/7, 365 days a year.
+            Technicians staged across Brooklyn and ready to dispatch. Price quoted before the
+            tech heads out. 24/7, 365 days a year.
           </p>
           <a
             href={BUSINESS.phoneHref}

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 const HOME_FAQS = [
   {
     question: 'How fast can you arrive after I call?',
-    answer: 'We guarantee arrival within 15–25 minutes for emergency calls in Brooklyn. In most cases, we arrive even faster. We have technicians based throughout Brooklyn for rapid dispatch 24/7.',
+    answer: 'Most emergency calls in Brooklyn arrive in 15–25 minutes. We have technicians based throughout Brooklyn for rapid dispatch 24/7.',
   },
   {
     question: 'Are you licensed and insured in New York?',
@@ -40,7 +40,7 @@ const HOME_FAQS = [
   },
   {
     question: 'How much does a locksmith cost in Brooklyn?',
-    answer: 'Our pricing is transparent and quoted upfront before we start. Emergency lockout service typically starts at $75–$125. Lock rekeying starts at $50–$100 per lock. Lock replacement starts at $125–$250. We always quote the full price before work begins — no hidden fees.',
+    answer: 'We quote a flat price upfront before we start — no hidden fees. Emergency lockout service typically starts around $75–$125. Lock rekeying typically runs $50–$100 per lock. Lock replacement typically starts around $125–$250.',
   },
   {
     question: 'Do you work on cars as well as homes?',
@@ -52,7 +52,7 @@ const HOME_FAQS = [
   },
   {
     question: 'Do you serve neighborhoods outside Brooklyn?',
-    answer: 'We primarily serve all Brooklyn neighborhoods, but we also cover Queens, Manhattan, and Staten Island. Call us with your location and we\'ll give you an accurate ETA.',
+    answer: 'We serve all five NYC boroughs — Brooklyn, Queens, Manhattan, Staten Island, and the Bronx. Call us with your location and we\'ll give you an accurate ETA.',
   },
 ]
 
@@ -210,11 +210,11 @@ export default function HomePage() {
         </div>
         <div className="relative container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Brooklyn locksmith dispatch — 24/7, straight from the shop at 973 E 55th St
+            Brooklyn mobile locksmith — 24/7, we come to you
           </h2>
           <p className="text-white/75 mb-8 text-lg">
-            The same phone number reaches a licensed Brooklyn shop at 3am, 8pm, or Sunday morning.
-            15–25 minute arrival across the borough, price locked before the truck leaves.
+            The same phone number reaches a licensed Brooklyn locksmith at 3am, 8pm, or Sunday morning.
+            Typical 15–25 minute arrival across the borough, price quoted before we head out.
           </p>
           <a
             href={BUSINESS.phoneHref}
@@ -224,7 +224,7 @@ export default function HomePage() {
             <span>{BUSINESS.phone}</span>
           </a>
           <p className="text-white/50 text-sm">
-            Available 24/7 — 365 days a year · Licensed &amp; Insured · 15–25 Min Response Guarantee
+            Available 24/7 — 365 days a year · Licensed &amp; Insured · Typical 15–25 Min Response
           </p>
         </div>
       </section>

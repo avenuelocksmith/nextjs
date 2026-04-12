@@ -57,8 +57,7 @@ export default function GalleryPage() {
             Put a real Brooklyn locksmith on your door, not a dispatch center
           </h2>
           <p className="text-white/80 mb-6">
-            NYC DCWP licensed. Firm price before dispatch. Every tech is a direct employee out of
-            the Flatlands shop — available 24/7.
+            NYC DCWP licensed. Firm price before dispatch. Every tech is a vetted Brooklyn locksmith — available 24/7.
           </p>
           <a
             href={BUSINESS.phoneHref}

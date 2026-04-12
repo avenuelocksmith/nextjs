@@ -16,7 +16,7 @@ const MEGA_MENU = [
       { label: 'Residential Locksmith', href: '/services/residential-locksmith/', icon: Home, desc: 'Home lockouts, lock installs & rekeying' },
       { label: 'Commercial Locksmith', href: '/services/commercial-locksmith/', icon: Building, desc: 'Master keys, access control, office security' },
       { label: 'Auto Locksmith', href: '/services/auto-locksmith/', icon: Car, desc: 'Car lockouts, key fob & transponder keys' },
-      { label: 'Emergency Locksmith', href: '/services/emergency-locksmith/', icon: Zap, desc: '24/7 — 15–25 minute arrival guaranteed' },
+      { label: 'Emergency Locksmith', href: '/services/emergency-locksmith/', icon: Zap, desc: '24/7 — typical 15–25 minute arrival' },
       { label: 'Eviction Locksmith', href: '/services/eviction-locksmith/', icon: Key, desc: 'Legal lock changes for NYC landlords' },
       { label: 'Lockout Service', href: '/services/lockout-service/', icon: DoorOpen, desc: 'Home, car & business lockouts' },
     ],

@@ -8,7 +8,7 @@ interface HowACallRunsProps {
 const OPERATIONAL_FACTS = [
   {
     label: 'Dispatch',
-    body: `Same shop at ${BUSINESS.address.street} dispatches every Brooklyn call. No call-center middleman, no subcontractor bidding.`,
+    body: 'Our Brooklyn team handles every local call directly. No call-center middleman, no subcontractor bidding.',
   },
   {
     label: 'Entry method',
@@ -35,7 +35,7 @@ export function HowACallRuns({ className }: HowACallRunsProps) {
               What actually happens when you call
             </p>
             <h2 className="text-fluid-h2 font-bold text-brand-charcoal mb-5">
-              One phone call, one licensed shop, one tech on the way
+              One phone call, one licensed team, one tech on the way
             </h2>
             <div className="space-y-4 text-brand-text text-base md:text-lg leading-relaxed">
               <p>
@@ -45,15 +45,14 @@ export function HowACallRuns({ className }: HowACallRunsProps) {
                 phone rarely matches the price at the door.
               </p>
               <p>
-                Avenue Locksmith works the opposite way. The phone rings in the
-                Flatlands shop at {BUSINESS.address.street}. The person who
-                answers is a licensed {BUSINESS.credentials[0]} operator who
-                knows what&apos;s on the truck, what&apos;s in the shop, and which tech
+                Avenue Locksmith works the opposite way. When you call, a
+                licensed {BUSINESS.credentials[0]} answers directly — someone who
+                knows what&apos;s on the truck and which tech
                 is closest to your block. You get a flat quote on that call and
                 the same flat quote at the door.
               </p>
               <p>
-                {BUSINESS.name} has been dispatching from this shop since {BUSINESS.founded}.
+                {BUSINESS.name} has been operating in Brooklyn since {BUSINESS.founded}.
                 We&apos;re {BUSINESS.credentials[1]}. The{' '}
                 {BUSINESS.rating}-star average across {BUSINESS.reviewCount}+
                 Google reviews is the live ledger — not a sticker we bought.

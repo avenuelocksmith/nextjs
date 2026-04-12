@@ -184,7 +184,7 @@ export default function EmergencyLocksmithPage() {
                 'Ask for their NYC DCWP locksmith license number and verify it at nyc.gov/dcwp.',
                 'Google the company name + address. Scam operations have no real location.',
                 'If you feel pressured or the price changes at the door — end the job and call the police if needed.',
-                'Avenue Locksmith license number is available on request. Our address is 973 E 55th St, Brooklyn, NY.',
+                'Avenue Locksmith NYC DCWP license number is available on request. We are a mobile service covering all of Brooklyn.',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="text-amber-600 font-bold mt-0.5 shrink-0">•</span>
