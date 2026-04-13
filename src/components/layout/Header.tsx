@@ -2,12 +2,11 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Lock, Cpu, Eye, Fingerprint, DoorOpen, RefreshCw, ArrowLeftRight, ShieldCheck, Copy, Archive, Mail, UserCheck } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown, Home, Building, Car, Zap, Key, Shield, Lock, Cpu, Eye, Fingerprint, DoorOpen, RefreshCw, ArrowLeftRight, ShieldCheck, Copy, Archive, Mail, UserCheck, MapPin } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BUSINESS, NAV_LINKS, AREAS_MEGA_MENU } from '@/lib/constants'
 import { useAvailability } from '@/hooks/useAvailability'
 import { LiveActivityBar } from '@/components/ui/LiveActivityBar'
-import { MapPin } from 'lucide-react'
 
 const MEGA_MENU = [
   {

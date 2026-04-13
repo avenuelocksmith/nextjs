@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, CheckCircle, ArrowRight, Eye, AlertTriangle } from 'lucide-react'
+import { CheckCircle, ArrowRight, Eye, AlertTriangle } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { ContactFormSection } from '@/components/sections/ContactFormSection'

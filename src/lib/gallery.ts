@@ -379,12 +379,6 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
 ]
 
-/** Returns all items matching a category tag (or all items when tag is 'all') */
-export function getGalleryByTag(tag: string): GalleryItem[] {
-  if (tag === 'all') return GALLERY_ITEMS
-  return GALLERY_ITEMS.filter((item) => item.category === tag || item.tags.includes(tag))
-}
-
 /** Returns items for a specific service page slug */
 export function getGalleryByService(slug: string): GalleryItem[] {
   return GALLERY_ITEMS.filter(

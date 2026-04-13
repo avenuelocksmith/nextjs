@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Phone, CheckCircle, ArrowRight, Car, AlertTriangle } from 'lucide-react'
+import { Phone, ArrowRight, Car, AlertTriangle } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
