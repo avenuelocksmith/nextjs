@@ -222,7 +222,7 @@ export default async function NeighborhoodPage({
           <p className="text-brand-muted text-sm text-center mb-6 max-w-lg mx-auto">
             Our technicians are stationed throughout Brooklyn — including near {n.name} — for the fastest possible response.
           </p>
-          <MapEmbed query={`${n.name}, Brooklyn, NY ${n.zip}`} height="380px" title={`Avenue Locksmith — ${n.name} Brooklyn`} />
+          <MapEmbed lat={n.lat} lng={n.lng} height="380px" title={`Avenue Locksmith — ${n.name} Brooklyn`} />
         </div>
       </section>
 

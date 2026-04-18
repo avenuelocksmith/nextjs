@@ -2,6 +2,9 @@ import { cn } from '@/lib/utils'
 
 interface MapEmbedProps {
   query?: string
+  lat?: number
+  lng?: number
+  zoom?: number
   className?: string
   height?: string
   title?: string
@@ -9,12 +12,23 @@ interface MapEmbedProps {
 
 export function MapEmbed({
   query,
+  lat,
+  lng,
+  zoom = 14,
   className,
   height = '400px',
   title = 'Avenue Locksmith Service Area — Brooklyn, NY',
 }: MapEmbedProps) {
-  const searchQuery = query ?? 'Avenue Locksmith, Brooklyn, NY'
-  const encodedQuery = encodeURIComponent(searchQuery)
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ''
+
+  let src: string
+  if (lat !== undefined && lng !== undefined) {
+    src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${lat},${lng}&zoom=${zoom}`
+  } else {
+    const searchQuery = query ?? 'Avenue Locksmith, Brooklyn, NY'
+    const encodedQuery = encodeURIComponent(searchQuery)
+    src = `https://www.google.com/maps/embed/v1/place?key=${apiKey}&q=${encodedQuery}&zoom=${zoom}`
+  }
 
   return (
     <div
@@ -28,7 +42,7 @@ export function MapEmbed({
         loading="lazy"
         allowFullScreen
         referrerPolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ''}&q=${encodedQuery}&zoom=13`}
+        src={src}
         title={title}
         aria-label={title}
       />
