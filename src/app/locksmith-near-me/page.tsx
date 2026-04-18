@@ -3,9 +3,7 @@ import Link from 'next/link'
 import { MapPin, Phone, CheckCircle, ArrowRight } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
-import dynamic from 'next/dynamic'
-
-const ServiceAreaMap = dynamic(() => import('@/components/ui/ServiceAreaMap').then(m => ({ default: m.ServiceAreaMap })), { ssr: false })
+import { ServiceAreaMapLazy } from '@/components/ui/ServiceAreaMapLazy'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getBreadcrumbSchema, getFAQSchema, getWebPageSchema } from '@/lib/schema'
@@ -241,7 +239,7 @@ export default function LocksmithNearMePage() {
           <p className="text-brand-muted text-center mb-8 max-w-xl mx-auto text-sm">
             Serving all of Brooklyn, we cover all 49 neighborhoods with fast response times across the borough.
           </p>
-          <ServiceAreaMap height="450px" />
+          <ServiceAreaMapLazy height="450px" />
         </div>
       </section>
 

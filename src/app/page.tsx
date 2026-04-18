@@ -16,7 +16,8 @@ const TestimonialsSection = dynamic(() => import('@/components/sections/Testimon
 const FAQSection          = dynamic(() => import('@/components/sections/FAQSection').then(m => ({ default: m.FAQSection })))
 const ContactFormSection  = dynamic(() => import('@/components/sections/ContactFormSection').then(m => ({ default: m.ContactFormSection })))
 const GallerySection      = dynamic(() => import('@/components/sections/GallerySection').then(m => ({ default: m.GallerySection })))
-const ServiceAreaMap      = dynamic(() => import('@/components/ui/ServiceAreaMap').then(m => ({ default: m.ServiceAreaMap })), { ssr: false })
+
+import { ServiceAreaMapLazy } from '@/components/ui/ServiceAreaMapLazy'
 
 export const metadata: Metadata = {
   title: `24/7 Locksmith in Brooklyn, NY — ${BUSINESS.name} | ${BUSINESS.phone}`,
@@ -162,7 +163,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <ServiceAreaMap height="400px" />
+            <ServiceAreaMapLazy height="400px" />
             <div>
               <h3 className="font-bold text-brand-charcoal text-lg mb-4 flex items-center gap-2">
                 <MapPin size={18} className="text-brand-amber" aria-hidden="true" />
