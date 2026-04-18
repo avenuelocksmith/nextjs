@@ -3,7 +3,9 @@ import Link from 'next/link'
 import { MapPin, Phone, CheckCircle, ArrowRight } from 'lucide-react'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FAQSection } from '@/components/sections/FAQSection'
-import { MapEmbed } from '@/components/ui/MapEmbed'
+import dynamic from 'next/dynamic'
+
+const ServiceAreaMap = dynamic(() => import('@/components/ui/ServiceAreaMap').then(m => ({ default: m.ServiceAreaMap })), { ssr: false })
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { JsonLd } from '@/components/schema/JsonLd'
 import { getBreadcrumbSchema, getFAQSchema, getWebPageSchema } from '@/lib/schema'
@@ -239,7 +241,7 @@ export default function LocksmithNearMePage() {
           <p className="text-brand-muted text-center mb-8 max-w-xl mx-auto text-sm">
             Serving all of Brooklyn, we cover all 49 neighborhoods with fast response times across the borough.
           </p>
-          <MapEmbed height="450px" title="Avenue Locksmith Service Area — Brooklyn, NY" />
+          <ServiceAreaMap height="450px" />
         </div>
       </section>
 

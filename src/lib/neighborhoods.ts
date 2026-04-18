@@ -10,8 +10,9 @@ export interface Neighborhood {
   name: string
   zip: string
   borough: string
-  mapEmbedId: string
-  localContext: string // Unique intro paragraph for thin content prevention
+  lat: number
+  lng: number
+  localContext: string
   nearbyNeighborhoods: string[]
   faqs: NeighborhoodFAQ[]
 }
@@ -23,7 +24,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Park Slope',
     zip: '11215',
     borough: 'Brooklyn',
-    mapEmbedId: 'park-slope-brooklyn',
+    lat: 40.6710,
+    lng: -73.9814,
     localContext: 'Park Slope is home to some of Brooklyn\'s most beautiful brownstones and rowhouses. With tree-lined streets running from Prospect Park to the Gowanus Canal, the neighborhood\'s mix of families and young professionals means high demand for residential locksmith services — from deadbolt upgrades to apartment rekeying when tenants change.',
     nearbyNeighborhoods: ['Gowanus', 'Prospect Heights', 'Windsor Terrace', 'Carroll Gardens'],
     faqs: [
@@ -55,7 +57,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Williamsburg',
     zip: '11211',
     borough: 'Brooklyn',
-    mapEmbedId: 'williamsburg-brooklyn',
+    lat: 40.7081,
+    lng: -73.9571,
     localContext: 'Williamsburg\'s dense mix of converted lofts, new luxury high-rises, and classic walk-up apartments makes it one of Brooklyn\'s most active neighborhoods for locksmith calls. With the L train corridor and North Side warehouse conversions, residents frequently need lock changes on move-in and smart lock upgrades.',
     nearbyNeighborhoods: ['Greenpoint', 'Bushwick', 'Bedford-Stuyvesant', 'East Williamsburg'],
     faqs: [
@@ -87,7 +90,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'DUMBO',
     zip: '11201',
     borough: 'Brooklyn',
-    mapEmbedId: 'dumbo-brooklyn',
+    lat: 40.7033,
+    lng: -73.9883,
     localContext: 'DUMBO (Down Under the Manhattan Bridge Overpass) blends upscale condos, creative office lofts, and boutique shops. As one of Brooklyn\'s priciest ZIP codes, DUMBO residents often invest in premium high-security lock systems, smart locks, and access control for both residential and commercial properties.',
     nearbyNeighborhoods: ['Brooklyn Heights', 'Vinegar Hill', 'Cobble Hill', 'Downtown Brooklyn'],
     faqs: [
@@ -119,7 +123,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Brooklyn Heights',
     zip: '11201',
     borough: 'Brooklyn',
-    mapEmbedId: 'brooklyn-heights-brooklyn',
+    lat: 40.6960,
+    lng: -73.9936,
     localContext: 'Brooklyn Heights is one of New York\'s most historic neighborhoods, with pre-Civil War brownstones and classic townhouses that require careful, experienced locksmith work. The neighborhood\'s homeowners and co-op residents frequently request high-security deadbolt installations and master key systems for their properties.',
     nearbyNeighborhoods: ['DUMBO', 'Cobble Hill', 'Downtown Brooklyn', 'Boerum Hill'],
     faqs: [
@@ -151,7 +156,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Flatbush',
     zip: '11226',
     borough: 'Brooklyn',
-    mapEmbedId: 'flatbush-brooklyn',
+    lat: 40.6432,
+    lng: -73.9596,
     localContext: 'Flatbush is one of Brooklyn\'s most diverse and densely populated neighborhoods, with a large Caribbean-American community centered around Flatbush Avenue. Rental apartments are common here, and new tenants regularly call us for move-in rekeying and lock change services.',
     nearbyNeighborhoods: ['Ditmas Park', 'Midwood', 'East Flatbush', 'Prospect Lefferts Gardens'],
     faqs: [
@@ -183,7 +189,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Bay Ridge',
     zip: '11209',
     borough: 'Brooklyn',
-    mapEmbedId: 'bay-ridge-brooklyn',
+    lat: 40.6346,
+    lng: -74.0232,
     localContext: 'Bay Ridge has a strong homeownership culture, with many multi-generational families in single-family homes and brownstones along the waterfront. We regularly serve Bay Ridge homeowners with deadbolt installations, master key systems, and security upgrades.',
     nearbyNeighborhoods: ['Dyker Heights', 'Sunset Park', 'Bensonhurst'],
     faqs: [
@@ -215,7 +222,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Bedford-Stuyvesant',
     zip: '11233',
     borough: 'Brooklyn',
-    mapEmbedId: 'bedford-stuyvesant-brooklyn',
+    lat: 40.6872,
+    lng: -73.9418,
     localContext: 'Bed-Stuy is experiencing rapid growth with long-time residents and newcomers alike calling Brooklyn\'s largest historic district home. With a mix of owned brownstones and rental apartments, we serve both homeowners upgrading security and renters seeking lock changes after move-in.',
     nearbyNeighborhoods: ['Bushwick', 'Crown Heights', 'Williamsburg', 'Stuyvesant Heights'],
     faqs: [
@@ -247,7 +255,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Crown Heights',
     zip: '11213',
     borough: 'Brooklyn',
-    mapEmbedId: 'crown-heights-brooklyn',
+    lat: 40.6694,
+    lng: -73.9422,
     localContext: 'Crown Heights stretches from Eastern Parkway down to Linden Boulevard, mixing brownstone blocks, apartment buildings, and Caribbean cultural institutions. Rental turnover is high here, making move-in lock changes and rekeying some of our most common services in the area.',
     nearbyNeighborhoods: ['Prospect Heights', 'Bedford-Stuyvesant', 'Flatbush', 'East Flatbush'],
     faqs: [
@@ -279,7 +288,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Bushwick',
     zip: '11221',
     borough: 'Brooklyn',
-    mapEmbedId: 'bushwick-brooklyn',
+    lat: 40.6944,
+    lng: -73.9213,
     localContext: 'Bushwick\'s artistic community lives in everything from converted warehouses to classic walk-ups. With one of the highest renter populations in Brooklyn, lock changes and rekeying on move-in are extremely common requests from Bushwick tenants and landlords.',
     nearbyNeighborhoods: ['East Williamsburg', 'Bedford-Stuyvesant', 'Brownsville', 'East New York'],
     faqs: [
@@ -311,7 +321,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Sunset Park',
     zip: '11220',
     borough: 'Brooklyn',
-    mapEmbedId: 'sunset-park-brooklyn',
+    lat: 40.6514,
+    lng: -74.0027,
     localContext: 'Sunset Park is a vibrant community with strong Chinese and Latin American neighborhoods centered around 8th Avenue and 5th Avenue corridors. Businesses here frequently request commercial locksmith services, while residents seek affordable lock changes and key duplication.',
     nearbyNeighborhoods: ['Bay Ridge', 'Dyker Heights', 'Borough Park', 'Bensonhurst'],
     faqs: [
@@ -343,7 +354,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Cobble Hill',
     zip: '11201',
     borough: 'Brooklyn',
-    mapEmbedId: 'cobble-hill-brooklyn',
+    lat: 40.6860,
+    lng: -73.9957,
     localContext: 'Cobble Hill is a quiet, family-friendly neighborhood between Atlantic Avenue and the BQE, known for its well-preserved Federal and Italianate brownstones. Homeowners here take security seriously, and we regularly install high-security deadbolts and handle lock upgrades for the neighborhood\'s historic properties.',
     nearbyNeighborhoods: ['Brooklyn Heights', 'Carroll Gardens', 'Boerum Hill', 'Red Hook'],
     faqs: [
@@ -375,7 +387,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Carroll Gardens',
     zip: '11231',
     borough: 'Brooklyn',
-    mapEmbedId: 'carroll-gardens-brooklyn',
+    lat: 40.6795,
+    lng: -73.9991,
     localContext: 'Carroll Gardens is known for its deep front-yard rowhouses and tight-knit Italian-American community, now shared with young families and professionals. Residents frequently call us for residential lock upgrades, deadbolt installations, and smart lock conversions.',
     nearbyNeighborhoods: ['Cobble Hill', 'Red Hook', 'Gowanus', 'Park Slope'],
     faqs: [
@@ -407,7 +420,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Boerum Hill',
     zip: '11217',
     borough: 'Brooklyn',
-    mapEmbedId: 'boerum-hill-brooklyn',
+    lat: 40.6848,
+    lng: -73.9845,
     localContext: 'Boerum Hill sits at the crossroads of several Brooklyn neighborhoods, with a mix of historic townhouses and newer apartment buildings. The neighborhood\'s location near Atlantic Terminal makes it a frequent destination for locksmith calls — from apartment lockouts to lock upgrades.',
     nearbyNeighborhoods: ['Brooklyn Heights', 'Carroll Gardens', 'Cobble Hill', 'Park Slope'],
     faqs: [
@@ -439,7 +453,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Prospect Heights',
     zip: '11238',
     borough: 'Brooklyn',
-    mapEmbedId: 'prospect-heights-brooklyn',
+    lat: 40.6775,
+    lng: -73.9692,
     localContext: 'Prospect Heights borders Prospect Park and the Brooklyn Museum, attracting residents who value both culture and security. With a booming rental market and many multi-unit buildings, rekeying and lock change services are in high demand throughout the neighborhood.',
     nearbyNeighborhoods: ['Park Slope', 'Crown Heights', 'Flatbush', 'Windsor Terrace'],
     faqs: [
@@ -471,7 +486,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Greenpoint',
     zip: '11222',
     borough: 'Brooklyn',
-    mapEmbedId: 'greenpoint-brooklyn',
+    lat: 40.7274,
+    lng: -73.9514,
     localContext: 'Greenpoint, Brooklyn\'s northernmost neighborhood, has a strong Polish heritage and waterfront views of Manhattan. With many walk-up apartments and a mix of longtime residents and newcomers, we regularly handle move-in lock changes, key duplication, and lockout services here.',
     nearbyNeighborhoods: ['Williamsburg', 'Vinegar Hill', 'East Williamsburg'],
     faqs: [
@@ -503,7 +519,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Red Hook',
     zip: '11231',
     borough: 'Brooklyn',
-    mapEmbedId: 'red-hook-brooklyn',
+    lat: 40.6734,
+    lng: -74.0083,
     localContext: 'Red Hook is a waterfront neighborhood undergoing significant change, with warehouses converted to residences and businesses alongside longstanding public housing. Our locksmith team regularly serves both residential and commercial clients in this increasingly vibrant area.',
     nearbyNeighborhoods: ['Carroll Gardens', 'Cobble Hill', 'Gowanus', 'Sunset Park'],
     faqs: [
@@ -535,7 +552,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'East Flatbush',
     zip: '11203',
     borough: 'Brooklyn',
-    mapEmbedId: 'east-flatbush-brooklyn',
+    lat: 40.6530,
+    lng: -73.9302,
     localContext: 'East Flatbush has a predominantly Caribbean-American community and a mix of apartment buildings and single-family homes. Renters frequently call for move-in rekeying, while landlords use us for eviction lock changes and building-wide master key systems.',
     nearbyNeighborhoods: ['Flatbush', 'Crown Heights', 'Canarsie', 'Brownsville'],
     faqs: [
@@ -567,7 +585,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Borough Park',
     zip: '11219',
     borough: 'Brooklyn',
-    mapEmbedId: 'borough-park-brooklyn',
+    lat: 40.6340,
+    lng: -73.9888,
     localContext: 'Borough Park is the heart of Brooklyn\'s Orthodox Jewish community, with a dense residential population and many family-owned businesses along 13th Avenue. We provide locksmith services for both homes and stores here, with a focus on reliability and transparent pricing.',
     nearbyNeighborhoods: ['Bensonhurst', 'Sunset Park', 'Dyker Heights', 'Kensington'],
     faqs: [
@@ -599,7 +618,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Bensonhurst',
     zip: '11204',
     borough: 'Brooklyn',
-    mapEmbedId: 'bensonhurst-brooklyn',
+    lat: 40.6044,
+    lng: -73.9937,
     localContext: 'Bensonhurst is a large Brooklyn neighborhood with a strong Italian-American and Chinese-American heritage. Many single-family homes and multi-family buildings line its streets, and we serve both homeowners needing security upgrades and landlords managing rental units.',
     nearbyNeighborhoods: ['Bay Ridge', 'Borough Park', 'Dyker Heights', 'Gravesend'],
     faqs: [
@@ -631,7 +651,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Sheepshead Bay',
     zip: '11235',
     borough: 'Brooklyn',
-    mapEmbedId: 'sheepshead-bay-brooklyn',
+    lat: 40.5912,
+    lng: -73.9451,
     localContext: 'Sheepshead Bay is a southern Brooklyn neighborhood known for its fishing boats and waterfront dining on Emmons Avenue. With a large Russian-speaking community and many homeowners, residents regularly call us for lock upgrades, deadbolt installation, and after-hours emergency service.',
     nearbyNeighborhoods: ['Gravesend', 'Manhattan Beach', 'Marine Park', 'Midwood'],
     faqs: [
@@ -663,7 +684,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Canarsie',
     zip: '11236',
     borough: 'Brooklyn',
-    mapEmbedId: 'canarsie-brooklyn',
+    lat: 40.6388,
+    lng: -73.9015,
     localContext: 'Canarsie sits on Jamaica Bay\'s northern shore, with a mix of homes, apartments, and retail on Rockaway Parkway. We serve Canarsie residents with lockout response, lock change services, and key duplication throughout this southeastern Brooklyn neighborhood.',
     nearbyNeighborhoods: ['East Flatbush', 'Flatlands', 'Mill Basin', 'East New York'],
     faqs: [
@@ -695,7 +717,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Flatlands',
     zip: '11234',
     borough: 'Brooklyn',
-    mapEmbedId: 'flatlands-brooklyn',
+    lat: 40.6233,
+    lng: -73.9310,
     localContext: 'Flatlands is a quiet residential neighborhood in southeastern Brooklyn near our home base, making it one of our fastest response areas. Homeowners in Flatlands often call us for deadbolt installations, lock upgrades, and garage lock service.',
     nearbyNeighborhoods: ['Canarsie', 'Mill Basin', 'Midwood', 'East Flatbush'],
     faqs: [
@@ -727,7 +750,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Mill Basin',
     zip: '11234',
     borough: 'Brooklyn',
-    mapEmbedId: 'mill-basin-brooklyn',
+    lat: 40.6073,
+    lng: -73.9105,
     localContext: 'Mill Basin is a suburban enclave in southern Brooklyn known for its large single-family homes and waterfront properties along Mill Basin and the Marine Parkway. We\'re located nearby and serve Mill Basin homeowners with premium residential locksmith services including high-security lock installs.',
     nearbyNeighborhoods: ['Flatlands', 'Canarsie', 'Gerritsen Beach', 'Bergen Beach'],
     faqs: [
@@ -759,7 +783,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Marine Park',
     zip: '11234',
     borough: 'Brooklyn',
-    mapEmbedId: 'marine-park-brooklyn',
+    lat: 40.6063,
+    lng: -73.9283,
     localContext: 'Marine Park borders the largest public park in Brooklyn and has a quiet, suburban feel with single-family homes and row houses. Homeowners here frequently request deadbolt upgrades, garage lock service, and security consultations.',
     nearbyNeighborhoods: ['Flatlands', 'Mill Basin', 'Gerritsen Beach', 'Sheepshead Bay'],
     faqs: [
@@ -791,7 +816,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Midwood',
     zip: '11230',
     borough: 'Brooklyn',
-    mapEmbedId: 'midwood-brooklyn',
+    lat: 40.6219,
+    lng: -73.9603,
     localContext: 'Midwood is a predominantly Jewish neighborhood with many single-family homes and a strong community feel. We serve Midwood homeowners and businesses along Ocean Avenue and Avenue J with residential lock installations, key duplication, and commercial security systems.',
     nearbyNeighborhoods: ['Flatbush', 'Borough Park', 'Sheepshead Bay', 'Gravesend'],
     faqs: [
@@ -823,7 +849,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Kensington',
     zip: '11218',
     borough: 'Brooklyn',
-    mapEmbedId: 'kensington-brooklyn',
+    lat: 40.6386,
+    lng: -73.9729,
     localContext: 'Kensington is a diverse neighborhood with a large South Asian and Pakistani community along Church Avenue. With many rental apartments and two-family homes, move-in rekeying and lock change services are among our most frequent calls in Kensington.',
     nearbyNeighborhoods: ['Windsor Terrace', 'Park Slope', 'Flatbush', 'Borough Park'],
     faqs: [
@@ -855,7 +882,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Windsor Terrace',
     zip: '11218',
     borough: 'Brooklyn',
-    mapEmbedId: 'windsor-terrace-brooklyn',
+    lat: 40.6539,
+    lng: -73.9758,
     localContext: 'Windsor Terrace is a small, tight-knit neighborhood bordering Prospect Park to the west and south. With a growing number of young families moving in, we see frequent requests for smart lock installations and security upgrades alongside traditional locksmith services.',
     nearbyNeighborhoods: ['Park Slope', 'Kensington', 'Prospect Heights'],
     faqs: [
@@ -887,7 +915,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Ditmas Park',
     zip: '11218',
     borough: 'Brooklyn',
-    mapEmbedId: 'ditmas-park-brooklyn',
+    lat: 40.6370,
+    lng: -73.9610,
     localContext: 'Ditmas Park is unique in Brooklyn for its concentration of large Victorian and Edwardian free-standing homes with front yards. These older properties often have outdated lock hardware, and homeowners regularly call us to upgrade to modern high-security deadbolts and smart lock systems.',
     nearbyNeighborhoods: ['Flatbush', 'Kensington', 'Prospect Lefferts Gardens'],
     faqs: [
@@ -919,7 +948,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'East New York',
     zip: '11207',
     borough: 'Brooklyn',
-    mapEmbedId: 'east-new-york-brooklyn',
+    lat: 40.6590,
+    lng: -73.8822,
     localContext: 'East New York is a large, working-class Brooklyn neighborhood undergoing significant investment. We provide fast, affordable locksmith services throughout the neighborhood — from emergency lockouts to lock change and key duplication for both residents and local businesses.',
     nearbyNeighborhoods: ['Bushwick', 'Canarsie', 'Brownsville', 'Cypress Hills'],
     faqs: [
@@ -951,7 +981,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Brownsville',
     zip: '11212',
     borough: 'Brooklyn',
-    mapEmbedId: 'brownsville-brooklyn',
+    lat: 40.6612,
+    lng: -73.9115,
     localContext: 'Brownsville is a densely populated neighborhood with a mix of public housing, private rentals, and small businesses. We offer fast, affordable locksmith response throughout Brownsville, including emergency lockouts, lock change services, and building security upgrades.',
     nearbyNeighborhoods: ['East New York', 'East Flatbush', 'Crown Heights', 'Bedford-Stuyvesant'],
     faqs: [
@@ -983,7 +1014,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Gowanus',
     zip: '11231',
     borough: 'Brooklyn',
-    mapEmbedId: 'gowanus-brooklyn',
+    lat: 40.6738,
+    lng: -73.9883,
     localContext: 'Gowanus is rapidly transforming from an industrial zone to a residential neighborhood with new luxury developments alongside creative studios and long-standing businesses. We serve both residents and businesses in this evolving neighborhood with commercial and residential locksmith services.',
     nearbyNeighborhoods: ['Park Slope', 'Carroll Gardens', 'Cobble Hill', 'Red Hook'],
     faqs: [
@@ -1015,7 +1047,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Downtown Brooklyn',
     zip: '11201',
     borough: 'Brooklyn',
-    mapEmbedId: 'downtown-brooklyn',
+    lat: 40.6930,
+    lng: -73.9857,
     localContext: 'Downtown Brooklyn is the borough\'s business and transit hub, with major office towers, college campuses, and a growing residential population. We serve commercial clients with business lockout response, access control systems, and after-hours office lock changes throughout the downtown area.',
     nearbyNeighborhoods: ['Brooklyn Heights', 'Boerum Hill', 'DUMBO', 'Fort Greene'],
     faqs: [
@@ -1047,7 +1080,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Fort Greene',
     zip: '11205',
     borough: 'Brooklyn',
-    mapEmbedId: 'fort-greene-brooklyn',
+    lat: 40.6921,
+    lng: -73.9737,
     localContext: 'Fort Greene is a culturally rich neighborhood adjacent to BAM and Barclays Center, with a mix of renovated brownstones and apartment buildings. Residents here — many of them homeowners and long-term renters — frequently call for lock upgrades and smart lock installations.',
     nearbyNeighborhoods: ['Downtown Brooklyn', 'Clinton Hill', 'Bedford-Stuyvesant', 'Prospect Heights'],
     faqs: [
@@ -1079,7 +1113,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Clinton Hill',
     zip: '11205',
     borough: 'Brooklyn',
-    mapEmbedId: 'clinton-hill-brooklyn',
+    lat: 40.6897,
+    lng: -73.9662,
     localContext: 'Clinton Hill borders Fort Greene and is home to Pratt Institute\'s campus. With a mix of historic mansions, brownstones, and apartment buildings, we serve both long-term residents upgrading older lock hardware and students renting apartments who need lock change services.',
     nearbyNeighborhoods: ['Fort Greene', 'Bedford-Stuyvesant', 'Prospect Heights'],
     faqs: [
@@ -1111,7 +1146,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Gravesend',
     zip: '11223',
     borough: 'Brooklyn',
-    mapEmbedId: 'gravesend-brooklyn',
+    lat: 40.5962,
+    lng: -73.9697,
     localContext: 'Gravesend is a southern Brooklyn neighborhood with a large Russian and Chinese community, known for its active restaurant scene on Avenue U. We provide locksmith services for both residential clients and the many small businesses throughout Gravesend.',
     nearbyNeighborhoods: ['Bensonhurst', 'Sheepshead Bay', 'Dyker Heights', 'Homecrest'],
     faqs: [
@@ -1143,7 +1179,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Dyker Heights',
     zip: '11228',
     borough: 'Brooklyn',
-    mapEmbedId: 'dyker-heights-brooklyn',
+    lat: 40.6213,
+    lng: -74.0093,
     localContext: 'Dyker Heights is famous for its elaborate holiday light displays and its concentration of beautiful single-family homes. Homeowners here take security seriously and frequently call us for high-security deadbolt installations and lock upgrades.',
     nearbyNeighborhoods: ['Bay Ridge', 'Bensonhurst', 'Borough Park'],
     faqs: [
@@ -1175,7 +1212,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Vinegar Hill',
     zip: '11201',
     borough: 'Brooklyn',
-    mapEmbedId: 'vinegar-hill-brooklyn',
+    lat: 40.7025,
+    lng: -73.9823,
     localContext: 'Vinegar Hill is one of Brooklyn\'s smallest and most historic neighborhoods, with cobblestone streets and Federal-style row houses dating to the 1800s. With such old and often unique lock hardware, our experienced locksmiths are well-suited to handle these properties with care.',
     nearbyNeighborhoods: ['DUMBO', 'Brooklyn Heights', 'Downtown Brooklyn'],
     faqs: [
@@ -1207,7 +1245,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Columbia Waterfront District',
     zip: '11231',
     borough: 'Brooklyn',
-    mapEmbedId: 'columbia-waterfront-brooklyn',
+    lat: 40.6829,
+    lng: -74.0001,
     localContext: 'The Columbia Waterfront District stretches along the Brooklyn waterfront between the BQE and the water, mixing residential blocks with former industrial properties. Residents here enjoy waterfront views and frequently request residential lock upgrades and smart lock installations.',
     nearbyNeighborhoods: ['Carroll Gardens', 'Red Hook', 'Cobble Hill'],
     faqs: [
@@ -1239,7 +1278,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Highland Park',
     zip: '11208',
     borough: 'Brooklyn',
-    mapEmbedId: 'highland-park-brooklyn',
+    lat: 40.6873,
+    lng: -73.8897,
     localContext: 'Highland Park sits on the Brooklyn–Queens border near the Highland Park reservoir. A quiet working-class neighborhood with a strong community, residents here often call us for affordable lock change and rekeying services.',
     nearbyNeighborhoods: ['Cypress Hills', 'East New York', 'Brownsville'],
     faqs: [
@@ -1271,7 +1311,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Cypress Hills',
     zip: '11208',
     borough: 'Brooklyn',
-    mapEmbedId: 'cypress-hills-brooklyn',
+    lat: 40.6799,
+    lng: -73.8816,
     localContext: 'Cypress Hills is a diverse neighborhood on Brooklyn\'s eastern edge, bordered by the Cypress Hills Cemetery and Jackie Robinson Pkwy. We serve residents throughout the area with emergency lockout response, lock changes, and key duplication.',
     nearbyNeighborhoods: ['East New York', 'Highland Park', 'Bushwick', 'Brownsville'],
     faqs: [
@@ -1303,7 +1344,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Prospect Lefferts Gardens',
     zip: '11225',
     borough: 'Brooklyn',
-    mapEmbedId: 'prospect-lefferts-gardens-brooklyn',
+    lat: 40.6594,
+    lng: -73.9527,
     localContext: 'Prospect Lefferts Gardens (PLG) is a vibrant Brooklyn neighborhood adjacent to the Prospect Park Zoo. With many historic limestone rowhouses and a diverse community, we handle lock upgrades, smart lock installations, and emergency lockout calls throughout PLG.',
     nearbyNeighborhoods: ['Flatbush', 'Crown Heights', 'Prospect Heights', 'Windsor Terrace'],
     faqs: [
@@ -1335,7 +1377,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Homecrest',
     zip: '11229',
     borough: 'Brooklyn',
-    mapEmbedId: 'homecrest-brooklyn',
+    lat: 40.6037,
+    lng: -73.9585,
     localContext: 'Homecrest is a quiet residential neighborhood in southern Brooklyn with largely one- and two-family homes. Homeowners here frequently contact us for lock replacements, key duplication, and deadbolt installations.',
     nearbyNeighborhoods: ['Midwood', 'Sheepshead Bay', 'Gravesend', 'Marine Park'],
     faqs: [
@@ -1367,7 +1410,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Bergen Beach',
     zip: '11234',
     borough: 'Brooklyn',
-    mapEmbedId: 'bergen-beach-brooklyn',
+    lat: 40.6207,
+    lng: -73.9073,
     localContext: 'Bergen Beach is a small waterfront community in southeastern Brooklyn near Marine Park. With single-family homes and a tight-knit residential feel, homeowners here call us for security upgrades, lock installs, and emergency service.',
     nearbyNeighborhoods: ['Mill Basin', 'Flatlands', 'Gerritsen Beach', 'Marine Park'],
     faqs: [
@@ -1399,7 +1443,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Gerritsen Beach',
     zip: '11229',
     borough: 'Brooklyn',
-    mapEmbedId: 'gerritsen-beach-brooklyn',
+    lat: 40.5877,
+    lng: -73.9218,
     localContext: 'Gerritsen Beach is one of Brooklyn\'s most secluded neighborhoods, with waterfront homes and a strong community identity. As a neighborhood of primarily homeowners, we provide residential locksmith services, key duplication, and lock replacements throughout the area.',
     nearbyNeighborhoods: ['Marine Park', 'Manhattan Beach', 'Sheepshead Bay'],
     faqs: [
@@ -1431,7 +1476,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Manhattan Beach',
     zip: '11235',
     borough: 'Brooklyn',
-    mapEmbedId: 'manhattan-beach-brooklyn',
+    lat: 40.5781,
+    lng: -73.9389,
     localContext: 'Manhattan Beach is an upscale enclave on Brooklyn\'s southern shore with large private homes and a beachfront park. Homeowners here invest in premium lock hardware, and we regularly install high-security deadbolts, smart locks, and garage door locks in the area.',
     nearbyNeighborhoods: ['Sheepshead Bay', 'Gerritsen Beach', 'Brighton Beach'],
     faqs: [
@@ -1463,7 +1509,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Brighton Beach',
     zip: '11235',
     borough: 'Brooklyn',
-    mapEmbedId: 'brighton-beach-brooklyn',
+    lat: 40.5776,
+    lng: -73.9554,
     localContext: 'Brighton Beach — known as "Little Odessa" — has a large Russian-speaking community along Brighton Beach Avenue. With a mix of apartments, condos, and older multi-unit buildings, lock change and rekeying services are frequently requested by both tenants and property managers here.',
     nearbyNeighborhoods: ['Sheepshead Bay', 'Coney Island', 'Manhattan Beach'],
     faqs: [
@@ -1495,7 +1542,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Coney Island',
     zip: '11224',
     borough: 'Brooklyn',
-    mapEmbedId: 'coney-island-brooklyn',
+    lat: 40.5755,
+    lng: -73.9707,
     localContext: 'Coney Island is famous for its boardwalk and amusement parks, but it\'s also home to thousands of residents in high-rise housing complexes and rental apartments. We provide locksmith services for both businesses along Surf Avenue and residents throughout the Coney Island peninsula.',
     nearbyNeighborhoods: ['Brighton Beach', 'Gravesend', 'Manhattan Beach', 'Bensonhurst'],
     faqs: [
@@ -1527,7 +1575,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Stuyvesant Heights',
     zip: '11233',
     borough: 'Brooklyn',
-    mapEmbedId: 'stuyvesant-heights-brooklyn',
+    lat: 40.6832,
+    lng: -73.9337,
     localContext: 'Stuyvesant Heights is a historic section of Bed-Stuy with beautiful landmarked blocks of brownstones. Homeowners and renovators frequently call us for lock upgrades when restoring these classic properties, and renters use us for move-in lock changes.',
     nearbyNeighborhoods: ['Bedford-Stuyvesant', 'Bushwick', 'Crown Heights', 'Fort Greene'],
     faqs: [
@@ -1559,7 +1608,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'East Williamsburg',
     zip: '11206',
     borough: 'Brooklyn',
-    mapEmbedId: 'east-williamsburg-brooklyn',
+    lat: 40.7108,
+    lng: -73.9350,
     localContext: 'East Williamsburg sits between Williamsburg and Bushwick, with warehouse loft conversions and dense residential blocks. This fast-growing area sees high rental turnover, meaning move-in lock changes and emergency lockouts are among our most common calls.',
     nearbyNeighborhoods: ['Williamsburg', 'Bushwick', 'Bedford-Stuyvesant', 'Greenpoint'],
     faqs: [
