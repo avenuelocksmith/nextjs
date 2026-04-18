@@ -1245,8 +1245,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Columbia Waterfront District',
     zip: '11231',
     borough: 'Brooklyn',
-    lat: 40.6829,
-    lng: -74.0001,
+    lat: 40.6858,
+    lng: -74.0126,
     localContext: 'The Columbia Waterfront District stretches along the Brooklyn waterfront between the BQE and the water, mixing residential blocks with former industrial properties. Residents here enjoy waterfront views and frequently request residential lock upgrades and smart lock installations.',
     nearbyNeighborhoods: ['Carroll Gardens', 'Red Hook', 'Cobble Hill'],
     faqs: [
@@ -1443,8 +1443,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Gerritsen Beach',
     zip: '11229',
     borough: 'Brooklyn',
-    lat: 40.5877,
-    lng: -73.9218,
+    lat: 40.5930,
+    lng: -73.9264,
     localContext: 'Gerritsen Beach is one of Brooklyn\'s most secluded neighborhoods, with waterfront homes and a strong community identity. As a neighborhood of primarily homeowners, we provide residential locksmith services, key duplication, and lock replacements throughout the area.',
     nearbyNeighborhoods: ['Marine Park', 'Manhattan Beach', 'Sheepshead Bay'],
     faqs: [
@@ -1575,8 +1575,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'Stuyvesant Heights',
     zip: '11233',
     borough: 'Brooklyn',
-    lat: 40.6832,
-    lng: -73.9337,
+    lat: 40.6814,
+    lng: -73.9378,
     localContext: 'Stuyvesant Heights is a historic section of Bed-Stuy with beautiful landmarked blocks of brownstones. Homeowners and renovators frequently call us for lock upgrades when restoring these classic properties, and renters use us for move-in lock changes.',
     nearbyNeighborhoods: ['Bedford-Stuyvesant', 'Bushwick', 'Crown Heights', 'Fort Greene'],
     faqs: [
@@ -1608,8 +1608,8 @@ export const NEIGHBORHOODS: Neighborhood[] = [
     name: 'East Williamsburg',
     zip: '11206',
     borough: 'Brooklyn',
-    lat: 40.7108,
-    lng: -73.9350,
+    lat: 40.7148,
+    lng: -73.9442,
     localContext: 'East Williamsburg sits between Williamsburg and Bushwick, with warehouse loft conversions and dense residential blocks. This fast-growing area sees high rental turnover, meaning move-in lock changes and emergency lockouts are among our most common calls.',
     nearbyNeighborhoods: ['Williamsburg', 'Bushwick', 'Bedford-Stuyvesant', 'Greenpoint'],
     faqs: [
